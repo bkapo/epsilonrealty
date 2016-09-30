@@ -34,7 +34,7 @@
     <div *ngIf="people ">
         <ion-list>
             <ion-list-header>ΑΠΟΤΕΛΕΣΜΑΤΑ</ion-list-header>
-             <a ion-button ion-item (click)="selectIP(people)" detail-push *ngFor="let people of people">
+             <a ion-item (click)="selectIP(people)" detail-push *ngFor="let people of people">
                 <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '1'">
                     <ion-icon name="people"></ion-icon> </span>
                 <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '2'">

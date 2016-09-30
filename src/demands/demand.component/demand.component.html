@@ -26,7 +26,7 @@
     <div [ngSwitch]="demandSegment">
 
         <ion-list *ngSwitchCase="'Basic'">
-             <a ion-button ion-item (click)="selectCustomer()">
+             <a ion-item (click)="selectCustomer()">
                 Πελάτης: {{customerFullName}}
             </a>
             <ion-segment formControlName="Purpose" color="dark">

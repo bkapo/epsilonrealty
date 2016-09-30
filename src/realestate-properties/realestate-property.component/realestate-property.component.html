@@ -26,7 +26,7 @@
     <div [ngSwitch]="demandSegment">
 
         <ion-list *ngSwitchCase="'Basic'">
-             <a ion-button ion-item (click)="selectCustomer()">
+             <a ion-item (click)="selectCustomer()">
                 Πελάτης: {{customerFullName}}
             </a>
             <ion-segment formControlName="Purpose" color="dark">
@@ -323,15 +323,15 @@
 </ion-list>
 
 <ion-list *ngSwitchCase="'Managment'">
-     <a ion-button ion-item (click)="selectBroker()">
+     <a ion-item (click)="selectBroker()">
         <ion-icon name="contact"></ion-icon>
         Broker: {{responsibleFullName}}
     </a>
-     <a ion-button ion-item (click)="selectOwner()">
+     <a ion-item (click)="selectOwner()">
         <ion-icon name="key"></ion-icon>
         Ιδιοκτήτης: {{ownerFullName}}
     </a>
-    <a ion-button ion-item (click)="selectProposed()">
+    <a ion-item (click)="selectProposed()">
         <ion-icon name="git-compare"></ion-icon>
         Σύσταση από: {{propesedByFullName}}
     </a>
