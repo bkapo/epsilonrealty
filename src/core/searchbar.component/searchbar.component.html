@@ -1,59 +1,59 @@
-<ion-item-sliding #slidingItem>
-    <ion-item>
-        <h1>{{demand.Purpose | purpose }} </h1>
-        <h2>{{demand.number}} {{demand.ModifiedDate | date }} </h2>
-        <h3>{{demand.PropertyCategory | propertyCategory }} - {{demand.PropertyType | propertyType }}</h3>
-        <h4>{{demand.Comments}}</h4>
-        <p>{{demand.PriceFrom | currency:'EUR':true}} - {{demand.PriceTo | currency:'EUR':true}}</p>
-    </ion-item>
+<ion-header>
+    <ion-navbar color="green">
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Epsilon Realty</ion-title>
+    </ion-navbar>
+</ion-header>
 
-    <ion-item-options side="right">
-        <button ion-button color="secondary" (click)="editItem(demand)">
-                    <ion-icon name="create"> </ion-icon> Edit
-                </button>
-        <button ion-button color="primary" (click)="getMatching(demand)">
-                     Results
-                </button>
-    </ion-item-options>
+<ion-content padding class="getting-started">
 
-</ion-item-sliding>t-button value="Property">
-<ion-icon name="home"></ion-icon>
-</ion-segment-button>
-</ion-segment>
-<div class="spacer" style="height: 10px;"></div>
-<ion-searchbar (ionInput)="onInput($event)" (ionClear)="onClear($event)" debounce=500></ion-searchbar>
+    <ion-segment [(ngModel)]="searchType">
+        <ion-segment-button value="Agent">
+            <ion-icon name="people"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="Customer">
+            <ion-icon name="contact"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="Property">
+            <ion-icon name="home"></ion-icon>
+        </ion-segment-button>
+    </ion-segment>
+    <div class="spacer" style="height: 10px;"></div>
+    <ion-searchbar (ionInput)="onInput($event)" (ionClear)="onClear($event)" debounce=500></ion-searchbar>
 
-<div class="spacer" style="width: 300px; height: 30px;"></div>
-<ion-spinner *ngIf="isLoading"></ion-spinner>
+    <div class="spacer" style="width: 300px; height: 30px;"></div>
+    <ion-spinner *ngIf="isLoading"></ion-spinner>
 
-<ion-card *ngIf="errorMessage">
-    <ion-item>
-        <ion-icon subtle color="danger" large item-left name='warning'></ion-icon>
-        <h2>Something went wrong... </h2>
-        <p>{{errorMessage}}</p>
-    </ion-item>
-</ion-card>
+    <ion-card *ngIf="errorMessage">
+        <ion-item>
+            <ion-icon subtle color="danger" large item-left name='warning'></ion-icon>
+            <h2>Something went wrong... </h2>
+            <p>{{errorMessage}}</p>
+        </ion-item>
+    </ion-card>
 
-<ion-card *ngIf="notFound">
-    <ion-item>
-        <ion-icon subtle color="primary" large item-left name='information'></ion-icon>
-        <h2>{{notFound}} </h2>
-    </ion-item>
-</ion-card>
+    <ion-card *ngIf="notFound">
+        <ion-item>
+            <ion-icon subtle color="primary" large item-left name='information'></ion-icon>
+            <h2>{{notFound}} </h2>
+        </ion-item>
+    </ion-card>
 
-<div *ngIf=" people ">
-    <ion-list>
-        <involved-party-card *ngFor="let item of people " [people]="item ">
-        </involved-party-card>
-    </ion-list>
-</div>
+    <div *ngIf=" people ">
+        <ion-list>
+            <involved-party-card *ngFor="let item of people " [people]="item ">
+            </involved-party-card>
+        </ion-list>
+    </div>
 
-<div *ngIf="property ">
-    <ion-list>
-        <realestate-property-card *ngFor="let item of property " [realEstate]="item ">
-        </realestate-property-card>
-    </ion-list>
-</div>
+    <div *ngIf="property ">
+        <ion-list>
+            <realestate-property-card *ngFor="let item of property " [realEstate]="item ">
+            </realestate-property-card>
+        </ion-list>
+    </div>
 
 </ion-content>
 

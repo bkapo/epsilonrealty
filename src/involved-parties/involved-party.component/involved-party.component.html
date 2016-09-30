@@ -1,94 +1,94 @@
-<ion-header>
-    <ion-toolbar green>
-        <ion-title>
-            Επιλέξτε
-        </ion-title>
-        <ion-buttons start>
-            <button ion-button (click)="dismiss()">
-      <span showwhen="ios">Cancel</span>
-      <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
-    </button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
+<form [formGroup]="involedpartyform" (ngSubmit)="onSubmit()">
 
-<ion-content>
-    <ion-searchbar (ionInput)="searchFor($event)" (ionClear)="onClear($event)"></ion-searchbar>
+    <div padding>
+        <ion-segment [(ngModel)]="involedpartySegment" [ngModelOptions]="{standalone: true}" [attr.light]="isAndroid ? '' : null">
+            <ion-segment-button value="name">
+                Ονομα
+            </ion-segment-button>
+            <ion-segment-button value="contact">
+                Επικοινωνια
+            </ion-segment-button>
+        </ion-segment>
+    </div>
 
-    <!--<div class="spacer" style="width: 300px; height: 30px;"></div>-->
-    <ion-spinner *ngIf="isLoading"></ion-spinner>
-    <ion-card *ngIf="errorMessage">
-        <ion-item>
-            <ion-icon subtle color="danger"  large item-left name='warning'></ion-icon>
-            <h2>Something went wrong... </h2>
-            <p>{{errorMessage}}</p>
-        </ion-item>
-    </ion-card>
-    <ion-card *ngIf="notFound">
-        <ion-item>
-            <ion-icon subtle color="primary" large item-left name='information'></ion-icon>
-            <h2>{{notFound}} </h2>
-        </ion-item>
-    </ion-card>
+    <div [ngSwitch]="involedpartySegment">
+        <ion-list *ngSwitchCase="'name'">
 
-    <div *ngIf="people ">
-        <ion-list>
-            <ion-list-header>ΑΠΟΤΕΛΕΣΜΑΤΑ</ion-list-header>
-             <a  ion-item (click)="selectIP(people)" detail-push *ngFor="let people of people">
-                <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '1'">
-                    <ion-icon name="people"></ion-icon> </span>
-                <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '2'">
-                    <ion-icon name="people"></ion-icon> </span>
-                <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '3'">
-                    <ion-icon name="contact"></ion-icon> </span>
-                <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '4'">
-                    <ion-icon name="home"></ion-icon> </span>
-                <span color="dark" class="item-bold">{{people.FirstName}} {{people.LastName}}</span>
-                <span color="dark" class="smallFonts" type="tel">{{people.Mobile}}</span>
-            </a>
+            <ion-item>
+                <ion-label>Τύπος</ion-label>
+                <ion-select #item formControlName="InvolvedPartyType">
+                    <ion-option *ngFor="let item of invPartyType | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item [class.error]="involedpartyform.controls.firstName.errors && involedpartyform.controls.firstName.touched">
+                <ion-label floating>Όνομα</ion-label>
+                <ion-input type="text" formControlName="firstName"></ion-input>
+            </ion-item>
+            <div *ngIf="involedpartyform.controls.firstName.errors && involedpartyform.controls.firstName.touched" class="error-box">
+                <ion-icon name="warning"></ion-icon> First Name is required!</div>
+
+            <ion-item [class.error]="involedpartyform.controls.lastName.errors && involedpartyform.controls.lastName.touched">
+                <ion-label floating>Επίθετο</ion-label>
+                <ion-input type="text" formControlName="lastName"></ion-input>
+            </ion-item>
+            <div *ngIf="involedpartyform.controls.lastName.errors && involedpartyform.controls.lastName.touched" class="error-box">
+                <ion-icon name="warning"></ion-icon> Last Name is required!</div>
+
+            <ion-item>
+                <ion-label floating>Εταιρία</ion-label>
+                <ion-input type="text" formControlName="companyName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Πατρώνυμο</ion-label>
+                <ion-input type="text" formControlName="fatherName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Μητρώνυμο</ion-label>
+                <ion-input type="text" formControlName="motherName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Όνομα Συζύγου</ion-label>
+                <ion-input type="text" formControlName="sizigouName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>ΑΦΜ</ion-label>
+                <ion-input type="text" formControlName="AFM"></ion-input>
+            </ion-item>
+
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'contact'">
+            <ion-item>
+                <ion-label floating>Κινητό</ion-label>
+                <ion-input type="tel" formControlName="mobile"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Σταθερό (Οικία)</ion-label>
+                <ion-input type="tel" formControlName="homeTelephone"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Σταθερό (Εργασία)</ion-label>
+                <ion-input type="tel" formControlName="workTelephone"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Φαξ</ion-label>
+                <ion-input type="tel" formControlName="fax"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>e-mail</ion-label>
+                <ion-input type="email" formControlName="email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Web Site</ion-label>
+                <ion-input type="url" formControlName="webSiteURL"></ion-input>
+            </ion-item>
+
         </ion-list>
     </div>
 
-
-</ion-content>ion-item>
-<ion-item>
-    <ion-label floating>ΑΦΜ</ion-label>
-    <ion-input type="text" formControlName="AFM"></ion-input>
-</ion-item>
-
-</ion-list>
-
-<ion-list *ngSwitchCase="'contact'">
-    <ion-item>
-        <ion-label floating>Κινητό</ion-label>
-        <ion-input type="tel" formControlName="mobile"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Σταθερό (Οικία)</ion-label>
-        <ion-input type="tel" formControlName="homeTelephone"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Σταθερό (Εργασία)</ion-label>
-        <ion-input type="tel" formControlName="workTelephone"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Φαξ</ion-label>
-        <ion-input type="tel" formControlName="fax"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>e-mail</ion-label>
-        <ion-input type="email" formControlName="email"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Web Site</ion-label>
-        <ion-input type="url" formControlName="webSiteURL"></ion-input>
-    </ion-item>
-
-</ion-list>
-</div>
-
-<div class="spacer" style="width: 300px; height: 15px;"></div>
-<button ion-button type="submit" [disabled]="!involedpartyform.valid" class="button button-positive button-clear button-block">Καταχωρηση</button>
+    <div class="spacer" style="width: 300px; height: 15px;"></div>
+    <button type="submit" [disabled]="!involedpartyform.valid" class="button button-positive button-clear button-block">Καταχωρηση</button>
 
 </form>
 
@@ -96,7 +96,7 @@
 
 <ion-card *ngIf="errorMessage">
     <ion-item>
-        <ion-icon subtle color="danger"  large item-left name='warning'></ion-icon>
+        <ion-icon subtle color="danger" large item-left name='warning'></ion-icon>
         <h2>Something went wrong... </h2>
         <p>{{errorMessage}}</p>
     </ion-item>
