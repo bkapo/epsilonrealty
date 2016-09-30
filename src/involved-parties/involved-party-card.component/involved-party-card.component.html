@@ -1,0 +1,33 @@
+<ion-item-sliding #slidingItem>
+
+    <ion-item text-uppercase>
+        <ion-thumbnail item-left>
+            <img src="img/person.png">
+        </ion-thumbnail>
+        <h2 text-capitalize>{{people.FirstName}} {{people.LastName}}</h2>
+        <p>
+            <span color="dark" class="smallFonts"> <ion-icon name="call"> {{people.Mobile}}</ion-icon> </span>
+        </p>
+        <span class="smallFonts" color="secondary" >{{people.InvolvedPartyType | involvedPartyType}}</span>
+        <ion-badge item-right *ngIf="people.InvolvedPartyType == '5'"> {{people.Demands.length}}</ion-badge>
+    </ion-item>
+
+    <ion-item-options side="left" *ngIf="people.InvolvedPartyType == '5'">
+        <button ion-button color="primary" (click)="addDemand(people)">
+                    <ion-icon name="add"> </ion-icon> Demand
+                    </button>
+        <button ion-button color="dark" (click)="viewDemands(people.Demands)">
+                    <ion-icon name="albums"> </ion-icon> Demands
+                </button>
+    </ion-item-options>
+
+    <ion-item-options side="right">
+        <button ion-button color="light" (click)="editIP(people)">
+                    <ion-icon name="create"> </ion-icon> Edit
+                    </button>
+        <button ion-button color="primary" (click)="editIP(people)">
+                    <ion-icon name="open"> </ion-icon> View
+                </button>
+    </ion-item-options>
+
+</ion-item-sliding>

@@ -1,0 +1,289 @@
+<form [formGroup]="demandform" (ngSubmit)="onSubmit(demandform.value)">
+
+    <div padding>
+        <ion-segment [(ngModel)]="demandSegment" [ngModelOptions]="{standalone: true}" [attr.light]="isAndroid ? '' : null">
+            <ion-segment-button value="Basic">
+                Γενικα
+            </ion-segment-button>
+            <ion-segment-button value="AdditionalRooms">
+                Additional Rooms
+            </ion-segment-button>
+            <ion-segment-button value="Heating">
+                Θερμανση - Ασφαλεια
+            </ion-segment-button>
+            <ion-segment-button value="SurroundingArea">
+                Περιβαλλων Χωρος
+            </ion-segment-button>
+            <ion-segment-button value="Parking">
+                Parking
+            </ion-segment-button>
+            <ion-segment-button value="Other">
+                Other
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div [ngSwitch]="demandSegment">
+
+        <ion-list *ngSwitchCase="'Basic'">
+             <a ion-button ion-item (click)="selectCustomer()">
+                Πελάτης: {{customerFullName}}
+            </a>
+            <ion-segment formControlName="Purpose" color="dark">
+                <ion-segment-button value="1">
+                    Αγορα
+                </ion-segment-button>
+                <ion-segment-button value="2">
+                    Ενοικιαση
+                </ion-segment-button>
+                <ion-segment-button value="3">
+                    Αγορα / Ενοικιαση
+                </ion-segment-button>
+            </ion-segment>
+            <ion-item>
+                <ion-label>Κατηγορία</ion-label>
+                <ion-select #item formControlName="PropertyCategory">
+                    <ion-option *ngFor="let item of propCategories | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>Τύπος</ion-label>
+                <ion-select #item formControlName="PropertyType">
+                    <ion-option *ngFor="let item of propTypes | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Τιμή (Από - Έως)</ion-label>
+                <ion-badge item-right>{{pricerange.lower}}</ion-badge>
+                <ion-badge item-right>{{pricerange.upper}}</ion-badge>
+                <ion-range dualKnobs="true" min="100" max="5000" step="100" pin="true" snap="true" [(ngModel)]="pricerange" [ngModelOptions]="{standalone: true}" (ionChange)="updateRanges($event)">
+                    <ion-icon range-left small color="primary" name="logo-euro"></ion-icon>
+                    <ion-icon range-right color="danger"  name="logo-euro"></ion-icon>
+                </ion-range>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Εμβαδόν (Από - Έως)</ion-label>
+                <ion-badge item-right>{{sqfeetrange.lower}}</ion-badge>
+                <ion-badge item-right>{{sqfeetrange.upper}}</ion-badge>
+                <ion-range dualKnobs="true" min="10" max="1000" step="10" pin="true" snap="true" [(ngModel)]="sqfeetrange" [ngModelOptions]="{standalone: true}" (ionChange)="updateRanges($event)">
+                    <ion-icon range-left small color="primary" name="crop"></ion-icon>
+                    <ion-icon range-right color="danger"  name="crop"></ion-icon>
+                </ion-range>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Σχόλια</ion-label>
+                <ion-textarea formControlName="Comments"></ion-textarea>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Parking'">
+            <ion-item>
+                <ion-label floating>Θέσεις Parking</ion-label>
+                <ion-input type="number" formControlName="Parkings"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Closed Parking</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="ClosedParking"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Heated Parking</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="HeatedParking"></ion-toggle>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'AdditionalRooms'">
+            <ion-item>
+                <ion-label>Yπόγειο</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Basement"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Fitness Room</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="FitnessRoom"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Home Theatre</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="HomeTheatre"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Βιβλιοθήκη</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Library"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Spa</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Spa"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Κελλάρι</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="WineCellar"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Guest Suite</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="GuestSuite"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Γραφείο</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="HomeOffice"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Σοφίτα</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Attic"></ion-toggle>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Heating'">
+            <ion-item>
+                <ion-label>Κλιματισμός (A/C)</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="AC"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Ηλιακός</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="SolarHeating"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Ενδοδαπέδια Θέρμανση</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="FloorHeating"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Boiler</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Boiler"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Πόρτα Ασφαλείας</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="SafetyDoor"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Συναγερμός</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Alarm"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Θυρίδα</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="SafetyDepositBox"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Θυροτηλεόραση</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="VideoDoorPhone"></ion-toggle>
+            </ion-item>
+
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'SurroundingArea'">
+            <ion-item>
+                <ion-label>Γήπεδο</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="SportField"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Γκαζόν</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Grass"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Δένδρα</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Trees"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Πισίνα (Εξωτ.)</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="OutdoorPool"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Πισίνα (Εξωτ.) - Θερμενόμενη</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="OutdoorPoolHeated"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Πισίνα (Εσωτ.)</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="IndoorPool"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Πισίνα (Εσωτ.) - Θερμενόμενη</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="IndoorPoolHeated"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Κήπος</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Garden"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>BBQ (Εξωτ.)</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="OutdoorBBQ"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Ηλεκτρικές Θύρες Εισόδου</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="ElectronicGates"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Αυτ/το Πότισμα</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="AutomaticWatering"></ion-toggle>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Other'">
+            <ion-item>
+                <ion-label>Βεράντες</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Terraces"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Εσωτερική Σκάλα</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="InternalStairs"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Γωνιακό</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Corner"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>BBQ (Εσωτ.)</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="IndoorBBQ"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Ασανσέρ</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Elevator"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Δορυφορική</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="SatteliteTV"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Διπλά τζάμια</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="DoubleWindows"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Τριπλά τζάμια</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="TripleWindows"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Internet</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="Internet"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Κατοικίδια</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="AnimalFriendly"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Για Φοιτητές</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="StudentsHousing"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>Χωρίς Κοινόχρηστα</ion-label>
+                <ion-toggle color="royal" checked="true" formControlName="WithoutCharges"></ion-toggle>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <div class="spacer" style="width: 300px; height: 15px;"></div>
+    <button ion-button  type="submit" class="button button-positive button-clear button-block">Καταχωρηση</button>
+</form>
+<ion-card *ngIf="errorMessage">
+    <ion-item>
+        <ion-icon subtle color="danger"  large item-left name='warning'></ion-icon>
+        <h2>Something went wrong... </h2>
+        <p>{{errorMessage}}</p>
+    </ion-item>
+</ion-card>

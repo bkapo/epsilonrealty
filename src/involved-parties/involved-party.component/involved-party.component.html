@@ -1,0 +1,105 @@
+<ion-header>
+    <ion-toolbar green>
+        <ion-title>
+            Επιλέξτε
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+      <span showwhen="ios">Cancel</span>
+      <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+    </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar (ionInput)="searchFor($event)" (ionClear)="onClear($event)"></ion-searchbar>
+
+    <!--<div class="spacer" style="width: 300px; height: 30px;"></div>-->
+    <ion-spinner *ngIf="isLoading"></ion-spinner>
+    <ion-card *ngIf="errorMessage">
+        <ion-item>
+            <ion-icon subtle color="danger"  large item-left name='warning'></ion-icon>
+            <h2>Something went wrong... </h2>
+            <p>{{errorMessage}}</p>
+        </ion-item>
+    </ion-card>
+    <ion-card *ngIf="notFound">
+        <ion-item>
+            <ion-icon subtle color="primary" large item-left name='information'></ion-icon>
+            <h2>{{notFound}} </h2>
+        </ion-item>
+    </ion-card>
+
+    <div *ngIf="people ">
+        <ion-list>
+            <ion-list-header>ΑΠΟΤΕΛΕΣΜΑΤΑ</ion-list-header>
+             <a ion-button ion-item (click)="selectIP(people)" detail-push *ngFor="let people of people">
+                <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '1'">
+                    <ion-icon name="people"></ion-icon> </span>
+                <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '2'">
+                    <ion-icon name="people"></ion-icon> </span>
+                <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '3'">
+                    <ion-icon name="contact"></ion-icon> </span>
+                <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '4'">
+                    <ion-icon name="home"></ion-icon> </span>
+                <span color="dark" class="item-bold">{{people.FirstName}} {{people.LastName}}</span>
+                <span color="dark" class="smallFonts" type="tel">{{people.Mobile}}</span>
+            </a>
+        </ion-list>
+    </div>
+
+
+</ion-content>ion-item>
+<ion-item>
+    <ion-label floating>ΑΦΜ</ion-label>
+    <ion-input type="text" formControlName="AFM"></ion-input>
+</ion-item>
+
+</ion-list>
+
+<ion-list *ngSwitchCase="'contact'">
+    <ion-item>
+        <ion-label floating>Κινητό</ion-label>
+        <ion-input type="tel" formControlName="mobile"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Σταθερό (Οικία)</ion-label>
+        <ion-input type="tel" formControlName="homeTelephone"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Σταθερό (Εργασία)</ion-label>
+        <ion-input type="tel" formControlName="workTelephone"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Φαξ</ion-label>
+        <ion-input type="tel" formControlName="fax"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>e-mail</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Web Site</ion-label>
+        <ion-input type="url" formControlName="webSiteURL"></ion-input>
+    </ion-item>
+
+</ion-list>
+</div>
+
+<div class="spacer" style="width: 300px; height: 15px;"></div>
+<button ion-button type="submit" [disabled]="!involedpartyform.valid" class="button button-positive button-clear button-block">Καταχωρηση</button>
+
+</form>
+
+<ion-spinner *ngIf="isLoading"></ion-spinner>
+
+<ion-card *ngIf="errorMessage">
+    <ion-item>
+        <ion-icon subtle color="danger"  large item-left name='warning'></ion-icon>
+        <h2>Something went wrong... </h2>
+        <p>{{errorMessage}}</p>
+    </ion-item>
+</ion-card>
+
+<!--<pre>{{involvedparty | json}}</pre>-->

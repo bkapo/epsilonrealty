@@ -1,0 +1,27 @@
+<ion-menu id="leftMenu" [content]="content">
+
+    <ion-toolbar color="green">
+        <ion-title></ion-title>
+
+        <ion-buttons end>
+            <button ion-button color="royal">
+            <ion-icon name="settings"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-content>
+        <ion-list>
+            <button ion-button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-icon item-left name="{{p.icon}}"></ion-icon>
+                {{p.title}}
+            </button>
+        </ion-list>
+
+    </ion-content>
+    <button ion-button full color="green" no-padding>
+   <ion-icon  name="log-out"></ion-icon> Log Off
+</button>
+</ion-menu>
+
+<ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>

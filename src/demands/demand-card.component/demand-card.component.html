@@ -1,0 +1,19 @@
+<ion-item-sliding #slidingItem>
+    <ion-item>
+        <h1>{{demand.Purpose | purpose }} </h1>
+        <h2>{{demand.number}} {{demand.ModifiedDate | date }} </h2>
+        <h3>{{demand.PropertyCategory | propertyCategory }} - {{demand.PropertyType | propertyType }}</h3>
+        <h4>{{demand.Comments}}</h4>
+        <p>{{demand.PriceFrom | currency:'EUR':true}} - {{demand.PriceTo | currency:'EUR':true}}</p>
+    </ion-item>
+
+    <ion-item-options side="right">
+        <button ion-button color="secondary"  (click)="editItem(demand)">
+                    <ion-icon name="create"> </ion-icon> Edit
+                </button>
+        <button ion-button  color="primary" (click)="getMatching(demand)">
+                     Results
+                </button>
+    </ion-item-options>
+
+</ion-item-sliding>

@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar green>
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Brokers</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="spacer" *ngIf="isLoading" style="width: 300px; height: 30px;"></div>
+    <ion-spinner *ngIf="isLoading"></ion-spinner>
+    <div *ngIf="errorMessage">
+        <ion-card>
+            <ion-card-content>
+                {{errorMessage}}
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <ion-list>
+        <involved-party-card *ngFor="let item of people" [people]="item">
+        </involved-party-card>
+    </ion-list>
+</ion-content>

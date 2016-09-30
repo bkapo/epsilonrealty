@@ -1,0 +1,19 @@
+.involved-party-component {
+
+}
+
+.error-box {
+	margin-top: 10px;
+	padding-left:  15px;
+	font-size: 12px;
+	color: red;
+	font-style: italic;
+	//border:  1px solid #FF8B51;
+	border-radius: 3px;
+	//background: #FFC58C;
+	background: white;
+}
+
+.error .item-inner {
+    border-bottom: 3px solid red !important;	
+}
