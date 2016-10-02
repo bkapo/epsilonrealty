@@ -5,8 +5,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
 import { ESTATEPROPERTIES_API_URL } from './data.service'
-import { DemandModel } from '../shared/models/demand.model';
-import { RealEstatePropertyModel } from '../shared/models/realestate-property.model';
+import { DemandModel } from '../app/models/demand.model';
+import { RealEstatePropertyModel } from '../app/models/realestate-property.model';
 
 @Injectable()
 export class REPService {

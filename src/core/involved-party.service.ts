@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
 import { INVOLVEDPARTY_API_URL } from './data.service'
-import { InvolvepdPartyModel } from '../shared/models/involved-party.model';
+import { InvolvepdPartyModel } from '../app/models/involved-party.model';
 
 @Injectable()
 export class IPService {
