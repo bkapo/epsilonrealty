@@ -42,14 +42,14 @@
         </ion-item>
     </ion-card>
 
-    <div *ngIf="people ">
+    <div *ngIf="people">
         <ion-list>
-            <!--<involved-party-card *ngFor="let item of people " [card-people]="item ">
-            </involved-party-card>-->
+            <involved-party-card *ngFor="let item of people" [card-people]="item">
+            </involved-party-card>
         </ion-list>
     </div>
 
-    <div *ngIf="property ">
+    <div *ngIf="property">
         <ion-list>
             <!--<realestate-property-card *ngFor="let item of property " [realEstate]="item ">
             </realestate-property-card>-->

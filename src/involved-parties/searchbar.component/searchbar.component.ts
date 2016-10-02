@@ -8,8 +8,8 @@ import { RealEstatePropertyAddPage } from '../../realestate-properties/realestat
 
 import { DemandModel } from '../../app/models/demand.model'
 import { DemandAddComponent } from '../../demands/demand-add.component/demand-add.component';
-import { IPService } from '../involved-party.service'
-import { REPService } from '../realestate-property.service'
+import { IPService } from '../../core/involved-party.service'
+import { REPService } from '../../core/realestate-property.service'
 
 
 @Component({
