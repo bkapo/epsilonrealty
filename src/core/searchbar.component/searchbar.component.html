@@ -41,17 +41,17 @@
         </ion-item>
     </ion-card>
 
-    <div *ngIf=" people ">
+    <div *ngIf="people ">
         <ion-list>
-            <involved-party-card *ngFor="let item of people " [people]="item ">
-            </involved-party-card>
+            <!--<involved-party-card *ngFor="let item of people " [card-people]="item ">
+            </involved-party-card>-->
         </ion-list>
     </div>
 
     <div *ngIf="property ">
         <ion-list>
-            <realestate-property-card *ngFor="let item of property " [realEstate]="item ">
-            </realestate-property-card>
+            <!--<realestate-property-card *ngFor="let item of property " [realEstate]="item ">
+            </realestate-property-card>-->
         </ion-list>
     </div>
 
@@ -65,20 +65,20 @@
     <ion-toolbar color="green" position="bottom ">
 
         <ion-buttons start>
-            <button ion-button color="royal " (click)="addIP() ">
-            <ion-icon name="person-add " ></ion-icon>
+            <button ion-button color="royal" (click)="addIP() ">
+            <ion-icon name="person-add" ></ion-icon>
         </button>
         </ion-buttons>
 
         <ion-buttons end>
-            <button ion-button color="royal " (click)="addProperty() ">
-            <ion-icon name="add-circle " ></ion-icon>
+            <button ion-button color="royal" (click)="addProperty() ">
+            <ion-icon name="add-circle" ></ion-icon>
         </button>
         </ion-buttons>
 
         <ion-buttons end>
-            <button ion-button color="royal " (click)="addDemand() ">
-            <ion-icon name="document " ></ion-icon>
+            <button ion-button color="royal" (click)="addDemand() ">
+            <ion-icon name="document" ></ion-icon>
         </button>
         </ion-buttons>
 

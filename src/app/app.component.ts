@@ -11,7 +11,7 @@ import { InvolvepdPartyModel } from './models/involved-party.model';
 import { RealEstatePropertyModel } from './models/realestate-property.model';
 
 @Component({
-  template: 'app.html'
+  templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;

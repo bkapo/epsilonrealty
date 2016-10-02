@@ -6,15 +6,18 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from 'ionic-angular';
 
 import { SearchBarComponent } from './searchbar.component/searchbar.component/';
+import { LoginPage } from './login.page/login.page'
 
 import { IPService } from './involved-party.service'
 import { REPService } from './realestate-property.service'
 
 @NgModule({
-    imports: [CommonModule,
-        IonicModule.forRoot(SearchBarComponent)],
-    declarations: [SearchBarComponent],
-    exports: [SearchBarComponent],
+    imports: [
+        CommonModule,
+        IonicModule.forRoot(SearchBarComponent),
+        IonicModule.forRoot(LoginPage)],
+    declarations: [SearchBarComponent, LoginPage],
+    exports: [SearchBarComponent, LoginPage],
     providers: [IPService, REPService]
 })
 export class CoreModule {

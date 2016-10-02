@@ -13,7 +13,7 @@ import { InvolvedPartyEditPage } from '../../involved-parties/involved-party-edi
     templateUrl: 'involved-party-card.component.html'
 })
 export class InvolvedPartyCardComponent {
-    @Input() people: InvolvepdPartyModel;
+    @Input('card-people') people: InvolvepdPartyModel;
     newDm: DemandModel;
 
     constructor(public nav: NavController) {
