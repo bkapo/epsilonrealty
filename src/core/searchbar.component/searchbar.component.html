@@ -9,7 +9,7 @@
 
 <ion-content padding class="getting-started">
 
-    <ion-segment [(ngModel)]="searchType">
+    <ion-segment [(ngModel)]="searchType" color="primary">
         <ion-segment-button value="Agent">
             <ion-icon name="people"></ion-icon>
         </ion-segment-button>
@@ -20,6 +20,7 @@
             <ion-icon name="home"></ion-icon>
         </ion-segment-button>
     </ion-segment>
+
     <div class="spacer" style="height: 10px;"></div>
     <ion-searchbar (ionInput)="onInput($event)" (ionClear)="onClear($event)" debounce=500></ion-searchbar>
 

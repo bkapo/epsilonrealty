@@ -1,7 +1,7 @@
 <form [formGroup]="estateform" (ngSubmit)="onSubmit()">
 
     <div padding>
-        <ion-segment [(ngModel)]="estateSegment" [ngModelOptions]="{standalone: true}" [attr.light]="isAndroid ? '' : null">
+        <ion-segment [(ngModel)]="estateSegment" [ngModelOptions]="{standalone: true}" color="primary">
             <ion-segment-button value="Basic">
                 Γενικα
             </ion-segment-button>
@@ -31,7 +31,7 @@
 
     <div [ngSwitch]="estateSegment">
         <ion-list *ngSwitchCase="'Basic'">
-            <ion-segment formControlName="Purpose" dark>
+            <ion-segment formControlName="Purpose" color="dark">
                 <ion-segment-button value="1">
                     Πωληση
                 </ion-segment-button>

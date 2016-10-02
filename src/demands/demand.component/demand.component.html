@@ -1,7 +1,7 @@
 <form [formGroup]="demandform" (ngSubmit)="onSubmit(demandform.value)">
 
     <div padding>
-        <ion-segment [(ngModel)]="demandSegment" [ngModelOptions]="{standalone: true}" [attr.light]="isAndroid ? '' : null">
+        <ion-segment [(ngModel)]="demandSegment" color="primary" [ngModelOptions]="{standalone: true}" [attr.light]="isAndroid ? '' : null">
             <ion-segment-button value="Basic">
                 Γενικα
             </ion-segment-button>

@@ -1,7 +1,7 @@
 <form [formGroup]="involedpartyform" (ngSubmit)="onSubmit()">
 
     <div padding>
-        <ion-segment [(ngModel)]="involedpartySegment" [ngModelOptions]="{standalone: true}" [attr.light]="isAndroid ? '' : null">
+        <ion-segment color="primary" [(ngModel)]="involedpartySegment" [ngModelOptions]="{standalone: true}">
             <ion-segment-button value="name">
                 Ονομα
             </ion-segment-button>
