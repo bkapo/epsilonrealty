@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { InvolvedPartyType } from '../models/involved-party.model';
+import { InvolvedPartyType } from '../../app/models/involved-party.model';
 
 @Pipe({name: 'involvedPartyType'})
 export class InvolvedPartyTypePipe implements PipeTransform {

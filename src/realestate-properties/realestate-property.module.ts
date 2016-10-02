@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { IonicModule } from 'ionic-angular';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -9,11 +10,25 @@ import { RealEstatePropertyAddPage } from '../realestate-properties/realestate-p
 
 
 @NgModule({
-    imports: [SharedModule],
-    declarations: [RealEstatePropertyComponent, RealEstatePropertyComponent, RealestatePropertyCardComponent,
-                    RealEstatePropertyAddPage, RealEstatePropertyEditPage],
-    exports: [RealEstatePropertyComponent, RealEstatePropertyComponent, RealestatePropertyCardComponent,
-                    RealEstatePropertyAddPage, RealEstatePropertyEditPage],
+    imports: [
+        SharedModule,
+        IonicModule.forRoot(RealEstatePropertyComponent), 
+        IonicModule.forRoot(RealEstatePropertyComponent), 
+        IonicModule.forRoot(RealestatePropertyCardComponent),
+        IonicModule.forRoot(RealEstatePropertyAddPage), 
+        IonicModule.forRoot(RealEstatePropertyEditPage) ],
+    declarations: [
+        RealEstatePropertyComponent, 
+        RealEstatePropertyComponent, 
+        RealestatePropertyCardComponent,
+        RealEstatePropertyAddPage, 
+        RealEstatePropertyEditPage ],
+    exports: [
+        RealEstatePropertyComponent, 
+        RealEstatePropertyComponent, 
+        RealestatePropertyCardComponent,
+        RealEstatePropertyAddPage, 
+        RealEstatePropertyEditPage ],
     providers: []
 })
 export class RealEstatePropertyModule { }

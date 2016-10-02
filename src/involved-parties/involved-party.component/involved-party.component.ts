@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
 import { ModalController, ToastController, LoadingController } from 'ionic-angular';
 
-import { InvolvepdPartyModel, InvolvedPartyType } from '../../shared/models/involved-party.model';
+import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model';
 import { IPService } from '../../core/involved-party.service'
 
 

@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { PropertyCategory } from '../models/realestate-property.model';
+import { PropertyCategory } from '../../app/models/realestate-property.model';
 
 @Pipe({name: 'propertyCategory'})
 export class PropertyCategoryPipe implements PipeTransform {

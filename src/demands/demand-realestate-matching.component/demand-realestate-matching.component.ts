@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
 
-import { RealEstatePropertyModel, PropertyCategory, PropertyType } from '../../shared/models/realestate-property.model'
-import { DemandModel } from '../../shared/models/demand.model';
+import { RealEstatePropertyModel, PropertyCategory, PropertyType } from '../../app/models/realestate-property.model'
+import { DemandModel } from '../../app/models/demand.model';
 import { REPService } from '../../core/realestate-property.service'
 
 @Component({

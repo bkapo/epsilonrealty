@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { DemandModel } from '../../shared/models/demand.model';
+import { DemandModel } from '../../app/models/demand.model';
 import { DemandAddComponent } from '../../demands/demand-add.component/demand-add.component'
 import { DemandListPage } from '../../demands/demand-list.component/demand-list.component'
 
-import { InvolvepdPartyModel } from '../../shared/models/involved-party.model';
+import { InvolvepdPartyModel } from '../../app/models/involved-party.model';
 import { InvolvedPartyEditPage } from '../../involved-parties/involved-party-edit.page/involved-party-edit.page'
 
 @Component({

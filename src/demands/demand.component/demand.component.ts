@@ -3,9 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
 import { NavController, ModalController } from 'ionic-angular';
 
-import { DemandModel } from '../../shared/models/demand.model';
+import { DemandModel } from '../../app/models/demand.model';
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page';
-import { PropertyCategory, PropertyType } from '../../shared/models/realestate-property.model'
+import { PropertyCategory, PropertyType } from '../../app/models/realestate-property.model'
 
 @Component({
     selector: 'rep-demand',

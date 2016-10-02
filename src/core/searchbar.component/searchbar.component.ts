@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, ActionSheetController } from 'ionic-angular';
 
-import { InvolvepdPartyModel, InvolvedPartyType } from '../../shared/models/involved-party.model';
+import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model';
 import { InvolvedPartyAddPage  } from '../../involved-parties/involved-party-add.page/involved-party-add.page'
-import { RealEstatePropertyModel } from '../../shared/models/realestate-property.model'
+import { RealEstatePropertyModel } from '../../app/models/realestate-property.model'
 import { RealEstatePropertyAddPage } from '../../realestate-properties/realestate-property-add.page/realestate-property-add.page';
 
-import { DemandModel } from '../../shared/models/demand.model'
+import { DemandModel } from '../../app/models/demand.model'
 import { DemandAddComponent } from '../../demands/demand-add.component/demand-add.component';
 import { IPService } from '../involved-party.service'
 import { REPService } from '../realestate-property.service'
@@ -16,7 +16,7 @@ import { REPService } from '../realestate-property.service'
     templateUrl: 'searchbar.component.html',
 })
 export class SearchBarComponent {
-    people: Object;
+    public people: Object;
     property: any;
     searchType: any = InvolvedPartyType[InvolvedPartyType.Customer];
     newIP: InvolvepdPartyModel;

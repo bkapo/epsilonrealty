@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
 
-import { DemandModel } from '../../shared/models/demand.model';
-import { PropertyCategory, PropertyType } from '../../shared/models/realestate-property.model'
+import { DemandModel } from '../../app/models/demand.model';
+import { PropertyCategory, PropertyType } from '../../app/models/realestate-property.model'
 
 @Component({
     templateUrl: 'demand-list.component.html'

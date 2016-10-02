@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { IonicModule } from 'ionic-angular';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -10,11 +11,25 @@ import { InvolvedPartyCardComponent } from './involved-party-card.component/invo
 
 
 @NgModule({
-    imports: [SharedModule],
-    declarations: [InvolvedPartyComponent, InvolvedPartyAddPage, InvolvedPartyEditPage,
-                    InvolvedPartySelectComponent, InvolvedPartyCardComponent],
-    exports: [InvolvedPartyComponent, InvolvedPartyAddPage, InvolvedPartyEditPage,
-                InvolvedPartySelectComponent, InvolvedPartyCardComponent],
+    imports: [
+                SharedModule,
+                IonicModule.forRoot(InvolvedPartyComponent), 
+                IonicModule.forRoot(InvolvedPartyAddPage), 
+                IonicModule.forRoot(InvolvedPartyEditPage),
+                IonicModule.forRoot(InvolvedPartySelectComponent), 
+                IonicModule.forRoot(InvolvedPartyCardComponent) ],
+    declarations: [
+                InvolvedPartyComponent, 
+                InvolvedPartyAddPage, 
+                InvolvedPartyEditPage,
+                InvolvedPartySelectComponent, 
+                InvolvedPartyCardComponent ],
+    exports: [
+                InvolvedPartyComponent, 
+                InvolvedPartyAddPage, 
+                InvolvedPartyEditPage,
+                InvolvedPartySelectComponent, 
+                InvolvedPartyCardComponent ],
     providers: []
 })
 export class InvolvedPartyModule { }

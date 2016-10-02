@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { RealEstatePropertyModel } from '../../shared/models/realestate-property.model'
+import { RealEstatePropertyModel } from '../../app/models/realestate-property.model'
 import { RealEstatePropertyEditPage } from '../../realestate-properties/realestate-property-edit.page/realestate-property-edit.page'
 
 @Component({

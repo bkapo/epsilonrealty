@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
 
-import { DemandModel } from '../../shared/models/demand.model';
+import { DemandModel } from '../../app/models/demand.model';
 
 @Component({
   templateUrl: 'demand-add.component.html'

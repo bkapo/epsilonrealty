@@ -1,4 +1,5 @@
 import { NgModule }           from '@angular/core';
+import { IonicModule } from 'ionic-angular';
 
 import { SharedModule }        from '../shared/shared.module';
 
@@ -10,11 +11,25 @@ import { DemandRealEstateMatching } from './demand-realestate-matching.component
 
 
 @NgModule({
-  imports:      [ SharedModule ],
-  declarations: [ DemandCardComponent, DemandAddComponent,
-                DemandListPage, DemandComponent, DemandRealEstateMatching ],
-  exports: [ DemandCardComponent, DemandAddComponent,
-                DemandListPage, DemandComponent, DemandRealEstateMatching ],
+  imports:[ 
+        SharedModule,
+        IonicModule.forRoot(DemandCardComponent), 
+        IonicModule.forRoot(DemandAddComponent),
+        IonicModule.forRoot(DemandListPage), 
+        IonicModule.forRoot(DemandComponent), 
+        IonicModule.forRoot(DemandRealEstateMatching) ],
+  declarations: [ 
+        DemandCardComponent, 
+        DemandAddComponent,
+        DemandListPage, 
+        DemandComponent, 
+        DemandRealEstateMatching ],
+  exports: [ 
+        DemandCardComponent, 
+        DemandAddComponent,
+        DemandListPage, 
+        DemandComponent, 
+        DemandRealEstateMatching ],
   providers:    [  ]
 })
 export class DemandModule { }

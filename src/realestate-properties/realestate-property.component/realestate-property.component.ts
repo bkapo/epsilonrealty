@@ -4,8 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { ModalController, ToastController, LoadingController } from 'ionic-angular';
 
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page'
-import { RealEstatePropertyModel, PropertyCategory, PropertyType } from '../../shared/models/realestate-property.model'
-import { InvolvedPartyType } from '../../shared/models/involved-party.model'
+import { RealEstatePropertyModel, PropertyCategory, PropertyType } from '../../app/models/realestate-property.model'
+import { InvolvedPartyType } from '../../app/models/involved-party.model'
 import { REPService } from '../../core/realestate-property.service'
 
 

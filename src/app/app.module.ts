@@ -8,18 +8,23 @@ import { DemandModule } from '../demands/demand.module'
 import { InvolvedPartyModule } from '../involved-parties/involved-party.module'
 import { RealEstatePropertyModule } from '../realestate-properties/realestate-property.module'
 
+import { DemandModel } from './models/demand.model';
+import { InvolvepdPartyModel } from './models/involved-party.model';
+import { RealEstatePropertyModel } from './models/realestate-property.model';
+
 
 @NgModule({
-  imports: [
-    IonicModule.forRoot(MyApp),
-    CoreModule,
-    DemandModule,
-    InvolvedPartyModule,
-    RealEstatePropertyModule
-  ],
   declarations: [
     MyApp
   ],
+  imports: [
+    CoreModule,
+    DemandModule,
+    InvolvedPartyModule,
+    RealEstatePropertyModule,
+    IonicModule.forRoot(MyApp),
+  ],
+
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp

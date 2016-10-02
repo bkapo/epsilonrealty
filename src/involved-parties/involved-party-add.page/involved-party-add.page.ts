@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { InvolvepdPartyModel } from '../../shared/models/involved-party.model';
+import { InvolvepdPartyModel } from '../../app/models/involved-party.model';
 
 @Component({
   templateUrl: 'involved-party-add.page.html'

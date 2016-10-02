@@ -2,7 +2,7 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { DemandModel } from '../../shared/models/demand.model';
+import { DemandModel } from '../../app/models/demand.model';
 import { DemandRealEstateMatching } from '../demand-realestate-matching.component/demand-realestate-matching.component';
 
 

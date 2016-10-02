@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { RealEstatePropertyModel } from '../../shared/models/realestate-property.model'
+import { RealEstatePropertyModel } from '../../app/models/realestate-property.model'
 
 @Component({
     templateUrl: 'realestate-property-add.page.html'

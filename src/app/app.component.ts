@@ -6,6 +6,9 @@ import { LoginPage } from '../core/login.page/login.page';
 import { SearchBarComponent } from '../core/searchbar.component/searchbar.component'
 import { InvolvedpartiesListPage } from '../involved-parties/involvedparties-list.page/involvedparties-list.page'
 
+import { DemandModel } from './models/demand.model';
+import { InvolvepdPartyModel } from './models/involved-party.model';
+import { RealEstatePropertyModel } from './models/realestate-property.model';
 
 @Component({
   template: 'app.html'
