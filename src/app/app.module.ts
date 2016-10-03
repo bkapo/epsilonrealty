@@ -9,6 +9,7 @@ import { CoreModule } from '../core/core.module';
 import { DemandModule } from '../demands/demand.module'
 import { InvolvedPartyModule } from '../involved-parties/involved-party.module'
 import { RealEstatePropertyModule } from '../realestate-properties/realestate-property.module'
+import { SearchModule } from '../search/search.module'
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { RealEstatePropertyModule } from '../realestate-properties/realestate-pr
     InvolvedPartyModule,
     RealEstatePropertyModule,
     CoreModule,
+    SearchModule,
     IonicModule.forRoot(MyApp),
   ],
 

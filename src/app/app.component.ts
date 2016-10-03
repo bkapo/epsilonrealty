@@ -3,7 +3,7 @@ import { Platform, Nav, MenuController } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
 import { LoginPage } from '../core/login.page/login.page';
-import { SearchBarComponent } from '../involved-parties/searchbar.component/searchbar.component'
+import { SearchBarComponent } from '../search/searchbar.component/searchbar.component'
 import { InvolvedpartiesListPage } from '../involved-parties/involvedparties-list.page/involvedparties-list.page'
 
 

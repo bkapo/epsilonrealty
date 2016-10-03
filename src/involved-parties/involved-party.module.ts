@@ -3,8 +3,6 @@ import { IonicModule } from 'ionic-angular';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { SearchBarComponent } from './searchbar.component/searchbar.component/';
-
 import { InvolvedpartiesListPage } from './involvedparties-list.page/involvedparties-list.page'
 import { InvolvedPartyComponent } from './involved-party.component/involved-party.component';
 import { InvolvedPartyAddPage } from './involved-party-add.page/involved-party-add.page';
@@ -20,24 +18,21 @@ import { InvolvedPartyCardComponent } from './involved-party-card.component/invo
                 IonicModule.forRoot(InvolvedPartyAddPage), 
                 IonicModule.forRoot(InvolvedPartyEditPage),
                 IonicModule.forRoot(InvolvedPartySelectComponent), 
-                IonicModule.forRoot(InvolvedpartiesListPage),
-                IonicModule.forRoot(SearchBarComponent) ],
+                IonicModule.forRoot(InvolvedpartiesListPage) ],
     declarations: [
                 InvolvedPartyCardComponent,
                 InvolvedPartyComponent, 
                 InvolvedPartyAddPage, 
                 InvolvedPartyEditPage,
                 InvolvedPartySelectComponent,           
-                InvolvedpartiesListPage,
-                SearchBarComponent ],
+                InvolvedpartiesListPage ],
     exports: [
                 InvolvedPartyCardComponent,
                 InvolvedPartyComponent, 
                 InvolvedPartyAddPage, 
                 InvolvedPartyEditPage,
                 InvolvedPartySelectComponent, 
-                InvolvedpartiesListPage,
-                SearchBarComponent ],
+                InvolvedpartiesListPage ],
     providers: []
 })
 export class InvolvedPartyModule { }

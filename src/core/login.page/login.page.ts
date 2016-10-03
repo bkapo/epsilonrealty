@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { SearchBarComponent } from '../../involved-parties/searchbar.component/searchbar.component'
+import { SearchBarComponent } from '../../search/searchbar.component/searchbar.component'
 
 @Component({
     templateUrl: 'login.page.html',
