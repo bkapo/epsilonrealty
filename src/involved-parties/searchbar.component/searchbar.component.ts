@@ -5,9 +5,9 @@ import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involve
 import { InvolvedPartyAddPage  } from '../../involved-parties/involved-party-add.page/involved-party-add.page'
 import { RealEstatePropertyModel } from '../../app/models/realestate-property.model'
 import { RealEstatePropertyAddPage } from '../../realestate-properties/realestate-property-add.page/realestate-property-add.page';
-
 import { DemandModel } from '../../app/models/demand.model'
 import { DemandAddComponent } from '../../demands/demand-add.component/demand-add.component';
+
 import { IPService } from '../../core/involved-party.service'
 import { REPService } from '../../core/realestate-property.service'
 

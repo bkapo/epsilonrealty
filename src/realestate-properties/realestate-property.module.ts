@@ -12,21 +12,18 @@ import { RealEstatePropertyAddPage } from '../realestate-properties/realestate-p
 @NgModule({
     imports: [
         SharedModule,
-        IonicModule.forRoot(RealEstatePropertyComponent), 
-        IonicModule.forRoot(RealEstatePropertyComponent), 
         IonicModule.forRoot(RealestatePropertyCardComponent),
+        IonicModule.forRoot(RealEstatePropertyComponent), 
         IonicModule.forRoot(RealEstatePropertyAddPage), 
         IonicModule.forRoot(RealEstatePropertyEditPage) ],
     declarations: [
-        RealEstatePropertyComponent, 
-        RealEstatePropertyComponent, 
         RealestatePropertyCardComponent,
+        RealEstatePropertyComponent, 
         RealEstatePropertyAddPage, 
         RealEstatePropertyEditPage ],
     exports: [
-        RealEstatePropertyComponent, 
-        RealEstatePropertyComponent, 
         RealestatePropertyCardComponent,
+        RealEstatePropertyComponent, 
         RealEstatePropertyAddPage, 
         RealEstatePropertyEditPage ],
     providers: []

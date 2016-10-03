@@ -13,7 +13,6 @@ import { REPService } from './realestate-property.service'
 @NgModule({
     imports: [
         CommonModule,
-
         IonicModule.forRoot(LoginPage)],
     declarations: [LoginPage],
     exports: [LoginPage],
