@@ -5,7 +5,7 @@
     </button>
         <ion-title>Demands-RealEstate Matching</ion-title>
         <ion-buttons end>
-            <button ion-button icon-only color="royal" (click) = "goToRoot()">
+            <button ion-button icon-only color="royal" (click)="goToRoot()">
         <ion-icon name="home"></ion-icon>
       </button>
         </ion-buttons>
@@ -27,5 +27,13 @@
         <realestate-property-card *ngFor="let item of realEstateList" [realEstate]="item">
         </realestate-property-card>
     </ion-list>
+
+    <ion-fab right bottom>
+        <button ion-fab color="secondary"><ion-icon name="arrow-dropleft"></ion-icon></button>
+        <ion-fab-list side="left">
+            <button ion-fab><ion-icon name="add"></ion-icon></button>
+            <button ion-fab><ion-icon name="done-all"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
 
 </ion-content>
