@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
-import { ModalController, ToastController, LoadingController } from 'ionic-angular';
+import { ModalController, ToastController, LoadingController, NavController } from 'ionic-angular';
 
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page'
-import { RealEstatePropertyModel, PropertyCategory, PropertyType } from '../../app/models/realestate-property.model'
+import { RealEstatePropertyModel, PropertyCategory, PropertyType, Purpose } from '../../app/models/realestate-property.model'
 import { InvolvedPartyType } from '../../app/models/involved-party.model'
 import { REPService } from '../../core/realestate-property.service'
 
@@ -24,9 +24,10 @@ export class RealEstatePropertyComponent implements OnInit {
   errorMessage: string = '';
   propCategories = PropertyCategory;
   propTypes = PropertyType;
+  propPurpose = Purpose;
 
-  constructor(public fb: FormBuilder, public modalCtrl: ModalController, public toastController: ToastController, 
-            public loadingCtrl: LoadingController, public repService : REPService) {
+  constructor(public fb: FormBuilder, public navCtrl: NavController, public modalCtrl: ModalController, public toastController: ToastController,
+    public loadingCtrl: LoadingController, public repService: REPService) {
   }
 
   ngOnInit() {
@@ -167,14 +168,14 @@ export class RealEstatePropertyComponent implements OnInit {
     loader.present();
 
     if (this.estateform.get('RealEstatePropertyId').value) {
-            this.repService.updateProperty(this.estateform.value).finally(() => loader.dismiss())
+      this.repService.updateProperty(this.estateform.value).finally(() => loader.dismiss())
         .subscribe(
         updatedRE =>
           this.reUpdated(updatedRE),
         error => this.errorMessage = <any>error
         );
     } else {
-            this.repService.addProperty(this.estateform.value).finally(() => loader.dismiss())
+      this.repService.addProperty(this.estateform.value).finally(() => loader.dismiss())
         .subscribe(
         (addedRE: RealEstatePropertyModel) =>
           this.reAdded(addedRE),
@@ -185,10 +186,12 @@ export class RealEstatePropertyComponent implements OnInit {
 
   reAdded(re: RealEstatePropertyModel) {
     this.presentToast(re.RealEstatePropertyId);
+    this.navCtrl.popToRoot();
   }
 
   reUpdated(ip) {
     this.presentToast('Updated succesfully');
+    this.navCtrl.pop();
   }
 
   presentToast(msg: any) {

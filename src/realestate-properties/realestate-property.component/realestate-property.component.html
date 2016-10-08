@@ -32,15 +32,15 @@
     <div [ngSwitch]="estateSegment">
         <ion-list *ngSwitchCase="'Basic'">
             <ion-segment formControlName="Purpose" color="dark">
-                <ion-segment-button value="1">
-                    Πωληση
+                <ion-segment-button *ngFor="let item of propPurpose | keys" value="{{item.key}}">{{item.value}}
+
                 </ion-segment-button>
-                <ion-segment-button value="2">
-                    Ενοικιαση
+                <!--<ion-segment-button value="2">
+                   Πωληση/ Ενοικιαση
                 </ion-segment-button>
                 <ion-segment-button value="3">
                     Πωληση / Ενοικιαση
-                </ion-segment-button>
+                </ion-segment-button>-->
             </ion-segment>
 
             <ion-item>

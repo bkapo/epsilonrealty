@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
-import { ModalController, ToastController, LoadingController } from 'ionic-angular';
+import { ModalController, ToastController, LoadingController, NavController } from 'ionic-angular';
 
 import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model';
 import { IPService } from '../../core/involved-party.service'
@@ -21,7 +21,7 @@ export class InvolvedPartyComponent implements OnInit {
   public submitted: boolean; // keep track on whether form is 
   invPartyType = InvolvedPartyType;
 
-  constructor(public fb: FormBuilder, public ipService: IPService,
+  constructor(public fb: FormBuilder, public navCtrl: NavController, public ipService: IPService,
     public modalController: ModalController, public toastController: ToastController, public loadingCtrl: LoadingController) {
 
   }
@@ -76,10 +76,12 @@ export class InvolvedPartyComponent implements OnInit {
   ipAdded(ip) {
     this.presentToast('Created succesfully with id:' +
       ip.InvolvedPartyId);
+      this.navCtrl.popToRoot();
   }
 
   ipUpdated(ip) {
     this.presentToast('Updated succesfully');
+    this.navCtrl.popToRoot();
   }
 
   presentToast(msg: any) {
