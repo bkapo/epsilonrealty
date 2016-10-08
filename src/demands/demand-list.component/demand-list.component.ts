@@ -16,10 +16,13 @@ export class DemandListPage {
     propCategories = PropertyCategory;
     propTypes = PropertyType;
 
-    constructor(public nav: NavController, navParams: NavParams) {
-        this.nav = nav;
+    constructor(public navCtrl: NavController, navParams: NavParams) {
         this.params = navParams;
         this.demands = this.params.get('paramDemands');
+    }
+
+    goToRoot() {
+        this.navCtrl.popToRoot();
     }
 
 }

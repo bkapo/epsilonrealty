@@ -18,8 +18,7 @@ export class DemandRealEstateMatching implements OnInit {
     propCategories = PropertyCategory;
     propTypes = PropertyType;
 
-    constructor(public nav: NavController, navParams: NavParams, public repService: REPService) {
-        this.nav = nav;
+    constructor(public navCtrl: NavController, navParams: NavParams, public repService: REPService) {
         this.params = navParams;
         this.dm = this.params.get('paramDeamand');
     }
@@ -35,5 +34,9 @@ export class DemandRealEstateMatching implements OnInit {
             (re: RealEstatePropertyModel[]) => this.realEstateList = re,
             error => this.errorMessage = <any>error
             );
+    }
+
+    goToRoot(){
+        this.navCtrl.popToRoot();
     }
 }
