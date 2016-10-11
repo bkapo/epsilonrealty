@@ -4,7 +4,7 @@ import { NavController } from 'ionic-angular';
 
 import { DemandModel } from '../../app/models/demand.model';
 import { DemandRealEstateMatching } from '../demand-realestate-matching.component/demand-realestate-matching.component';
-
+import { DemandEditComponent } from '../demand-edit.component/demand-edit.component'
 
 @Component({
     selector: 'demand-card',
@@ -19,7 +19,13 @@ export class DemandCardComponent {
 
     getMatching(dm: DemandModel) {
         this.nav.push(DemandRealEstateMatching, {
-            paramDeamand: dm
+            paramDemand: dm
+        });
+    }
+    
+    editItem(dm: DemandModel) {
+        this.nav.push(DemandEditComponent, {
+            paramDemand: dm
         });
     }
 

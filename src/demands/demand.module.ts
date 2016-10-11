@@ -6,6 +6,7 @@ import { RealEstatePropertyModule } from '../realestate-properties/realestate-pr
 
 import { DemandCardComponent } from './demand-card.component/demand-card.component';
 import { DemandAddComponent } from './demand-add.component/demand-add.component';
+import { DemandEditComponent } from './demand-edit.component/demand-edit.component';
 import { DemandListPage } from './demand-list.component/demand-list.component';
 import { DemandComponent } from './demand.component/demand.component';
 import { DemandRealEstateMatching } from './demand-realestate-matching.component/demand-realestate-matching.component';
@@ -17,18 +18,21 @@ import { DemandRealEstateMatching } from './demand-realestate-matching.component
         RealEstatePropertyModule,
         IonicModule.forRoot(DemandCardComponent), 
         IonicModule.forRoot(DemandAddComponent),
+        IonicModule.forRoot(DemandEditComponent),
         IonicModule.forRoot(DemandListPage), 
         IonicModule.forRoot(DemandComponent), 
         IonicModule.forRoot(DemandRealEstateMatching) ],
   declarations: [ 
         DemandCardComponent, 
         DemandAddComponent,
+        DemandEditComponent,
         DemandListPage, 
         DemandComponent, 
         DemandRealEstateMatching ],
   exports: [ 
         DemandCardComponent, 
         DemandAddComponent,
+        DemandEditComponent,
         DemandListPage, 
         DemandComponent, 
         DemandRealEstateMatching ],
