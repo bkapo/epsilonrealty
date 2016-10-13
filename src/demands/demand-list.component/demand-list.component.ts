@@ -28,8 +28,6 @@ export class DemandListPage implements OnInit {
     ngOnInit() {
         //fetch data...
         this.ipService.getDemandsOfInvolvedParty(this.involvedPartyId).finally(() => this.isLoading = false)
-            .debounceTime(600)
-            .distinctUntilChanged()
             .subscribe(
             dms => this.demands = dms,
             error => error === 'Not found' ? this.notFound = 'Δεν βρέθηκαν αποτελέσματα...' : this.errorMessage = <any>error
