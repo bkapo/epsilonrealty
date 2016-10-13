@@ -20,7 +20,7 @@ export class DemandRealEstateMatching implements OnInit {
 
     constructor(public navCtrl: NavController, navParams: NavParams, public repService: REPService) {
         this.params = navParams;
-        this.dm = this.params.get('paramDeamand');
+        this.dm = this.params.get('paramDemand');
     }
     
     ngOnInit() {
