@@ -29,9 +29,9 @@ export class InvolvedPartyCardComponent {
         });
     }
 
-    viewDemands(demands) {
+    viewDemands(ip: InvolvepdPartyModel) {
         this.nav.push(DemandListPage, {
-            paramDemands: demands
+            paramInvPartyId: ip.InvolvedPartyId
         });
     }
 

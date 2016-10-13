@@ -1,4 +1,4 @@
-import { Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -6,6 +6,7 @@ import 'rxjs/Rx';
 
 import { INVOLVEDPARTY_API_URL } from './data.service'
 import { InvolvepdPartyModel } from '../app/models/involved-party.model';
+import { DemandModel } from '../app/models/demand.model'
 
 @Injectable()
 export class IPService {
@@ -39,7 +40,7 @@ export class IPService {
             .catch(this.handleError);
     }
 
-    updateInvolvedParty(ip): Observable<InvolvepdPartyModel>  {
+    updateInvolvedParty(ip): Observable<InvolvepdPartyModel> {
         let url = this.REST_API_URL + '/' + ip.InvolvedPartyId;
         let body = JSON.stringify(ip);
         let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -48,7 +49,13 @@ export class IPService {
             .map(this.extractData)
             .catch(this.handleError);
     }
-
+    
+    getDemandsOfInvolvedParty(ipid: number): Observable<DemandModel[]> {
+        let url = this.REST_API_URL + '/' + ipid + '/Demand/';
+        return this.http.get(url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
 
     /**
      * Data helper method

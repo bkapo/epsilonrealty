@@ -8,7 +8,7 @@
         <p>
             <span color="dark" class="smallFonts"> <ion-icon name="call"> {{people.Mobile}}</ion-icon> </span>
         </p>
-        <span class="smallFonts" color="secondary" >{{people.InvolvedPartyType | involvedPartyType}}</span>
+        <span class="smallFonts" color="secondary">{{people.InvolvedPartyType | involvedPartyType}}</span>
         <ion-badge item-right *ngIf="people.InvolvedPartyType == '5'"> {{people.Demands.length}}</ion-badge>
     </ion-item>
 
@@ -16,7 +16,7 @@
         <button ion-button color="primary" (click)="addDemand(people)">
                     <ion-icon name="add"> </ion-icon> Demand
                     </button>
-        <button ion-button color="dark" (click)="viewDemands(people.Demands)">
+        <button ion-button color="dark" (click)="viewDemands(people)">
                     <ion-icon name="albums"> </ion-icon> Demands
                 </button>
     </ion-item-options>

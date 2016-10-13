@@ -24,6 +24,7 @@ export class DemandCardComponent {
     }
     
     editItem(dm: DemandModel) {
+        console.log(dm);
         this.nav.push(DemandEditComponent, {
             paramDemand: dm
         });
