@@ -5,7 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { InvolvedPartyModule } from '../involved-parties/involved-party.module';
 import { RealEstatePropertyModule } from '../realestate-properties/realestate-property.module';
 
-import { SearchBarComponent } from './searchbar.component/searchbar.component/';
+import { SearchBarComponent } from './searchbar.component/searchbar.component';
 
 @NgModule({
     imports: [
