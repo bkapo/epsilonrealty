@@ -6,6 +6,14 @@ import { LoginPage } from '../core/login.page/login.page';
 import { SearchBarComponent } from '../search/searchbar.component/searchbar.component'
 import { InvolvedpartiesListPage } from '../involved-parties/involvedparties-list.page/involvedparties-list.page'
 
+export interface PageObj {
+  title: string;
+  component: any;
+  icon: string;
+  logsOut?: boolean;
+  index?: number;
+}
+
 
 @Component({
   templateUrl: 'app.html'
@@ -14,20 +22,16 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = LoginPage;
-  pages: Array<{ title: string, component: any, icon: string }>;
+  appPages: PageObj[] = [
+    { title: 'Home', component: SearchBarComponent, icon: 'bookmark' },
+    { title: 'Μεσίτες', component: InvolvedpartiesListPage, index: 1, icon: 'people' }
+  ];
 
   constructor(
     public platform: Platform,
     public menu: MenuController
   ) {
-
     this.initializeApp();
-
-    // set our app's pages
-    this.pages = [
-      { title: 'Home', component: SearchBarComponent, icon: 'bookmark' },
-      { title: 'Brokers', component: InvolvedpartiesListPage, icon: 'people' },
-    ];
   }
 
   initializeApp() {
@@ -38,7 +42,7 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
+  openPage(page: PageObj) {
     // close the menu when clicking a link from the menu
     this.menu.close();
     // navigate to the new page if it is not the current page

@@ -1,27 +1,42 @@
 <ion-menu id="leftMenu" [content]="content">
+    <ion-header>
+        <ion-toolbar color="green">
 
-    <ion-toolbar color="green">
-        <ion-title></ion-title>
-
-        <ion-buttons end>
-            <button ion-button color="royal">
-            <ion-icon name="settings"></ion-icon>
+            <ion-buttons start>
+                <button ion-button>
+                <ion-icon name="log-out"></ion-icon>
             </button>
-        </ion-buttons>
-    </ion-toolbar>
+            </ion-buttons>
+
+            <ion-title>Epsilon</ion-title>
+
+            <ion-buttons end>
+                <button ion-button>
+                <ion-icon name="settings"></ion-icon>
+            </button>
+            </ion-buttons>
+
+        </ion-toolbar>
+    </ion-header>
+
 
     <ion-content>
+
         <ion-list>
-            <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
-                <ion-icon item-left name="{{p.icon}}"></ion-icon>
-                {{p.title}}
-            </button>
+            <ion-list-header>
+                Navigate
+            </ion-list-header>
+            <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
+        <ion-icon item-left [name]="p.icon"></ion-icon>
+        {{p.title}}
+      </button>
         </ion-list>
 
     </ion-content>
-    <button ion-button full no-padding>
-   <ion-icon  name="log-out"></ion-icon> Log Off
-</button>
+
 </ion-menu>
 
-<ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>
+<ion-nav id="nav" #content [root]="rootPage" swipe-back-enabled="false"></ion-nav>
+
+<!--<button ion-button full no-padding>
+   <ion-icon  name="log-out"></ion-icon> Log Off-->
