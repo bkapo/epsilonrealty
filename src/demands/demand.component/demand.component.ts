@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, ToastController, LoadingController } from 'ionic-angular';
 
+import { IPService } from '../../core/involved-party.service'
 import { DemandModel } from '../../app/models/demand.model';
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page';
 import { PropertyCategory, PropertyType } from '../../app/models/realestate-property.model'
@@ -26,7 +27,8 @@ export class DemandComponent implements OnInit {
     propTypes = PropertyType;
 
 
-    constructor(public fb: FormBuilder, public nav: NavController, public modalCtrl: ModalController) {
+    constructor(public fb: FormBuilder, public navCtrl: NavController, public modalCtrl: ModalController, public ipService: IPService,
+        public toastController: ToastController, public loadingCtrl: LoadingController) {
 
     }
 
@@ -160,6 +162,32 @@ export class DemandComponent implements OnInit {
     }// end 
 
     onSubmit(value: string): void {
+        let loader = this.loadingCtrl.create({
+            content: 'Please wait...',
+            dismissOnPageChange: true
+        });
+        loader.present();
+
         console.log('you submitted value: ', value);
+        this.ipService
+            .saveDeamndOfInvolvedParty(this.demandform.value.CustomerId, this.demandform.value.DemandId, this.demandform.value)
+            .subscribe(
+            updatedDM => this.demandUpdated(updatedDM),
+            error => this.errorMessage = <any>error
+            );
+    }
+
+    demandUpdated(dm) {
+        this.presentToast('Updated succesfully');
+        this.navCtrl.popToRoot();
+    }
+
+    presentToast(msg: any) {
+        let toast = this.toastController.create({
+            message: msg.toString(),
+            duration: 2000,
+            position: 'top'
+        });
+        toast.present();
     }
 }

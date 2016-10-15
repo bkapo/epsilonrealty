@@ -57,6 +57,26 @@ export class IPService {
             .catch(this.handleError);
     }
 
+
+  saveDeamndOfInvolvedParty(ipid: number, dmid: number, dm: DemandModel): Observable<DemandModel> {
+    // If we're updating an existing demand
+    if (dm.DemandId) {
+
+        let url = this.REST_API_URL + '/' + ipid  + '/Demand/' + dmid;
+        let body = JSON.stringify(dm);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.put(url, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    // Otherwise, create a new article
+    } else {
+    //   return this.apiService.post('/articles/', {article: article})
+    //          .map(data => data.article);
+    }
+  }
+
+
     /**
      * Data helper method
      * Check for bad response
