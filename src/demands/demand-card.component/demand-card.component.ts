@@ -1,6 +1,6 @@
 
 import { Component, Input } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ItemSliding } from 'ionic-angular';
 
 import { DemandModel } from '../../app/models/demand.model';
 import { DemandRealEstateMatching } from '../demand-realestate-matching.component/demand-realestate-matching.component';
@@ -17,17 +17,19 @@ export class DemandCardComponent {
         this.nav = nav;
     }
 
-    getMatching(dm: DemandModel) {
+    getMatching(dm: DemandModel, slidingItem: ItemSliding) {
+        slidingItem.close();
         this.nav.push(DemandRealEstateMatching, {
             paramDemand: dm
         });
     }
     
-    editItem(dm: DemandModel) {
-        console.log(dm);
+    editItem(dm: DemandModel, slidingItem: ItemSliding) {
+        slidingItem.close();
         this.nav.push(DemandEditComponent, {
             paramDemand: dm
         });
     }
+
 
 }

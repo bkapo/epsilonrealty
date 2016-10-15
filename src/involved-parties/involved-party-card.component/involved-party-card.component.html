@@ -13,19 +13,19 @@
     </ion-item>
 
     <ion-item-options side="left" *ngIf="people.InvolvedPartyType == '5'">
-        <button ion-button color="primary" (click)="addDemand(people)">
+        <button ion-button color="primary" (click)="addDemand(people, slidingItem)">
                     <ion-icon name="add"> </ion-icon> Demand
                     </button>
-        <button ion-button color="dark" (click)="viewDemands(people)">
+        <button ion-button color="dark" (click)="viewDemands(people, slidingItem)">
                     <ion-icon name="albums"> </ion-icon> Demands
                 </button>
     </ion-item-options>
 
     <ion-item-options side="right">
-        <button ion-button color="light" (click)="editIP(people)">
+        <button ion-button color="light" (click)="editIP(people, slidingItem)">
                     <ion-icon name="create"> </ion-icon> Edit
                     </button>
-        <button ion-button color="primary" (click)="editIP(people)">
+        <button ion-button color="primary" (click)="editIP(people, slidingItem)">
                     <ion-icon name="open"> </ion-icon> View
                 </button>
     </ion-item-options>

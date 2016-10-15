@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model';
 import { InvolvedPartyAddPage  } from '../../involved-parties/involved-party-add.page/involved-party-add.page'
@@ -26,8 +26,8 @@ export class SearchBarComponent {
     errorMessage: string = '';
     notFound: string = '';
 
-    constructor(public nav: NavController , public actionSheetController: ActionSheetController, 
-        public ipService: IPService, public repService: REPService) {
+    constructor(public nav: NavController, public ipService: IPService, public repService: REPService) {
+        
     }
 
     /**
@@ -104,43 +104,6 @@ export class SearchBarComponent {
         this.nav.push(DemandAddComponent, {
             paramDemand: this.newDm
         });
-    }
-
-    /**
-     * ActionSheet Menu
-     */
-    openActionMenu() {
-        let actionSheet = this.actionSheetController.create({
-            title: 'RealEstate Office',
-            buttons: [
-                {
-                    text: 'Νέος Πελάτης/Μεσίτης',
-                    role: 'destructive',
-                    //icon: !this.platform.is('ios') ? 'add' : null,
-                    handler: () => {
-                        this.addIP();
-                    }
-                },
-                {
-                    text: 'Νέο Ακίνητο',
-                    role: 'destructive',
-                    //icon: !this.platform.is('ios') ? 'add' : null,
-                    handler: () => {
-                        this.addProperty();
-                    }
-                },
-                {
-                    text: 'Cancel',
-                    role: 'cancel', // will always sort to be on the bottom
-                    //icon: !this.platform.is('ios') ? 'close' : null,
-                    handler: () => {
-                        console.log('Cancel clicked');
-                    }
-                }
-            ]
-        });
-        actionSheet.present();
-
     }
 }
 

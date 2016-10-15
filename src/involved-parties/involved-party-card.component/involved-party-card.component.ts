@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ItemSliding } from 'ionic-angular';
 
 import { DemandModel } from '../../app/models/demand.model';
 import { DemandAddComponent } from '../../demands/demand-add.component/demand-add.component'
@@ -20,7 +20,8 @@ export class InvolvedPartyCardComponent {
         this.nav = nav;
     }
 
-    addDemand(ip: InvolvepdPartyModel) {
+    addDemand(ip: InvolvepdPartyModel, slidingItem: ItemSliding) {
+        slidingItem.close();
         this.newDm = new DemandModel;
         this.newDm.Customer = ip;
         this.newDm.CustomerId = ip.InvolvedPartyId;
@@ -29,13 +30,15 @@ export class InvolvedPartyCardComponent {
         });
     }
 
-    viewDemands(ip: InvolvepdPartyModel) {
+    viewDemands(ip: InvolvepdPartyModel, slidingItem: ItemSliding) {
+        slidingItem.close();
         this.nav.push(DemandListPage, {
             paramInvPartyId: ip.InvolvedPartyId
         });
     }
 
-    editIP(ip) {
+    editIP(ip: InvolvepdPartyModel, slidingItem: ItemSliding) {
+        slidingItem.close();
         this.nav.push(InvolvedPartyEditPage, {
             paramInvParty: ip
         });
