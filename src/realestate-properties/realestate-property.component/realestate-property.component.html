@@ -340,10 +340,4 @@
     <div class="spacer" style="width: 300px; height: 15px;"></div>
     <button ion-button type="submit" class="button button-positive button-clear button-block" [disabled]="!estateform.valid">Καταχωρηση</button>
 </form>
-<ion-card *ngIf="errorMessage">
-    <ion-item>
-        <ion-icon subtle danger large item-left name='warning'></ion-icon>
-        <h2>Something went wrong... </h2>
-        <p>{{errorMessage}}</p>
-    </ion-item>
-</ion-card>
+<list-errors [errorObject]="errorMessage"></list-errors>

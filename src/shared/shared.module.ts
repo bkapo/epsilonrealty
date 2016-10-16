@@ -9,6 +9,8 @@ import { PropertyCategoryPipe } from './pipes/property-category.pipe';
 import { PropertyTypePipe } from './pipes/property-type.pipe';
 import { PurposePipe } from './pipes/purpose.pipe';
 
+import { ListErrorsComponent } from './list-errors.component/list-errors.component'
+
 @NgModule({
     imports: [
         CommonModule,
@@ -17,16 +19,23 @@ import { PurposePipe } from './pipes/purpose.pipe';
         IonicModule.forRoot(KeysPipe),
         IonicModule.forRoot(PropertyCategoryPipe),
         IonicModule.forRoot(PropertyTypePipe),
-        IonicModule.forRoot(PurposePipe)],
+        IonicModule.forRoot(PurposePipe),
+        IonicModule.forRoot(ListErrorsComponent)],
     declarations: [
         InvolvedPartyTypePipe,
         KeysPipe,
         PropertyCategoryPipe,
         PropertyTypePipe,
-        PurposePipe],
+        PurposePipe,
+        ListErrorsComponent],
     exports: [
-        InvolvedPartyTypePipe, KeysPipe, PropertyCategoryPipe,
-        PropertyTypePipe, PurposePipe,
-        CommonModule, FormsModule]
+        InvolvedPartyTypePipe, 
+        KeysPipe, 
+        PropertyCategoryPipe,
+        PropertyTypePipe, 
+        PurposePipe,
+        ListErrorsComponent,
+        CommonModule, 
+        FormsModule]
 })
 export class SharedModule { }
