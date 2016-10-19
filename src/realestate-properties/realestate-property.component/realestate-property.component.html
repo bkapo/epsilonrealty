@@ -251,7 +251,6 @@
                 <ion-input type="number" formControlName="DistanceFromAirport"></ion-input>
             </ion-item>
 
-
             <ion-item>
                 <ion-label floating>Youtube URL</ion-label>
                 <ion-input type="text" formControlName="YoutubeURL"></ion-input>
@@ -264,6 +263,13 @@
                 <ion-label floating>Longitude</ion-label>
                 <ion-input type="text" formControlName="GeoLong"></ion-input>
             </ion-item>
+            <ion-item>
+                <a ion-item (click)="openMap()">
+                    <ion-icon name="map"></ion-icon>
+                    Google Maps
+                </a>
+            </ion-item>
+
             <ion-item>
                 <ion-label>Χάρτης στα web portals</ion-label>
                 <ion-toggle checked="true" formControlName="UploadMapToRealEstatePortals"></ion-toggle>

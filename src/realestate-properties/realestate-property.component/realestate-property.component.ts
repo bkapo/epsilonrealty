@@ -7,6 +7,7 @@ import { InvolvedPartySelectComponent } from '../../involved-parties/involved-pa
 import { RealEstatePropertyModel, PropertyCategory, PropertyType, Purpose } from '../../app/models/realestate-property.model'
 import { InvolvedPartyType } from '../../app/models/involved-party.model'
 import { REPService } from '../../core/realestate-property.service'
+import { GoogleMapComponent } from '../realestate-property-map.component/realestate-property-map.component'
 
 
 @Component({
@@ -265,5 +266,17 @@ export class RealEstatePropertyComponent implements OnInit {
 
     selectModal.present();
   }// end setProposedby
+
+      openMap() {
+        let selectModal = this.modalCtrl.create(GoogleMapComponent, {
+          
+            lat: this.estateform.value.GeoLat ? this.estateform.value.GeoLat : 38.014133,
+            lng: this.estateform.value.GeoLong ? this.estateform.value.GeoLong : 23.795480,
+            label: this.estateform.value.Title,
+            draggable: true
+        });
+
+        selectModal.present();
+    }
 
 }
