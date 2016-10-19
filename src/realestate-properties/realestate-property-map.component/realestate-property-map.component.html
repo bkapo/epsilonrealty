@@ -24,7 +24,7 @@
     </ion-card>
 
     <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="13">
-        <sebm-google-map-marker #marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true" [openInfoWindow]="true" (dragEnd)="markerDragEnd(marker, $event)">
+        <sebm-google-map-marker #marker [latitude]="lat" [longitude]="lng" [markerDraggable]="draggable" [openInfoWindow]="true" (dragEnd)="markerDragEnd(marker, $event)">
 
             <sebm-google-map-info-window>
                 <strong>{{label}}</strong>

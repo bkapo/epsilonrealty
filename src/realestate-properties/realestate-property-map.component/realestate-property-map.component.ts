@@ -10,11 +10,13 @@ export class GoogleMapComponent {
     lat: number;
     lng: number;
     label: string;
+    draggable: boolean = false;
 
     constructor(public params: NavParams, public viewCtrl: ViewController) {
         this.lat = params.get('lat');
         this.lng = params.get('lng');
         this.label = params.get('label');
+        this.draggable = params.get('draggable');
     }
 
     markerDragEnd(m, $event: MouseEvent) {

@@ -30,7 +30,8 @@ export class RealestatePropertyCardComponent {
         let selectModal = this.modalCtrl.create(GoogleMapComponent, {
             lat: 38.007714,
             lng: 23.774580,
-            label: property.Title
+            label: property.Title,
+            draggable: false
         });
 
         selectModal.present();
