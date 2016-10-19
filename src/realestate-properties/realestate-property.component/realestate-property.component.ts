@@ -277,8 +277,14 @@ export class RealEstatePropertyComponent implements OnInit {
 
     selectModal.onDidDismiss(data => {
       console.log(data);
-      this.estateform.value.GeoLat= data.lat;
-      this.estateform.value.GeoLong  = data.lng;
+      this.estateform.setValue(
+        {
+          GeoLat: data.lat,
+          GeoLong: data.lng
+        }
+      );
+      // this.estateform.value.GeoLat= data.lat;
+      // this.estateform.value.GeoLong  = data.lng;
       console.log(this.estateform.value);
     });
 

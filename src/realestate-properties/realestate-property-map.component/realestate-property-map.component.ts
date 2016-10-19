@@ -20,7 +20,6 @@ export class GoogleMapComponent {
     }
 
     markerDragEnd(m, $event: MouseEvent) {
-        console.log('dragEnd', m, $event);
         this.lat = $event.coords.lat;
         this.lng = $event.coords.lng;
     }
