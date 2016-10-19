@@ -31,6 +31,9 @@
 
     <div [ngSwitch]="estateSegment">
         <ion-list *ngSwitchCase="'Basic'">
+            <ion-list-header>
+                Γενικα
+            </ion-list-header>
             <ion-segment formControlName="Purpose" color="dark">
                 <ion-segment-button *ngFor="let item of propPurpose | keys" value="{{item.key}}">{{item.value}}
 
@@ -79,6 +82,9 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'Parking'">
+            <ion-list-header>
+                Parking
+            </ion-list-header>
             <ion-item>
                 <ion-label floating>Θέσεις Parking</ion-label>
                 <ion-input type="number" formControlName="Parkings"></ion-input>
@@ -96,6 +102,10 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'AdditionalRooms'">
+            <ion-list-header>
+                Additional Rooms
+            </ion-list-header>
+
             <ion-item>
                 <ion-label>Yπόγειο</ion-label>
                 <ion-toggle checked="true" formControlName="Basement"></ion-toggle>
@@ -143,6 +153,9 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'Heating'">
+            <ion-list-header>
+                Θερμανση - Ασφαλεια
+            </ion-list-header>
             <ion-item>
                 <ion-label>Κλιματισμός (A/C)</ion-label>
                 <ion-toggle checked="true" formControlName="AC"></ion-toggle>
@@ -179,6 +192,9 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'SurroundingArea'">
+            <ion-list-header>
+                Περιβαλλων Χωρος
+            </ion-list-header>
             <ion-item>
                 <ion-label>Γήπεδο</ion-label>
                 <ion-toggle checked="true" formControlName="SportField"></ion-toggle>
@@ -226,6 +242,10 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'Map'">
+            <ion-list-header>
+                Key Points & Map
+            </ion-list-header>
+
             <ion-item>
                 <ion-label>Κοντά σε Μετρό</ion-label>
                 <ion-toggle checked="true" formControlName="NearMetro"></ion-toggle>
@@ -277,6 +297,10 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'Other'">
+            <ion-list-header>
+                Other
+            </ion-list-header>
+
             <ion-item>
                 <ion-label>Βεράντες</ion-label>
                 <ion-toggle checked="true" formControlName="Terraces"></ion-toggle>
@@ -328,6 +352,9 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'Managment'">
+            <ion-list-header>
+                Διαχειριση
+            </ion-list-header>
             <a ion-item (click)="selectBroker()">
                 <ion-icon name="contact"></ion-icon>
                 Broker: {{responsibleFullName}}
