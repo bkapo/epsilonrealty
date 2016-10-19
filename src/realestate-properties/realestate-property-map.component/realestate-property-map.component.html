@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar color="green">
+        <ion-title>
+            Google Maps
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+      <span showwhen="ios">Cancel</span>
+      <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+    </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card>
+        <ion-card-header color="primary">
+            Ακινητο: {{label}}
+        </ion-card-header>
+        <ion-card-content>
+            latitude: {{lat}} - longitude: {{lng}}
+        </ion-card-content>
+    </ion-card>
+
+    <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+        <sebm-google-map-marker #marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true" [openInfoWindow]="true" (dragEnd)="markerDragEnd(marker, $event)">
+
+            <sebm-google-map-info-window>
+                <strong>{{label}}</strong>
+            </sebm-google-map-info-window>
+        </sebm-google-map-marker>
+    </sebm-google-map>
+</ion-content>
