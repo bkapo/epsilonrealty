@@ -267,16 +267,22 @@ export class RealEstatePropertyComponent implements OnInit {
     selectModal.present();
   }// end setProposedby
 
-      openMap() {
-        let selectModal = this.modalCtrl.create(GoogleMapComponent, {
-          
-            lat: this.estateform.value.GeoLat ? this.estateform.value.GeoLat : 38.014133,
-            lng: this.estateform.value.GeoLong ? this.estateform.value.GeoLong : 23.795480,
-            label: this.estateform.value.Title,
-            draggable: true
-        });
+  openMap() {
+    let selectModal = this.modalCtrl.create(GoogleMapComponent, {
+      lat: this.estateform.value.GeoLat ? this.estateform.value.GeoLat : 38.014133,
+      lng: this.estateform.value.GeoLong ? this.estateform.value.GeoLong : 23.795480,
+      label: this.estateform.value.Title,
+      draggable: true
+    });
 
-        selectModal.present();
-    }
+    selectModal.onDidDismiss(data => {
+      console.log(data);
+      this.estateform.value.GeoLat= data.lat;
+      this.estateform.value.GeoLong  = data.lng;
+      console.log(this.estateform.value);
+    });
+
+    selectModal.present();
+  } // end openMap
 
 }
