@@ -58,14 +58,14 @@ export class IPService {
     }
 
     getDemandsOfAgent(agentid: number): Observable<DemandModel[]> {
-        let url = this.REST_API_URL + '/' + agentid + '/Demands/';
+        let url = this.REST_API_URL + '/Agents/' + agentid + '/Demands/';
         return this.http.get(url)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     getPropertiesOfAgent(agentid: number): Observable<DemandModel[]> {
-        let url = this.REST_API_URL + '/' + agentid + '/RealEstateProperties/';
+        let url = this.REST_API_URL + '/Agents/' + agentid + '/RealEstateProperties/';
         return this.http.get(url)
             .map(this.extractData)
             .catch(this.handleError);

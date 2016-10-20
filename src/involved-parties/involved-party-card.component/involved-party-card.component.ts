@@ -33,7 +33,8 @@ export class InvolvedPartyCardComponent {
     viewDemands(ip: InvolvepdPartyModel, slidingItem: ItemSliding) {
         slidingItem.close();
         this.nav.push(DemandListPage, {
-            paramInvPartyId: ip.InvolvedPartyId
+            paramInvPartyId: ip.InvolvedPartyId,
+            paramInvType: ip.InvolvedPartyType
         });
     }
 
