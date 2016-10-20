@@ -35,7 +35,7 @@ export class RealEstatePropertyComponent implements OnInit {
     console.log(this.estateproperty);
     this.responsibleFullName = this.estateproperty.ResponsibleId ? (this.estateproperty.Responsible.FirstName + ' ' + this.estateproperty.Responsible.LastName) : 'Επιλέξτε';
     this.ownerFullName = this.estateproperty.Owner ? (this.estateproperty.Owner.FirstName + ' ' + this.estateproperty.Owner.LastName) : 'Επιλέξτε',
-      this.propesedByFullName = this.estateproperty.Proposed ? (this.estateproperty.Proposed.FirstName + ' ' + this.estateproperty.Proposed.LastName) : 'Επιλέξτε',
+    this.propesedByFullName = this.estateproperty.Proposed ? (this.estateproperty.Proposed.FirstName + ' ' + this.estateproperty.Proposed.LastName) : 'Επιλέξτε',
 
       this.estateform = this.fb.group({
         RealEstatePropertyId: [this.estateproperty.RealEstatePropertyId],
@@ -211,7 +211,7 @@ export class RealEstatePropertyComponent implements OnInit {
     this.setOwner(InvolvedPartyType.Owner, '');
   }
   selectProposed() {
-    this.setProposedby(InvolvedPartyType.Collaborator, '');
+    this.setProposedby(InvolvedPartyType.Contact, '');
   }
   setBroker(typeId: number, name: string) {
     let selectModal = this.modalCtrl.create(InvolvedPartySelectComponent, {

@@ -17,7 +17,8 @@ export class InvolvepdPartyModel {
     AFM: string;
     IDNumber: string;
     InvolvedPartyType: InvolvedPartyType;
-    Demands: Array<DemandModel>;    
+    Demands: Array<DemandModel>;   
+    AgentDemands: Array<DemandModel>;   
 
     fullName() {
         return this.FirstName + ' ' + this.LastName;

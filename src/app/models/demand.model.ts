@@ -98,4 +98,8 @@ export class DemandModel {
     CustomerId: number;
     Customer: InvolvepdPartyModel;
 
+    //Agent-Broker responsible
+    ResponsibleId: number;
+    Responsible: InvolvepdPartyModel;
+
 }
