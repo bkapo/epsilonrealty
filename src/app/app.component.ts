@@ -23,7 +23,7 @@ export class MyApp {
 
   rootPage: any = LoginPage;
   appPages: PageObj[] = [
-    { title: 'Home', component: SearchBarComponent, icon: 'bookmark' },
+    { title: 'Search', component: SearchBarComponent, icon: 'search' },
     { title: 'Μεσίτες', component: InvolvedpartiesListPage, index: 1, icon: 'people' }
   ];
 
