@@ -9,6 +9,7 @@ import { RealestatePropertyCardComponent } from './realestate-property-card.comp
 import { RealEstatePropertyComponent } from './realestate-property.component/realestate-property.component';
 import { RealEstatePropertyEditPage } from './realestate-property-edit.page/realestate-property-edit.page';
 import { RealEstatePropertyAddPage } from '../realestate-properties/realestate-property-add.page/realestate-property-add.page';
+import { RealEstatePropertyListPage } from '../realestate-properties/realestate-property-list.component/realestate-property-list.component'
 import { GoogleMapComponent } from '../realestate-properties/realestate-property-map.component/realestate-property-map.component'
 
 @NgModule({
@@ -20,17 +21,20 @@ import { GoogleMapComponent } from '../realestate-properties/realestate-property
         IonicModule.forRoot(RealEstatePropertyComponent),
         IonicModule.forRoot(RealEstatePropertyAddPage),
         IonicModule.forRoot(RealEstatePropertyEditPage),
+        IonicModule.forRoot(RealEstatePropertyListPage),
         AgmCoreModule.forRoot({ apiKey: 'AIzaSyBt2cSWSb4Hx6JkR7a6WFWFhPsVQrFVR6Q'})
         ],
     declarations: [
         GoogleMapComponent,
         RealestatePropertyCardComponent,
+        RealEstatePropertyListPage,
         RealEstatePropertyComponent,
         RealEstatePropertyAddPage,
         RealEstatePropertyEditPage],
     exports: [
         GoogleMapComponent,
         RealestatePropertyCardComponent,
+        RealEstatePropertyListPage,
         RealEstatePropertyComponent,
         RealEstatePropertyAddPage,
         RealEstatePropertyEditPage],

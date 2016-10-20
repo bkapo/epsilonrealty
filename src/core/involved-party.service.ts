@@ -7,6 +7,7 @@ import 'rxjs/Rx';
 import { INVOLVEDPARTY_API_URL } from './data.service'
 import { InvolvepdPartyModel } from '../app/models/involved-party.model';
 import { DemandModel } from '../app/models/demand.model'
+import { RealEstatePropertyModel } from '../app/models/realestate-property.model'
 
 @Injectable()
 export class IPService {
@@ -64,7 +65,7 @@ export class IPService {
             .catch(this.handleError);
     }
 
-    getPropertiesOfAgent(agentid: number): Observable<DemandModel[]> {
+    getPropertiesOfAgent(agentid: number): Observable<RealEstatePropertyModel[]> {
         let url = this.REST_API_URL + '/Agents/' + agentid + '/RealEstateProperties/';
         return this.http.get(url)
             .map(this.extractData)

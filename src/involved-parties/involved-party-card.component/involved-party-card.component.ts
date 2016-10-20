@@ -7,6 +7,7 @@ import { DemandListPage } from '../../demands/demand-list.component/demand-list.
 
 import { InvolvepdPartyModel } from '../../app/models/involved-party.model';
 import { InvolvedPartyEditPage } from '../../involved-parties/involved-party-edit.page/involved-party-edit.page'
+import { RealEstatePropertyListPage } from '../../realestate-properties/realestate-property-list.component/realestate-property-list.component'
 
 @Component({
     selector: 'involved-party-card',
@@ -27,6 +28,14 @@ export class InvolvedPartyCardComponent {
         this.newDm.CustomerId = ip.InvolvedPartyId;
         this.nav.push(DemandAddComponent, {
             paramDemand: this.newDm
+        });
+    }
+
+    viewAgentProperties(ip: InvolvepdPartyModel, slidingItem: ItemSliding) {
+        slidingItem.close();
+        this.nav.push(RealEstatePropertyListPage, {
+            paramInvPartyId: ip.InvolvedPartyId,
+            paramInvType: ip.InvolvedPartyType
         });
     }
 

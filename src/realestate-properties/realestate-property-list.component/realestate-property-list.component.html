@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar color="green">
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Ακίνητα</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="spacer" *ngIf="isLoading" style="width: 300px; height: 30px;"></div>
+    <ion-spinner *ngIf="isLoading"></ion-spinner>
+    <div *ngIf="errorMessage">
+        <ion-card>
+            <ion-card-content>
+                {{errorMessage}}
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <ion-list>
+        <realestate-property-card *ngFor="let pr of realEstateProperties" [realEstate]="pr">
+        </realestate-property-card>
+    </ion-list>
+</ion-content>
