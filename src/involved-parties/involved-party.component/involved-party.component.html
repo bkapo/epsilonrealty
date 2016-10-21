@@ -94,6 +94,6 @@
 
 <ion-spinner *ngIf="isLoading"></ion-spinner>
 
-<list-errors [errorObject]="errorMessage"></list-errors>
+<list-errors *ngIf="errorObject" [errorObject]="errorObject"></list-errors>
 
 <!--<pre>{{involvedparty | json}}</pre>-->

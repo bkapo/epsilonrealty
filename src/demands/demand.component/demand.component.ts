@@ -5,6 +5,7 @@ import { NavController, ModalController, ToastController, LoadingController } fr
 
 import { IPService } from '../../core/involved-party.service'
 import { DemandModel } from '../../app/models/demand.model';
+import { ErrorModel, ErrorType } from '../../app/models/error.model'
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page';
 import { PropertyCategory, PropertyType } from '../../app/models/realestate-property.model'
 
@@ -18,7 +19,7 @@ export class DemandComponent implements OnInit {
     demandform: FormGroup;
     demandSegment: string = 'Basic';
     isLoading: boolean = false;
-    errorMessage: string = '';
+    errorObject: ErrorModel
     loading: any;
     pricerange: any = { lower: 100, upper: 2000 };
     sqfeetrange: any = { lower: 50, upper: 500 };
@@ -162,6 +163,8 @@ export class DemandComponent implements OnInit {
     }// end 
 
     onSubmit(value: string): void {
+        this.errorObject = null;
+
         let loader = this.loadingCtrl.create({
             content: 'Please wait...',
             dismissOnPageChange: true
@@ -173,7 +176,7 @@ export class DemandComponent implements OnInit {
             .saveDeamndOfInvolvedParty(this.demandform.value.CustomerId, this.demandform.value.DemandId, this.demandform.value)
             .subscribe(
             updatedDM => this.demandUpdated(updatedDM),
-            error => this.errorMessage = <any>error
+            error => this.setError(error)
             );
     }
 
@@ -189,5 +192,14 @@ export class DemandComponent implements OnInit {
             position: 'top'
         });
         toast.present();
+    }
+
+    setError(err) {
+        if (err === 'Not found') {
+            this.errorObject = new ErrorModel(ErrorType.NotFound, 'Δεν βρέθηκαν αποτελέσματα...', '');
+            console.log(this.errorObject);
+        } else {
+            this.errorObject = new ErrorModel(ErrorType.Error, err, '');
+        }
     }
 }

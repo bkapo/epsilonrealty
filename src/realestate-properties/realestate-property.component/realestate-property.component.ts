@@ -6,6 +6,7 @@ import { ModalController, ToastController, LoadingController, NavController } fr
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page'
 import { RealEstatePropertyModel, PropertyCategory, PropertyType, Purpose } from '../../app/models/realestate-property.model'
 import { InvolvedPartyType } from '../../app/models/involved-party.model'
+import { ErrorModel, ErrorType } from '../../app/models/error.model'
 import { REPService } from '../../core/realestate-property.service'
 import { GoogleMapComponent } from '../realestate-property-map.component/realestate-property-map.component'
 
@@ -22,7 +23,7 @@ export class RealEstatePropertyComponent implements OnInit {
   responsibleFullName: string = 'Επιλέξτε';
   ownerFullName: string = 'Επιλέξτε';
   propesedByFullName: string = 'Επιλέξτε';
-  errorMessage: string = '';
+  errorObject: ErrorModel;
   propCategories = PropertyCategory;
   propTypes = PropertyType;
   propPurpose = Purpose;
@@ -35,7 +36,7 @@ export class RealEstatePropertyComponent implements OnInit {
     console.log(this.estateproperty);
     this.responsibleFullName = this.estateproperty.ResponsibleId ? (this.estateproperty.Responsible.FirstName + ' ' + this.estateproperty.Responsible.LastName) : 'Επιλέξτε';
     this.ownerFullName = this.estateproperty.Owner ? (this.estateproperty.Owner.FirstName + ' ' + this.estateproperty.Owner.LastName) : 'Επιλέξτε',
-    this.propesedByFullName = this.estateproperty.Proposed ? (this.estateproperty.Proposed.FirstName + ' ' + this.estateproperty.Proposed.LastName) : 'Επιλέξτε',
+      this.propesedByFullName = this.estateproperty.Proposed ? (this.estateproperty.Proposed.FirstName + ' ' + this.estateproperty.Proposed.LastName) : 'Επιλέξτε',
 
       this.estateform = this.fb.group({
         RealEstatePropertyId: [this.estateproperty.RealEstatePropertyId],
@@ -160,7 +161,7 @@ export class RealEstatePropertyComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.errorMessage = '';
+    this.errorObject = null;
 
     let loader = this.loadingCtrl.create({
       content: 'Please wait...',
@@ -173,14 +174,14 @@ export class RealEstatePropertyComponent implements OnInit {
         .subscribe(
         updatedRE =>
           this.reUpdated(updatedRE),
-        error => this.errorMessage = <any>error
+        error => this.setError(error)
         );
     } else {
       this.repService.addProperty(this.estateform.value).finally(() => loader.dismiss())
         .subscribe(
         (addedRE: RealEstatePropertyModel) =>
           this.reAdded(addedRE),
-        error => this.errorMessage = <any>error
+        error => this.setError(error)
         );
     }
   }
@@ -290,5 +291,14 @@ export class RealEstatePropertyComponent implements OnInit {
 
     selectModal.present();
   } // end openMap
+
+  setError(err) {
+    if (err === 'Not found') {
+      this.errorObject = new ErrorModel(ErrorType.NotFound, 'Δεν βρέθηκαν αποτελέσματα...', '');
+      console.log(this.errorObject);
+    } else {
+      this.errorObject = new ErrorModel(ErrorType.Error, err, '');
+    }
+  }
 
 }

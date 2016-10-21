@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { ModalController, ToastController, LoadingController, NavController } from 'ionic-angular';
 
 import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model';
+import { ErrorModel, ErrorType } from '../../app/models/error.model'
 import { IPService } from '../../core/involved-party.service'
 
 
@@ -16,7 +17,7 @@ export class InvolvedPartyComponent implements OnInit {
   involedpartyform: FormGroup;
   involedpartySegment: string = 'name';
   isLoading: boolean = false;
-  errorMessage: string = '';
+  errorObject: ErrorModel
   loader: any;
   public submitted: boolean; // keep track on whether form is 
   invPartyType = InvolvedPartyType;
@@ -47,7 +48,7 @@ export class InvolvedPartyComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.errorMessage = '';
+    this.errorObject = null;
 
     let loader = this.loadingCtrl.create({
       content: 'Please wait...',
@@ -60,14 +61,14 @@ export class InvolvedPartyComponent implements OnInit {
         .subscribe(
         updatedIP =>
           this.ipUpdated(updatedIP),
-        error => this.errorMessage = <any>error
+        error => this.setError(error)
         );
     } else {
       this.ipService.addInvolvedParty(this.involedpartyform.value).finally(() => loader.dismiss())
         .subscribe(
         newIP =>
           this.ipAdded(newIP),
-        error => this.errorMessage = <any>error
+        error => this.setError(error)
         );
     }
 
@@ -76,7 +77,7 @@ export class InvolvedPartyComponent implements OnInit {
   ipAdded(ip) {
     this.presentToast('Created succesfully with id:' +
       ip.InvolvedPartyId);
-      this.navCtrl.popToRoot();
+    this.navCtrl.popToRoot();
   }
 
   ipUpdated(ip) {
@@ -92,6 +93,16 @@ export class InvolvedPartyComponent implements OnInit {
     });
     toast.present();
   }
+  
+  setError(err) {
+    if (err === 'Not found') {
+      this.errorObject = new ErrorModel(ErrorType.NotFound, 'Δεν βρέθηκαν αποτελέσματα...', '');
+      console.log(this.errorObject);
+    } else {
+      this.errorObject = new ErrorModel(ErrorType.Error, err, '');
+    }
+  }
+
 }
 
 
