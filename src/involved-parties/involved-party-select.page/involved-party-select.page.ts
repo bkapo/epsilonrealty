@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 
+import { ErrorModel, ErrorType } from '../../app/models/error.model'
+import { InvolvepdPartyModel } from '../../app/models/involved-party.model'
 import { IPService } from '../../core/involved-party.service'
 
 @Component({
@@ -8,14 +10,13 @@ import { IPService } from '../../core/involved-party.service'
 })
 
 export class InvolvedPartySelectComponent {
-  people: Object;
+  invPartyList: Array<InvolvepdPartyModel>;
   involvedPartyId: number;
   involvedPartyType: number;
   involvedPartyLastName: string;
   involvedPartySelectedId: number = 0;
   isLoading: boolean = false;
-  errorMessage: string = '';
-  notFound: string = '';
+  errorObject: ErrorModel
 
   constructor(public ipService: IPService, public params: NavParams, public viewCtrl: ViewController) {
     this.involvedPartyId = params.get('id');
@@ -28,9 +29,8 @@ export class InvolvedPartySelectComponent {
      */
   searchFor(ev: any) {
     this.isLoading = true;
-    this.people = null;
-    this.errorMessage = '';
-    this.notFound = '';
+    this.invPartyList = null;
+    this.errorObject = null;
 
     let q = ev.target.value;
 
@@ -44,8 +44,8 @@ export class InvolvedPartySelectComponent {
       .debounceTime(400)
       .distinctUntilChanged()
       .subscribe(
-      people => this.people = people,
-      error => error === 'Not found' ? this.notFound = 'Δεν βρέθηκαν αποτελέσματα...' : this.errorMessage = <any>error
+      (lst: InvolvepdPartyModel[]) => this.invPartyList = lst,
+      error => this.setError(error)
       );
   } //end search
 
@@ -55,9 +55,8 @@ export class InvolvedPartySelectComponent {
   }
 
   onClear() {
-    this.errorMessage = '';
-    this.notFound = '';
-    this.people = null;
+    this.errorObject = null;
+    this.invPartyList = null;
   }
 
   dismiss(ip) {
@@ -67,6 +66,15 @@ export class InvolvedPartySelectComponent {
       selectedId: this.involvedPartySelectedId
     }
     this.viewCtrl.dismiss(ip);
+  }
+
+  setError(err) {
+    if (err === 'Not found') {
+      this.errorObject = new ErrorModel(ErrorType.NotFound, 'Δεν βρέθηκαν αποτελέσματα...', '');
+      console.log(this.errorObject);
+    } else {
+      this.errorObject = new ErrorModel(ErrorType.Error, err, '');
+    }
   }
 
 } //end class
