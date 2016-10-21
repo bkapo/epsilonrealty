@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
 
 import { DemandModel } from '../../app/models/demand.model';
+import { ErrorModel, ErrorType } from '../../app/models/error.model'
 import { PropertyCategory, PropertyType } from '../../app/models/realestate-property.model'
 import { IPService } from '../../core/involved-party.service'
 import { InvolvedPartyType } from '../../app/models/involved-party.model'
@@ -16,7 +17,7 @@ export class DemandListPage implements OnInit {
     involvedPartyId: number;
     involvedPartyType: InvolvedPartyType;
     demands: Array<DemandModel>;
-    errorMessage: string;
+    errorObject: ErrorModel
     isLoading: boolean = false;
     propCategories = PropertyCategory;
     propTypes = PropertyType;
@@ -33,15 +34,33 @@ export class DemandListPage implements OnInit {
         if (this.involvedPartyType === InvolvedPartyType.Customer) {
             this.ipService.getDemandsOfInvolvedParty(this.involvedPartyId).finally(() => this.isLoading = false)
                 .subscribe(
-                dms => this.demands = dms,
-                error => error === 'Not found' ? this.notFound = 'Δεν βρέθηκαν αποτελέσματα...' : this.errorMessage = <any>error
+                dms => this.checkResults(dms),
+                error => this.setError(error)
                 );
         } else {
             this.ipService.getDemandsOfAgent(this.involvedPartyId).finally(() => this.isLoading = false)
                 .subscribe(
-                dms => this.demands = dms,
-                error => error === 'Not found' ? this.notFound = 'Δεν βρέθηκαν αποτελέσματα...' : this.errorMessage = <any>error
+                dms => this.checkResults(dms),
+                error => this.setError(error)
                 );
+        }
+    }
+
+    checkResults(dm: Array<DemandModel>){
+        if (dm && dm.length>0){
+            this.demands  = dm;
+        }
+        else {
+            this.setError('Not found')
+        }
+    }
+
+    setError(err){
+        if (err === 'Not found'){
+            this.errorObject = new ErrorModel(ErrorType.NotFound, 'Δεν βρέθηκαν αποτελέσματα...','');
+            console.log(this.errorObject);
+        } else {
+            this.errorObject = new ErrorModel(ErrorType.Error, err,'');
         }
     }
 

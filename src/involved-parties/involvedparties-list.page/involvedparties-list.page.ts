@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { InvolvepdPartyModel } from '../../app/models/involved-party.model';
+import { ErrorModel, ErrorType } from '../../app/models/error.model'
 import { IPService } from '../../core/involved-party.service'
 
 
@@ -11,7 +12,7 @@ import { IPService } from '../../core/involved-party.service'
 })
 export class InvolvedpartiesListPage implements OnInit {
     people: Array<InvolvepdPartyModel>;
-    errorMessage: string;
+    errorObject: ErrorModel
     isLoading: boolean = false;
 
     constructor(public nav: NavController, public ipService: IPService) {
@@ -23,7 +24,7 @@ export class InvolvedpartiesListPage implements OnInit {
         this.ipService.getInvolvedPartyByType(1).finally(() => this.isLoading = false)
             .subscribe(
             (inv: InvolvepdPartyModel[]) => this.people = inv,
-            error => this.errorMessage = <any>error,
+            error => this.setError(error),
             () => console.log(this.people)
             );
     }
@@ -40,7 +41,15 @@ export class InvolvedpartiesListPage implements OnInit {
             // right side -- overscroll
             //this.editItem(item);
         }
-
-
     }
+
+    setError(err){
+        if (err === 'Not found'){
+            this.errorObject = new ErrorModel(ErrorType.NotFound, 'Δεν βρέθηκαν αποτελέσματα...','');
+            console.log(this.errorObject);
+        } else {
+            this.errorObject = new ErrorModel(ErrorType.Error, err,'');
+        }
+    }
+
 }

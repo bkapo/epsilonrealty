@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { InvolvedPartyType } from '../../app/models/involved-party.model';
+import { ErrorModel, ErrorType } from '../../app/models/error.model'
 import { RealEstatePropertyModel } from '../../app/models/realestate-property.model';
 import { IPService } from '../../core/involved-party.service'
 
@@ -15,7 +16,7 @@ export class RealEstatePropertyListPage implements OnInit {
     involvedPartyId: number;
     involvedPartyType: InvolvedPartyType;
     params: any;
-    errorMessage: string;
+    errorObject: ErrorModel
     isLoading: boolean = false;
 
     constructor(public nav: NavController, navParams: NavParams, public ipService: IPService) {
@@ -27,21 +28,38 @@ export class RealEstatePropertyListPage implements OnInit {
 
     getProperties() {
         this.isLoading = true;
-
+        this.errorObject = null;
         if (this.involvedPartyType === InvolvedPartyType.Customer) {
-            
+
         } else {
             this.ipService.getPropertiesOfAgent(this.involvedPartyId).finally(() => this.isLoading = false)
                 .subscribe(
-                (lst: RealEstatePropertyModel[]) => this.realEstateProperties = lst,
-                error => this.errorMessage = <any>error,
-                () => console.log(this.realEstateProperties)
+                (lst: RealEstatePropertyModel[]) => this.checkResults(lst),
+                error => this.setError(error)
                 );
+        }
+    }
+
+    checkResults(relist: Array<RealEstatePropertyModel>) {
+        if (relist && relist.length > 0) {
+            this.realEstateProperties = relist;
+        }
+        else {
+            this.setError('Not found')
         }
     }
 
     ngOnInit() {
         this.getProperties();
+    }
+
+    setError(err) {
+        if (err === 'Not found') {
+            this.errorObject = new ErrorModel(ErrorType.NotFound, 'Δεν βρέθηκαν αποτελέσματα...', '');
+            console.log(this.errorObject);
+        } else {
+            this.errorObject = new ErrorModel(ErrorType.Error, err, '');
+        }
     }
 
 
