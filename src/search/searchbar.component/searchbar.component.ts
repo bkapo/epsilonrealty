@@ -45,15 +45,16 @@ export class SearchBarComponent {
             this.isLoading = false;
             return;
         }
+        
         let searchValue: string = InvolvedPartyType[InvolvedPartyType[this.searchType]];
-
+        console.log(searchValue);
         if (searchValue === InvolvedPartyType[InvolvedPartyType.Agent]
             || searchValue === InvolvedPartyType[InvolvedPartyType.Collaborator] 
             || searchValue === InvolvedPartyType[InvolvedPartyType.Contact]
             || searchValue === InvolvedPartyType[InvolvedPartyType.Customer] 
             || searchValue === InvolvedPartyType[InvolvedPartyType.Owner]
         ) {
-            this.ipService.searchInolvedPartyByTypeAndLastName(this.searchType, q).finally(() => this.isLoading = false)
+            this.ipService.searchInolvedPartyByLastName(q).finally(() => this.isLoading = false)
                 .debounceTime(600)
                 .distinctUntilChanged()
                 .subscribe(

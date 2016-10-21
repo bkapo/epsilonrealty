@@ -29,10 +29,16 @@ export class RealEstatePropertyListPage implements OnInit {
     getProperties() {
         this.isLoading = true;
         this.errorObject = null;
-        if (this.involvedPartyType === InvolvedPartyType.Customer) {
+        console.log(this.involvedPartyType + ' ' + this.involvedPartyId);
 
-        } else {
+        if (this.involvedPartyType === InvolvedPartyType.Agent) {
             this.ipService.getPropertiesOfAgent(this.involvedPartyId).finally(() => this.isLoading = false)
+                .subscribe(
+                (lst: RealEstatePropertyModel[]) => this.checkResults(lst),
+                error => this.setError(error)
+                );
+        } else {
+            this.ipService.getPropertiesOfInvolvedParty(this.involvedPartyId).finally(() => this.isLoading = false)
                 .subscribe(
                 (lst: RealEstatePropertyModel[]) => this.checkResults(lst),
                 error => this.setError(error)

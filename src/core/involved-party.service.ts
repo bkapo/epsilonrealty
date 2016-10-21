@@ -18,8 +18,17 @@ export class IPService {
         this.http = http;
     }
 
+    searchInolvedPartyByLastName(name: string): Observable<InvolvepdPartyModel[]> {
+        let url = this.REST_API_URL + '/GetByName/' + name;
+        console.log(url);
+        return this.http.get(url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     searchInolvedPartyByTypeAndLastName(typeid: number, name: string): Observable<InvolvepdPartyModel[]> {
         let url = this.REST_API_URL + '/GetByTypeAndName/' + typeid + '/' + name;
+        console.log(url);
         return this.http.get(url)
             .map(this.extractData)
             .catch(this.handleError);
@@ -53,6 +62,13 @@ export class IPService {
 
     getDemandsOfInvolvedParty(ipid: number): Observable<DemandModel[]> {
         let url = this.REST_API_URL + '/' + ipid + '/Demand/';
+        return this.http.get(url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    getPropertiesOfInvolvedParty(ipid: number): Observable<RealEstatePropertyModel[]> {
+        let url = this.REST_API_URL + '/' + ipid + '/RealEstateProperties/';
         return this.http.get(url)
             .map(this.extractData)
             .catch(this.handleError);

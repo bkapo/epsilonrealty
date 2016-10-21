@@ -31,7 +31,7 @@ export class InvolvedPartyCardComponent {
         });
     }
 
-    viewAgentProperties(ip: InvolvepdPartyModel, slidingItem: ItemSliding) {
+    viewProperties(ip: InvolvepdPartyModel, slidingItem: ItemSliding) {
         slidingItem.close();
         this.nav.push(RealEstatePropertyListPage, {
             paramInvPartyId: ip.InvolvedPartyId,
