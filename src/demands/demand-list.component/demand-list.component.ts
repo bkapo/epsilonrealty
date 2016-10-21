@@ -29,8 +29,6 @@ export class DemandListPage implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.involvedPartyId);
-        console.log(this.involvedPartyType);
         //fetch data...
         if (this.involvedPartyType === InvolvedPartyType.Customer) {
             this.ipService.getDemandsOfInvolvedParty(this.involvedPartyId).finally(() => this.isLoading = false)

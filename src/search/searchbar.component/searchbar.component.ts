@@ -7,6 +7,7 @@ import { RealEstatePropertyModel } from '../../app/models/realestate-property.mo
 import { RealEstatePropertyAddPage } from '../../realestate-properties/realestate-property-add.page/realestate-property-add.page';
 import { DemandModel } from '../../app/models/demand.model'
 import { DemandAddComponent } from '../../demands/demand-add.component/demand-add.component';
+import { ErrorModel, ErrorType } from '../../app/models/error.model'
 
 import { IPService } from '../../core/involved-party.service'
 import { REPService } from '../../core/realestate-property.service'
@@ -16,15 +17,14 @@ import { REPService } from '../../core/realestate-property.service'
     templateUrl: 'searchbar.component.html',
 })
 export class SearchBarComponent {
-    public people: Object;
-    property: any;
-    searchType: any = InvolvedPartyType[InvolvedPartyType.Customer];
+    involvedparties: Array<InvolvepdPartyModel>;
+    properties: Array<RealEstatePropertyModel>;
     newIP: InvolvepdPartyModel;
     newProp: RealEstatePropertyModel;
     newDm: DemandModel;
+    errorObject: ErrorModel
+    searchType: any = InvolvedPartyType[InvolvedPartyType.Customer];
     isLoading: boolean = false;
-    errorMessage: string = '';
-    notFound: string = '';
 
     constructor(public nav: NavController, public ipService: IPService, public repService: REPService) {
         
@@ -35,10 +35,8 @@ export class SearchBarComponent {
      */
     onInput(ev: any) {
         this.isLoading = true;
-        this.people = null;
-        this.property = null;
-        this.errorMessage = '';
-        this.notFound = '';
+        this.involvedparties = null;
+        this.properties = null;
 
         let q = ev.target.value;
         
@@ -59,26 +57,33 @@ export class SearchBarComponent {
                 .debounceTime(600)
                 .distinctUntilChanged()
                 .subscribe(
-                people => this.people = people,
-                error => error === 'Not found' ? this.notFound = 'Δεν βρέθηκαν αποτελέσματα...' : this.errorMessage = <any>error
+                (people : InvolvepdPartyModel[]) => this.involvedparties = people,
+                error => this.setError(error)
                 );
         } else {
             this.repService.searchForProperty(q).finally(() => this.isLoading = false)
                 .debounceTime(600)
                 .distinctUntilChanged()
                 .subscribe(
-                x => this.property = x,
-                error => error === 'Not found' ? this.notFound = 'Δεν βρέθηκαν αποτελέσματα...' : this.errorMessage = <any>error
+                    (lst: RealEstatePropertyModel[]) => this.properties = lst,
+                    error => this.setError(error)
                 );
-                console.log(this.property);
+        }
+    }
+
+    setError(err){
+        if (err === 'Not found'){
+            this.errorObject = new ErrorModel(ErrorType.NotFound, 'Δεν βρέθηκαν αποτελέσματα...','');
+            console.log(this.errorObject);
+        } else {
+            this.errorObject = new ErrorModel(ErrorType.Error, err,'');
         }
     }
 
     onClear() {
-        this.errorMessage = '';
-        this.notFound = '';
-        this.people = null;
-        this.property = null;
+        this.errorObject = null;
+        this.involvedparties = null;
+        this.properties = null;
     }
 
     /**

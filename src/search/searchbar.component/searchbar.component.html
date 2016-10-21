@@ -24,25 +24,18 @@
     <div class="spacer" style="width: 300px; height: 30px;"></div>
     <ion-spinner *ngIf="isLoading"></ion-spinner>
 
-    <list-errors [errorObject]="errorMessage"></list-errors>
+    <list-errors *ngIf="errorObject" [errorObject]="errorObject"></list-errors>
 
-    <ion-card *ngIf="notFound">
-        <ion-item>
-            <ion-icon subtle color="primary" large item-left name='information'></ion-icon>
-            <h2>{{notFound}} </h2>
-        </ion-item>
-    </ion-card>
-
-    <div *ngIf="people">
+    <div *ngIf="involvedparties">
         <ion-list>
-            <involved-party-card *ngFor="let item of people" [card-people]="item">
+            <involved-party-card *ngFor="let item of involvedparties" [card-people]="item">
             </involved-party-card>
         </ion-list>
     </div>
 
-    <div *ngIf="property">
+    <div *ngIf="properties">
         <ion-list>
-            <realestate-property-card *ngFor="let item of property" [realEstate]="item">
+            <realestate-property-card *ngFor="let item of properties" [realEstate]="item">
             </realestate-property-card>
         </ion-list>
     </div>

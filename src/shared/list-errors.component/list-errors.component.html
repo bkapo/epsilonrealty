@@ -1,7 +1,35 @@
-<ion-card *ngIf="errorObject">
-    <ion-item>
-        <ion-icon subtle color="danger" large item-left name='warning'></ion-icon>
-        <h2>Something went wrong... </h2>
-        <p>{{errorObject}}</p>
-    </ion-item>
+<ion-card *ngIf="errorObject.ErrorType === 1">
+    <ion-card-header>
+        <ion-avatar item-left>
+            <ion-icon subtle color="danger" large item-left name='hand'></ion-icon>
+            Error
+        </ion-avatar>
+    </ion-card-header>
+    <ion-card-content>
+        {{errorObject.Message}}
+    </ion-card-content>
+</ion-card>
+
+<ion-card *ngIf="errorObject.ErrorType === 2">
+    <ion-card-header>
+        <ion-avatar item-left>
+            <ion-icon subtle color="danger" large item-left name='warning'></ion-icon>
+            Warning
+        </ion-avatar>
+    </ion-card-header>
+    <ion-card-content>
+        {{errorObject.Message}}
+    </ion-card-content>
+</ion-card>
+
+<ion-card *ngIf="errorObject.ErrorType === 3">
+    <ion-card-header>
+        <ion-avatar item-left>
+            <ion-icon subtle color="primary" large item-left name='information-circle'></ion-icon>
+            Info
+        </ion-avatar>
+    </ion-card-header>
+    <ion-card-content>
+        {{errorObject.Message}}
+    </ion-card-content>
 </ion-card>
