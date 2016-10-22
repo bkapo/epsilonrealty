@@ -37,6 +37,7 @@ export class SearchBarComponent {
         this.isLoading = true;
         this.involvedparties = null;
         this.properties = null;
+        this.errorObject = null;
 
         let q = ev.target.value;
         
