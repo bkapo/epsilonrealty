@@ -89,11 +89,14 @@
                 Φωτογραφιες
             </ion-list-header>
 
-            <ion-item *ngFor="let img of images">
-                <ion-card>
-                    <img src="{{img}}" />
-                    <ion-icon name="happy" item-left></ion-icon>
-                </ion-card>
+            <ion-item>
+                <ion-grid>
+                    <ion-row wrap>
+                        <ion-col width-33 *ngFor="let file_uri of images">
+                            <img [src]="file_uri">
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
             </ion-item>
 
         </ion-list>
