@@ -5,6 +5,9 @@
             <ion-segment-button value="Basic">
                 Γενικα
             </ion-segment-button>
+            <ion-segment-button value="Photo">
+                Φωτογραφιες
+            </ion-segment-button>
             <ion-segment-button value="AdditionalRooms">
                 Additional Rooms
             </ion-segment-button>
@@ -77,6 +80,20 @@
             <ion-item>
                 <ion-label floating>Εμβαδόν (τ.μ.)-Οικόπεδο</ion-label>
                 <ion-input type="number" formControlName="SqfFeetLand"></ion-input>
+            </ion-item>
+
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Photo'">
+            <ion-list-header>
+                Φωτογραφιες
+            </ion-list-header>
+
+            <ion-item *ngFor="let img of images">
+                <ion-card>
+                    <img src="{{img}}" />
+                    <ion-icon name="happy" item-left></ion-icon>
+                </ion-card>
             </ion-item>
 
         </ion-list>
@@ -375,3 +392,5 @@
 </form>
 
 <list-errors *ngIf="errorObject" [errorObject]="errorObject"></list-errors>
+
+<!--<pre>{{images | json}}</pre>-->

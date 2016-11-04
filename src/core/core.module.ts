@@ -9,6 +9,7 @@ import { LoginPage } from './login.page/login.page'
 
 import { IPService } from './involved-party.service'
 import { REPService } from './realestate-property.service'
+import { Blobservice } from './blob.service'
 
 @NgModule({
     imports: [
@@ -16,7 +17,7 @@ import { REPService } from './realestate-property.service'
         IonicModule.forRoot(LoginPage)],
     declarations: [LoginPage],
     exports: [LoginPage],
-    providers: [IPService, REPService]
+    providers: [IPService, REPService, Blobservice]
 })
 export class CoreModule {
 

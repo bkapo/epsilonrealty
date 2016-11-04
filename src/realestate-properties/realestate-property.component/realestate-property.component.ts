@@ -8,6 +8,7 @@ import { RealEstatePropertyModel, PropertyCategory, PropertyType, Purpose } from
 import { InvolvedPartyType } from '../../app/models/involved-party.model'
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
 import { REPService } from '../../core/realestate-property.service'
+import { Blobservice } from '../../core/blob.service'
 import { GoogleMapComponent } from '../realestate-property-map.component/realestate-property-map.component'
 
 
@@ -27,13 +28,23 @@ export class RealEstatePropertyComponent implements OnInit {
   propCategories = PropertyCategory;
   propTypes = PropertyType;
   propPurpose = Purpose;
+  images: Array<string>;
 
   constructor(public fb: FormBuilder, public navCtrl: NavController, public modalCtrl: ModalController, public toastController: ToastController,
-    public loadingCtrl: LoadingController, public repService: REPService) {
+    public loadingCtrl: LoadingController, public repService: REPService, public blobService: Blobservice) {
   }
 
   ngOnInit() {
     console.log(this.estateproperty);
+
+    this.blobService.getImagesOfProperty(this.estateproperty.RealEstatePropertyId)
+      .subscribe(
+      (lst: Array<string>) => this.images = lst,
+      error => this.setError(error)
+      );
+
+
+
     this.responsibleFullName = this.estateproperty.ResponsibleId ? (this.estateproperty.Responsible.FirstName + ' ' + this.estateproperty.Responsible.LastName) : 'Επιλέξτε';
     this.ownerFullName = this.estateproperty.Owner ? (this.estateproperty.Owner.FirstName + ' ' + this.estateproperty.Owner.LastName) : 'Επιλέξτε',
       this.propesedByFullName = this.estateproperty.Proposed ? (this.estateproperty.Proposed.FirstName + ' ' + this.estateproperty.Proposed.LastName) : 'Επιλέξτε',
