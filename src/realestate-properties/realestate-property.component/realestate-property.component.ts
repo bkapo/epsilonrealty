@@ -42,6 +42,7 @@ export class RealEstatePropertyComponent implements OnInit {
 
   onSelectPeriferia(perifId) {
     this.periferiakesEnotites = this.geoDataService.getPeriferiakesEnoties().filter((item)=> item.periferiaid == perifId);
+    this.dimoi = this.geoDataService.getDimous().filter((i)=>i.periferiakienotiaid==0);
   }
 
   onSelectPeriferiakiEnotita(periferiakienotiaId) {
@@ -53,8 +54,8 @@ export class RealEstatePropertyComponent implements OnInit {
 
     this.countries = this.geoDataService.getCountries();
     this.periferies = this.geoDataService.getPeriferies();
-    this.periferiakesEnotites = this.geoDataService.getPeriferiakesEnoties();
-    this.dimoi = this.geoDataService.getDimous();
+    this.periferiakesEnotites = this.geoDataService.getPeriferiakesEnoties().filter((i)=>i.periferiaid ==0);
+    this.dimoi = this.geoDataService.getDimous().filter((i)=>i.periferiakienotiaid==0);
 
 
     this.blobService.getImagesOfProperty(this.estateproperty.RealEstatePropertyId)
