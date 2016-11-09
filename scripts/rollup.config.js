@@ -40,7 +40,7 @@ var rollupConfig = {
         //commonjs(),
         commonjs({
             namedExports: {
-                'node_modules/angular2-google-maps/core/index.js': ['AgmCoreModule']
+                // 'node_modules/angular2-google-maps/core/index.js': ['AgmCoreModule']
             }
         }),
         nodeResolve({
