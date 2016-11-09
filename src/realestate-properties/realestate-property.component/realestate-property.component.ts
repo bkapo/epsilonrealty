@@ -9,6 +9,7 @@ import { InvolvedPartyType } from '../../app/models/involved-party.model'
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
 import { REPService } from '../../core/realestate-property.service'
 import { Blobservice } from '../../core/blob.service'
+import { GeoDataService, Country, Periferia, PeriferiakiEnotita, Dimos } from '../../core/geodata.service'
 import { GoogleMapComponent } from '../realestate-property-map.component/realestate-property-map.component'
 
 
@@ -29,13 +30,32 @@ export class RealEstatePropertyComponent implements OnInit {
   propTypes = PropertyType;
   propPurpose = Purpose;
   images: Array<string>;
+  countries: Array<Country>;
+  periferies: Array<Periferia>;
+  periferiakesEnotites: Array<PeriferiakiEnotita>;
+  dimoi: Array<Dimos>;
+
 
   constructor(public fb: FormBuilder, public navCtrl: NavController, public modalCtrl: ModalController, public toastController: ToastController,
-    public loadingCtrl: LoadingController, public repService: REPService, public blobService: Blobservice) {
+    public loadingCtrl: LoadingController, public repService: REPService, public blobService: Blobservice, public geoDataService: GeoDataService) {
+  }
+
+  onSelectPeriferia(perifId) {
+    this.periferiakesEnotites = this.geoDataService.getPeriferiakesEnoties().filter((item)=> item.periferiaid == perifId);
+  }
+
+  onSelectPeriferiakiEnotita(periferiakienotiaId) {
+    this.dimoi = this.geoDataService.getDimous().filter((item)=> item.periferiakienotiaid == periferiakienotiaId);
   }
 
   ngOnInit() {
     console.log(this.estateproperty);
+
+    this.countries = this.geoDataService.getCountries();
+    this.periferies = this.geoDataService.getPeriferies();
+    this.periferiakesEnotites = this.geoDataService.getPeriferiakesEnoties();
+    this.dimoi = this.geoDataService.getDimous();
+
 
     this.blobService.getImagesOfProperty(this.estateproperty.RealEstatePropertyId)
       .subscribe(

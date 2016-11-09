@@ -82,6 +82,28 @@
                 <ion-input type="number" formControlName="SqfFeetLand"></ion-input>
             </ion-item>
 
+
+            <ion-item>
+                <ion-label>Περιφέρεια</ion-label>
+                <ion-select #item (ionChange)="onSelectPeriferia($event)">
+                    <ion-option *ngFor="let item of periferies" value="{{item.periferiaid}}">{{item.name}} </ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Περ. Ενότητα</ion-label>
+                <ion-select #item (ionChange)="onSelectPeriferiakiEnotita($event)">
+                    <ion-option *ngFor="let item of periferiakesEnotites" value="{{item.periferiakienotiaid}}">{{item.name}} </ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Δήμος</ion-label>
+                <ion-select #item>
+                    <ion-option *ngFor="let item of dimoi" value="{{item.dimosid}}">{{item.name}} </ion-option>
+                </ion-select>
+            </ion-item>
+
         </ion-list>
 
         <ion-list *ngSwitchCase="'Photo'">
