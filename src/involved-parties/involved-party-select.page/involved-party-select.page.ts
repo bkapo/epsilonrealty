@@ -60,11 +60,11 @@ export class InvolvedPartySelectComponent {
   }
 
   dismiss(ip) {
-    let data = {
-      id: this.involvedPartyId,
-      type: this.involvedPartyType,
-      selectedId: this.involvedPartySelectedId
-    }
+    // let data = {
+    //   id: this.involvedPartyId,
+    //   type: this.involvedPartyType,
+    //   selectedId: this.involvedPartySelectedId
+    // }
     this.viewCtrl.dismiss(ip);
   }
 

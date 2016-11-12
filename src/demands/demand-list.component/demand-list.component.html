@@ -18,6 +18,9 @@
     <list-errors *ngIf="errorObject" [errorObject]="errorObject"></list-errors>
 
     <ion-list>
+        <ion-list-header>
+            Ζητησεις
+        </ion-list-header>
         <demand-card *ngFor="let item of demands" [demand]="item">
         </demand-card>
     </ion-list>
