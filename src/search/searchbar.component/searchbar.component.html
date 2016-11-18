@@ -28,6 +28,9 @@
 
     <div *ngIf="involvedparties">
         <ion-list>
+            <ion-list-header>
+                Αποτελεσματα
+            </ion-list-header>
             <involved-party-card *ngFor="let item of involvedparties" [card-people]="item">
             </involved-party-card>
         </ion-list>
@@ -35,6 +38,9 @@
 
     <div *ngIf="properties">
         <ion-list>
+            <ion-list-header>
+                Αποτελεσματα
+            </ion-list-header>
             <realestate-property-card *ngFor="let item of properties" [realEstate]="item">
             </realestate-property-card>
         </ion-list>
