@@ -23,16 +23,16 @@
         <ion-list>
             <ion-list-header>ΑΠΟΤΕΛΕΣΜΑΤΑ</ion-list-header>
             <a ion-item (click)="selectIP(people)" detail-push *ngFor="let people of invPartyList">
-                <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '1'">
+                <span ion-text item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '1'">
                     <ion-icon name="people"></ion-icon> </span>
-                <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '2'">
+                <span ion-text item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '2'">
                     <ion-icon name="people"></ion-icon> </span>
-                <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '3'">
+                <span ion-text item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '3'">
                     <ion-icon name="contact"></ion-icon> </span>
-                <span item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '4'">
+                <span ion-text item-left color="primary" class="item-bold" *ngIf="people.InvolvedPartyType == '4'">
                     <ion-icon name="home"></ion-icon> </span>
-                <span color="dark" class="item-bold">{{people.FirstName}} {{people.LastName}}</span>
-                <span color="dark" class="smallFonts" type="tel">{{people.Mobile}}</span>
+                <span ion-text color="dark" class="item-bold">{{people.FirstName}} {{people.LastName}}</span>
+                <span ion-text color="dark" class="smallFonts" type="tel">{{people.Mobile}}</span>
             </a>
         </ion-list>
     </div>

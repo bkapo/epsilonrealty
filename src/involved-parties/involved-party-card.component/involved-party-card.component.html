@@ -6,9 +6,9 @@
         </ion-thumbnail>
         <h2 text-capitalize>{{people.FirstName}} {{people.LastName}}</h2>
         <p>
-            <span color="dark" class="smallFonts"> <ion-icon name="call"> {{people.Mobile}}</ion-icon> </span>
+            <span ion-text color="dark" class="smallFonts"> <ion-icon name="call"> {{people.Mobile}}</ion-icon> </span>
         </p>
-        <span class="smallFonts" color="secondary">{{people.InvolvedPartyType | involvedPartyType}}</span>
+        <span ion-text class="smallFonts" color="secondary">{{people.InvolvedPartyType | involvedPartyType}}</span>
         <ion-badge item-right *ngIf="people.InvolvedPartyType == '5'"> {{people.Demands.length}}</ion-badge>
     </ion-item>
 
