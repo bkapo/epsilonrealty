@@ -1,9 +1,9 @@
 import {
     ModuleWithProviders, NgModule,
-    Optional, SkipSelf
+    Optional, SkipSelf, ErrorHandler
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from 'ionic-angular';
+import { IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { LoginPage } from './login.page/login.page'
 
@@ -18,7 +18,7 @@ import { GeoDataService } from './geodata.service'
         IonicModule.forRoot(LoginPage)],
     declarations: [LoginPage],
     exports: [LoginPage],
-    providers: [IPService, REPService, Blobservice, GeoDataService]
+    providers: [IPService, REPService, Blobservice, GeoDataService, { provide: ErrorHandler, useClass: IonicErrorHandler }]
 })
 export class CoreModule {
 
