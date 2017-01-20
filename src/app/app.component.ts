@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, MenuController } from 'ionic-angular';
-import { StatusBar } from 'ionic-native';
 
 import { LoginPage } from '../core/login.page/login.page';
 import { SearchBarComponent } from '../search/searchbar.component/searchbar.component'
