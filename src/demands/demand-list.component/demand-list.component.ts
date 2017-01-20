@@ -3,7 +3,7 @@ import { NavParams, NavController } from 'ionic-angular';
 
 import { DemandModel } from '../../app/models/demand.model';
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
-import { PropertyCategory, PropertyType } from '../../app/models/realestate-property.model'
+import { PropertyCategory, PropertyType } from '../../app/models/propertyabstract.model'
 import { IPService } from '../../core/involved-party.service'
 import { InvolvedPartyType } from '../../app/models/involved-party.model'
 

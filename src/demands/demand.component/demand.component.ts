@@ -7,7 +7,7 @@ import { IPService } from '../../core/involved-party.service'
 import { DemandModel } from '../../app/models/demand.model';
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page';
-import { PropertyCategory, PropertyType } from '../../app/models/realestate-property.model'
+import { PropertyCategory, PropertyType } from '../../app/models/propertyabstract.model'
 
 @Component({
     selector: 'rep-demand',
@@ -23,6 +23,7 @@ export class DemandComponent implements OnInit {
     loading: any;
     pricerange: any = { lower: 100, upper: 2000 };
     sqfeetrange: any = { lower: 50, upper: 500 };
+    yearange: any = { lower: 2000, upper: 2017 };
     customerFullName: string = 'Επιλέξτε';
     propCategories = PropertyCategory;
     propTypes = PropertyType;
@@ -48,13 +49,17 @@ export class DemandComponent implements OnInit {
             PropertyCategory: [this.demand.PropertyCategory, Validators.required],
             PropertyType: [this.demand.PropertyType, Validators.required],
             Purpose: [this.demand.Purpose, Validators.required],
+
             PriceFrom: [this.demand.PriceFrom, Validators.required],
             PriceTo: [this.demand.PriceTo, Validators.required],
             SqFeetInteriorFrom: [this.demand.SqFeetInteriorFrom, Validators.required],
             SqFeetInteriorTo: [this.demand.SqFeetInteriorTo, Validators.required],
 
-            SqfFeetLand: [this.demand.SqfFeetLand],
-            Year: [this.demand.Year],
+            SqfFeetLandFrom: [this.demand.SqfFeetLandFrom],
+            SqfFeetLandTo: [this.demand.SqfFeetLandTo],
+            YearFrom: [this.demand.YearFrom],
+            YearTo: [this.demand.YearTo],
+
             Renovated: [this.demand.Renovated],
             NewConstruction: [this.demand.NewConstruction],
             Rooms: [this.demand.Rooms],
@@ -142,6 +147,8 @@ export class DemandComponent implements OnInit {
         this.demandform.value.PriceTo = this.pricerange.upper;
         this.demandform.value.SqFeetInteriorFrom = this.sqfeetrange.lower;
         this.demandform.value.SqFeetInteriorTo = this.sqfeetrange.upper;
+        this.demandform.value.YearFrom = this.yearange.lower;
+        this.demandform.value.YearTo = this.yearange.upper;       
         console.log(this.demandform.value);
         console.log(this.demandform.valid);
     }

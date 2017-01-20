@@ -49,6 +49,7 @@
                     <ion-option *ngFor="let item of propTypes | keys" value="{{item.key}}">{{item.value}} </ion-option>
                 </ion-select>
             </ion-item>
+
             <ion-item>
                 <ion-label floating>Τιμή (Από - Έως)</ion-label>
                 <ion-badge item-right>{{pricerange.lower}}</ion-badge>
@@ -66,6 +67,16 @@
                 <ion-range dualKnobs="true" min="10" max="1000" step="10" pin="true" snap="true" [(ngModel)]="sqfeetrange" [ngModelOptions]="{standalone: true}" (ionChange)="updateRanges($event)">
                     <ion-icon range-left small color="primary" name="crop"></ion-icon>
                     <ion-icon range-right color="danger" name="crop"></ion-icon>
+                </ion-range>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Έτος (Από - Έως)</ion-label>
+                <ion-badge item-right>{{yearange.lower}}</ion-badge>
+                <ion-badge item-right>{{yearange.upper}}</ion-badge>
+                <ion-range dualKnobs="true" min="1900" max="2020" step="1" pin="true" snap="true" [(ngModel)]="yearange" [ngModelOptions]="{standalone: true}" (ionChange)="updateRanges($event)">
+                    <ion-icon range-left small color="primary" name="calendar"></ion-icon>
+                    <ion-icon range-right color="danger" name="calendar"></ion-icon>
                 </ion-range>
             </ion-item>
 

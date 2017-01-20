@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { Purpose } from '../../app/models/realestate-property.model';
+import { Purpose } from '../../app/models/propertyabstract.model';
 
 @Pipe({name: 'purpose'})
 export class PurposePipe implements PipeTransform {
