@@ -27,7 +27,12 @@
 
         <ion-list *ngSwitchCase="'Basic'">
             <a ion-item (click)="selectCustomer()">
+                <ion-icon name="person"></ion-icon>
                 Πελάτης: {{customerFullName}}
+            </a>
+            <a ion-item (click)="selectBroker()">
+                <ion-icon name="contact"></ion-icon>
+                Υπεύθυνος: {{responsibleFullName}}
             </a>
             <ion-segment formControlName="Purpose" color="dark">
                 <ion-segment-button value="1">

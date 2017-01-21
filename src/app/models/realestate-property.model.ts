@@ -10,7 +10,10 @@ export class RealEstatePropertyModel extends PropertyModel {
     SqfFeetLand: number;
     Year: number;
 
-    //Map
+    //Geolocation
+    
+    GeoLat: string;
+    GeoLong: string;
     YoutubeURL: string;
     UploadMapToRealEstatePortals: boolean;
 

@@ -1,13 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { NavController, ModalController, ToastController, LoadingController } from 'ionic-angular';
 
-import { IPService } from '../../core/involved-party.service'
+import { IPService } from '../../core/involved-party.service';
 import { DemandModel } from '../../app/models/demand.model';
-import { ErrorModel, ErrorType } from '../../app/models/error.model'
+import { ErrorModel, ErrorType } from '../../app/models/error.model';
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page';
-import { PropertyCategory, PropertyType } from '../../app/models/propertyabstract.model'
+import { PropertyCategory, PropertyType } from '../../app/models/propertyabstract.model';
+import { InvolvedPartyType } from '../../app/models/involved-party.model';
 
 @Component({
     selector: 'rep-demand',
@@ -18,6 +19,7 @@ export class DemandComponent implements OnInit {
     @Input() demand: DemandModel;
     demandform: FormGroup;
     demandSegment: string = 'Basic';
+    responsibleFullName: string = 'Επιλέξτε';
     isLoading: boolean = false;
     errorObject: ErrorModel
     loading: any;
@@ -38,6 +40,7 @@ export class DemandComponent implements OnInit {
         if (this.demand.Customer) {
             this.customerFullName = this.demand.Customer.FirstName + ' ' + this.demand.Customer.LastName;
         }
+        this.responsibleFullName = this.demand.DemandId ? (this.demand.Responsible.FirstName + ' ' + this.demand.Responsible.LastName) : 'Επιλέξτε';
 
         this.demandform = this.fb.group({
             DemandId: [this.demand.DemandId],
@@ -148,26 +151,43 @@ export class DemandComponent implements OnInit {
         this.demandform.value.SqFeetInteriorFrom = this.sqfeetrange.lower;
         this.demandform.value.SqFeetInteriorTo = this.sqfeetrange.upper;
         this.demandform.value.YearFrom = this.yearange.lower;
-        this.demandform.value.YearTo = this.yearange.upper;       
+        this.demandform.value.YearTo = this.yearange.upper;
         console.log(this.demandform.value);
         console.log(this.demandform.valid);
     }
 
+    selectBroker() {
+        this.setInvolvedParty(InvolvedPartyType.Agent, '');
+    }
+
     selectCustomer() {
+        this.setInvolvedParty(InvolvedPartyType.Customer, '');
+
+    }
+
+    setInvolvedParty(typeId: number, name: string) {
         let selectModal = this.modalCtrl.create(InvolvedPartySelectComponent, {
             id: 0,
-            type: 5, // idioktitis
-            name: ''
+            type: typeId,
+            name: name
         });
 
         selectModal.onDidDismiss(data => {
-            this.demandform.value.CustomerId = data.InvolvedPartyId;
-            this.demandform.value.Customer = data;
-            this.customerFullName = data.FirstName + ' ' + data.LastName;
+            if (typeId === InvolvedPartyType.Customer) {
+                this.demandform.value.CustomerId = data.InvolvedPartyId;
+                this.demandform.value.Customer = data;
+                this.customerFullName = data.FirstName + ' ' + data.LastName;
+            } else {
+                this.demandform.value.ResponsibleId = data.ResponsibleId;
+                this.demandform.value.Responsible = data;
+                this.responsibleFullName = data.FirstName + ' ' + data.LastName;
+            }
             console.log(this.demandform.value);
         });
+
         selectModal.present();
-    }// end 
+    }// end setInvolvedParty
+
 
     onSubmit(value: string): void {
         this.errorObject = null;

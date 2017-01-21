@@ -95,10 +95,6 @@ export abstract class PropertyModel {
     DistanceFromAirport: number;
     NearMetro: boolean;
 
-    //Geolocation
-    GeoLat: string;
-    GeoLong: string;
-
     //Owner
     OwnerId: number;
     Owner: InvolvepdPartyModel;
