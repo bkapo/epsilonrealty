@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from 'ionic-angular';
 
 import { InvolvedPartyTypePipe } from './pipes/involved-party-type.pipe';
@@ -15,6 +15,7 @@ import { ListErrorsComponent } from './list-errors.component/list-errors.compone
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         IonicModule.forRoot(InvolvedPartyTypePipe),
         IonicModule.forRoot(KeysPipe),
         IonicModule.forRoot(PropertyCategoryPipe),
@@ -36,6 +37,7 @@ import { ListErrorsComponent } from './list-errors.component/list-errors.compone
         PurposePipe,
         ListErrorsComponent,
         CommonModule, 
-        FormsModule]
+        FormsModule,
+        ReactiveFormsModule]
 })
 export class SharedModule { }

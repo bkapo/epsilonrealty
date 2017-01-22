@@ -1,4 +1,4 @@
-<form [formGroup]="estateform" (ngSubmit)="onSubmit()">
+<form [formGroup]="estateform" (ngSubmit)="onSubmit(estateform)">
 
     <div padding>
         <ion-segment [(ngModel)]="estateSegment" [ngModelOptions]="{standalone: true}" color="primary">
@@ -413,7 +413,7 @@
     </div>
 
     <div class="spacer" style="width: 300px; height: 15px;"></div>
-    <button ion-button type="submit" class="button button-positive button-clear button-block" [disabled]="!estateform.valid">Καταχωρηση</button>
+    <button ion-button type="submit" [disabled]="!estateform.valid" class="button button-positive button-clear button-block">Καταχωρηση</button>
 </form>
 
 <list-errors *ngIf="errorObject" [errorObject]="errorObject"></list-errors>

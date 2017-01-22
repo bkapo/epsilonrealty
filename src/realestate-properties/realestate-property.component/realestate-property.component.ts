@@ -7,7 +7,7 @@ import { InvolvedPartySelectComponent } from '../../involved-parties/involved-pa
 import { RealEstatePropertyModel } from '../../app/models/realestate-property.model'
 import { PropertyCategory, PropertyType, Purpose } from '../../app/models/propertyabstract.model'
 
-import { InvolvedPartyType } from '../../app/models/involved-party.model'
+import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model'
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
 import { REPService } from '../../core/realestate-property.service'
 import { Blobservice } from '../../core/blob.service'
@@ -70,8 +70,25 @@ export class RealEstatePropertyComponent implements OnInit {
     this.ownerFullName = this.estateproperty.Owner ? (this.estateproperty.Owner.FirstName + ' ' + this.estateproperty.Owner.LastName) : 'Επιλέξτε';
     this.propesedByFullName = this.estateproperty.Proposed ? (this.estateproperty.Proposed.FirstName + ' ' + this.estateproperty.Proposed.LastName) : 'Επιλέξτε';
 
+    this.buildForm();
+
+  }
+
+  buildForm(): void {
     this.estateform = this.fb.group({
       RealEstatePropertyId: [this.estateproperty.RealEstatePropertyId],
+
+      //Responsible            
+      ResponsibleId: [this.estateproperty.ResponsibleId, Validators.required],
+      Responsible: [this.estateproperty.Responsible, Validators.required],
+
+      //Owner
+      OwnerId: [this.estateproperty.OwnerId, Validators.required],
+      Owner: [this.estateproperty.Owner, Validators.required],
+
+      //Proposed
+      ProposedId: [this.estateproperty.ProposedId],
+      Proposed: [this.estateproperty.Proposed],
 
       PropertyCategory: [this.estateproperty.PropertyCategory, Validators.required],
       PropertyType: [this.estateproperty.PropertyType, Validators.required],
@@ -176,23 +193,23 @@ export class RealEstatePropertyComponent implements OnInit {
       YoutubeURL: [this.estateproperty.YoutubeURL],
       GeoLat: [this.estateproperty.GeoLat],
       GeoLong: [this.estateproperty.GeoLong],
-      UploadMapToRealEstatePortals: [this.estateproperty.UploadMapToRealEstatePortals],
+      UploadMapToRealEstatePortals: [this.estateproperty.UploadMapToRealEstatePortals]
 
-      //Responsible            
-      ResponsibleId: [this.estateproperty.ResponsibleId],
-      Responsible: [this.estateproperty.Responsible],
-
-      //Owner
-      OwnerId: [this.estateproperty.OwnerId],
-      Owner: [this.estateproperty.Owner],
-
-      //Proposed
-      ProposedId: [this.estateproperty.ProposedId],
-      Proposed: [this.estateproperty.Proposed]
     });
+
   }
 
-  onSubmit(): void {
+  onSubmit(form: FormGroup): void {
+    console.log(form.value);
+    console.log(form.valid);
+    if (!form.valid) {
+      console.log(form.errors);
+      return;
+    }
+
+    //updates the model 
+    this.estateproperty = form.value;
+
     this.errorObject = null;
 
     let loader = this.loadingCtrl.create({
@@ -238,68 +255,50 @@ export class RealEstatePropertyComponent implements OnInit {
   }
 
   selectBroker() {
-    this.setBroker(InvolvedPartyType.Agent, '');
+    this.setInvolvedParty(InvolvedPartyType.Agent, '');
   }
   selectOwner() {
-    this.setOwner(InvolvedPartyType.Owner, '');
+    this.setInvolvedParty(InvolvedPartyType.Owner, '');
   }
   selectProposed() {
-    this.setProposedby(InvolvedPartyType.Contact, '');
+    this.setInvolvedParty(InvolvedPartyType.Contact, '');
   }
-  
-  setBroker(typeId: number, name: string) {
+
+
+  setInvolvedParty(typeId: number, name: string) {
     let selectModal = this.modalCtrl.create(InvolvedPartySelectComponent, {
-      id: this.estateproperty ? this.estateproperty.ResponsibleId : 0,
+      id: 0,
       type: typeId,
       name: name
     });
 
-    selectModal.onDidDismiss(data => {
-      console.log(data);
-      this.estateproperty.ResponsibleId = data.InvolvedPartyId;
-      this.estateproperty.Responsible = data;
-      this.responsibleFullName = data.FirstName + ' ' + data.LastName;
-      console.log(this.estateproperty);
+    selectModal.onDidDismiss((data: InvolvepdPartyModel) => {
+
+      if (typeId === InvolvedPartyType.Owner) {
+        this.estateform.controls['OwnerId'].setValue(data.InvolvedPartyId);
+        this.estateform.controls['Owner'].setValue(data);
+        // this.estateform.value.OwnerId = data.InvolvedPartyId;
+        // this.estateform.value.Owner = data;
+        this.ownerFullName = data.FirstName + ' ' + data.LastName;
+      } else if (typeId === InvolvedPartyType.Agent) {
+        this.estateform.controls['ResponsibleId'].setValue(data.InvolvedPartyId);
+        this.estateform.controls['Responsible'].setValue(data);
+        this.estateform.value.ResponsibleId = data.InvolvedPartyId;
+        this.estateform.value.Responsible = data;
+        this.responsibleFullName = data.FirstName + ' ' + data.LastName;
+      } else {
+        this.estateform.controls['ProposedId'].setValue(data.InvolvedPartyId);
+        this.estateform.controls['Proposed'].setValue(data);
+        // this.estateform.value.ProposedId = data.InvolvedPartyId;
+        // this.estateform.value.Proposed = data;
+        this.propesedByFullName = data.FirstName + ' ' + data.LastName;
+      }
+      console.log(this.estateform.value);
     });
 
     selectModal.present();
-  }// end setBroker
+  } // end setInvolvedParty
 
-  setOwner(typeId: number, name: string) {
-    let selectModal = this.modalCtrl.create(InvolvedPartySelectComponent, {
-      id: this.estateproperty ? this.estateproperty.ResponsibleId : 0,
-      type: typeId,
-      name: name
-    });
-
-    selectModal.onDidDismiss(data => {
-      console.log(data);
-      this.estateproperty.OwnerId = data.InvolvedPartyId;
-      this.estateproperty.Owner = data;
-      this.ownerFullName = data.FirstName + ' ' + data.LastName;
-      console.log(this.estateproperty);
-    });
-
-    selectModal.present();
-  }// end setOwner
-
-  setProposedby(typeId: number, name: string) {
-    let selectModal = this.modalCtrl.create(InvolvedPartySelectComponent, {
-      id: this.estateproperty ? this.estateproperty.ProposedId : 0,
-      type: typeId,
-      name: name
-    });
-
-    selectModal.onDidDismiss(data => {
-      console.log(data);
-      this.estateproperty.ProposedId = data.InvolvedPartyId;
-      this.estateproperty.Proposed = data;
-      this.propesedByFullName = data.FirstName + ' ' + data.LastName;
-      console.log(this.estateproperty);
-    });
-
-    selectModal.present();
-  }// end setProposedby
 
   openMap() {
     let selectModal = this.modalCtrl.create(GoogleMapComponent, {
@@ -333,5 +332,9 @@ export class RealEstatePropertyComponent implements OnInit {
       this.errorObject = new ErrorModel(ErrorType.Error, err, '');
     }
   }
+
+
+
+
 
 }

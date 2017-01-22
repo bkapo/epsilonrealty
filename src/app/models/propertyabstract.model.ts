@@ -1,6 +1,6 @@
 import { InvolvepdPartyModel } from '../models/involved-party.model';
 
-export abstract class PropertyModel {
+export  class PropertyModel {
     
     PropertyCategory: PropertyCategory;
     PropertyType: PropertyType;

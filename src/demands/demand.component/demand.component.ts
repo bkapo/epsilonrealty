@@ -49,8 +49,16 @@ export class DemandComponent implements OnInit {
             ModifiedDate: [this.demand.ModifiedDate],
             Comments: [this.demand.Comments],
 
+            // Customer
+            CustomerId: [this.demand.CustomerId, Validators.required],
+            Customer: [this.demand.Customer, Validators.required],
+
+            //Responsible            
+            ResponsibleId: [this.demand.ResponsibleId, Validators.required],
+            Responsible: [this.demand.Responsible, Validators.required],
+
             PropertyCategory: [this.demand.PropertyCategory, Validators.required],
-            PropertyType: [this.demand.PropertyType, Validators.required],
+            PropertyType: [this.demand.PropertyType],
             Purpose: [this.demand.Purpose, Validators.required],
 
             PriceFrom: [this.demand.PriceFrom, Validators.required],
@@ -136,11 +144,7 @@ export class DemandComponent implements OnInit {
             Garden: [this.demand.Garden],
             OutdoorBBQ: [this.demand.OutdoorBBQ],
             ElectronicGates: [this.demand.ElectronicGates],
-            AutomaticWatering: [this.demand.AutomaticWatering],
-
-            // Customer
-            CustomerId: [this.demand.CustomerId],
-            Customer: [this.demand.Customer],
+            AutomaticWatering: [this.demand.AutomaticWatering]
 
         });
     }
@@ -178,7 +182,7 @@ export class DemandComponent implements OnInit {
                 this.demandform.value.Customer = data;
                 this.customerFullName = data.FirstName + ' ' + data.LastName;
             } else {
-                this.demandform.value.ResponsibleId = data.ResponsibleId;
+                this.demandform.value.ResponsibleId = data.InvolvedPartyId;
                 this.demandform.value.Responsible = data;
                 this.responsibleFullName = data.FirstName + ' ' + data.LastName;
             }
@@ -190,6 +194,7 @@ export class DemandComponent implements OnInit {
 
 
     onSubmit(value: string): void {
+
         this.errorObject = null;
 
         let loader = this.loadingCtrl.create({
@@ -202,12 +207,12 @@ export class DemandComponent implements OnInit {
         this.ipService
             .saveDeamndOfInvolvedParty(this.demandform.value.CustomerId, this.demandform.value.DemandId, this.demandform.value)
             .subscribe(
-            updatedDM => this.demandUpdated(updatedDM),
+            updatedDM => this.demandUpdated(),
             error => this.setError(error)
             );
     }
 
-    demandUpdated(dm) {
+    demandUpdated() {
         this.presentToast('Updated succesfully');
         this.navCtrl.popToRoot();
     }

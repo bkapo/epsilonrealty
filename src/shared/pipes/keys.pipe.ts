@@ -6,6 +6,7 @@ export class KeysPipe implements PipeTransform {
     let keys = [];
     for (var enumMember in value) {
       var isValueProperty = parseInt(enumMember, 10) >= 0;
+
       if (isValueProperty) {
         keys.push({key: enumMember, value: value[enumMember]});
         // Uncomment if you want log
