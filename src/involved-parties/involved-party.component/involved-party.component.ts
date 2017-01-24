@@ -29,6 +29,7 @@ export class InvolvedPartyComponent implements OnInit {
 
   ngOnInit() {
     this.involedpartyform = this.fb.group({
+      InvolvedPartyId: [this.involvedparty.InvolvedPartyId],
       InvolvedPartyType: [this.involvedparty.InvolvedPartyType, Validators.required],
       firstName: [this.involvedparty.FirstName, Validators.required],
       lastName: [this.involvedparty.LastName, Validators.required],
@@ -42,8 +43,7 @@ export class InvolvedPartyComponent implements OnInit {
       workTelephone: [this.involvedparty.WorkTelephone],
       fax: [this.involvedparty.Fax],
       webSiteURL: [this.involvedparty.website],
-      email: [this.involvedparty.Email],
-      InvolvedPartyId: [this.involvedparty.InvolvedPartyId]
+      email: [this.involvedparty.Email]
     });
   }
 

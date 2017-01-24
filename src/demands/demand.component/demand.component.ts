@@ -8,7 +8,7 @@ import { DemandModel } from '../../app/models/demand.model';
 import { ErrorModel, ErrorType } from '../../app/models/error.model';
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page';
 import { PropertyCategory, PropertyType } from '../../app/models/propertyabstract.model';
-import { InvolvedPartyType } from '../../app/models/involved-party.model';
+import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model';
 
 @Component({
     selector: 'rep-demand',
@@ -42,6 +42,10 @@ export class DemandComponent implements OnInit {
         }
         this.responsibleFullName = this.demand.DemandId ? (this.demand.Responsible.FirstName + ' ' + this.demand.Responsible.LastName) : 'Επιλέξτε';
 
+        this.buildForm();
+    }
+
+    buildForm(): void {
         this.demandform = this.fb.group({
             DemandId: [this.demand.DemandId],
             UserId: [this.demand.UserId],
@@ -145,17 +149,17 @@ export class DemandComponent implements OnInit {
             OutdoorBBQ: [this.demand.OutdoorBBQ],
             ElectronicGates: [this.demand.ElectronicGates],
             AutomaticWatering: [this.demand.AutomaticWatering]
-
         });
     }
 
     updateRanges(e) {
-        this.demandform.value.PriceFrom = this.pricerange.lower;
-        this.demandform.value.PriceTo = this.pricerange.upper;
-        this.demandform.value.SqFeetInteriorFrom = this.sqfeetrange.lower;
-        this.demandform.value.SqFeetInteriorTo = this.sqfeetrange.upper;
-        this.demandform.value.YearFrom = this.yearange.lower;
-        this.demandform.value.YearTo = this.yearange.upper;
+        this.demandform.controls['PriceFrom'].setValue(this.pricerange.lower);
+        this.demandform.controls['PriceTo'].setValue(this.pricerange.upper);
+        this.demandform.controls['SqFeetInteriorFrom'].setValue(this.sqfeetrange.lower);
+        this.demandform.controls['SqFeetInteriorTo'].setValue(this.sqfeetrange.upper);
+        this.demandform.controls['YearFrom'].setValue(this.yearange.lower);
+        this.demandform.controls['YearTo'].setValue(this.yearange.upper);
+
         console.log(this.demandform.value);
         console.log(this.demandform.valid);
     }
@@ -176,14 +180,14 @@ export class DemandComponent implements OnInit {
             name: name
         });
 
-        selectModal.onDidDismiss(data => {
+        selectModal.onDidDismiss((data: InvolvepdPartyModel) => {
             if (typeId === InvolvedPartyType.Customer) {
-                this.demandform.value.CustomerId = data.InvolvedPartyId;
-                this.demandform.value.Customer = data;
+                this.demandform.controls['CustomerId'].setValue(data.InvolvedPartyId);
+                this.demandform.controls['Customer'].setValue(data);
                 this.customerFullName = data.FirstName + ' ' + data.LastName;
             } else {
-                this.demandform.value.ResponsibleId = data.InvolvedPartyId;
-                this.demandform.value.Responsible = data;
+                this.demandform.controls['ResponsibleId'].setValue(data.InvolvedPartyId);
+                this.demandform.controls['Responsible'].setValue(data);
                 this.responsibleFullName = data.FirstName + ' ' + data.LastName;
             }
             console.log(this.demandform.value);
@@ -205,7 +209,7 @@ export class DemandComponent implements OnInit {
 
         console.log('you submitted value: ', value);
         this.ipService
-            .saveDeamndOfInvolvedParty(this.demandform.value.CustomerId, this.demandform.value.DemandId, this.demandform.value)
+            .saveDeamandOfInvolvedParty(this.demandform.value.CustomerId, this.demandform.value.DemandId, this.demandform.value)
             .subscribe(
             updatedDM => this.demandUpdated(),
             error => this.setError(error)

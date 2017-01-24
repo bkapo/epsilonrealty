@@ -277,8 +277,6 @@ export class RealEstatePropertyComponent implements OnInit {
       if (typeId === InvolvedPartyType.Owner) {
         this.estateform.controls['OwnerId'].setValue(data.InvolvedPartyId);
         this.estateform.controls['Owner'].setValue(data);
-        // this.estateform.value.OwnerId = data.InvolvedPartyId;
-        // this.estateform.value.Owner = data;
         this.ownerFullName = data.FirstName + ' ' + data.LastName;
       } else if (typeId === InvolvedPartyType.Agent) {
         this.estateform.controls['ResponsibleId'].setValue(data.InvolvedPartyId);
@@ -289,8 +287,6 @@ export class RealEstatePropertyComponent implements OnInit {
       } else {
         this.estateform.controls['ProposedId'].setValue(data.InvolvedPartyId);
         this.estateform.controls['Proposed'].setValue(data);
-        // this.estateform.value.ProposedId = data.InvolvedPartyId;
-        // this.estateform.value.Proposed = data;
         this.propesedByFullName = data.FirstName + ' ' + data.LastName;
       }
       console.log(this.estateform.value);
