@@ -1,13 +1,25 @@
 import { InvolvepdPartyModel } from '../models/involved-party.model';
 
 export  class PropertyModel {
+
+    //Owner
+    OwnerId: number;
+    Owner: InvolvepdPartyModel;
+
+    //Responsible
+    ResponsibleId: number;
+    Responsible: InvolvepdPartyModel;
+
+    //Proposed
+    ProposedId: number;
+    Proposed: InvolvepdPartyModel;
     
     PropertyCategory: PropertyCategory;
     PropertyType: PropertyType;
     Purpose: Purpose;
 
-    Renovated: boolean;
-    NewConstruction: boolean;
+    Renovated: boolean = false;
+    NewConstruction: boolean = false;
     Rooms: number;
     NoOfKitchen: number;
     FullBedrooms: number;
@@ -16,20 +28,20 @@ export  class PropertyModel {
     LegalSemiOutdoorSpaces: number;
     Levels: number;
     FirePlaces: number;
-    EnergyPerformanceCertificates: boolean;
-    Mortgage: boolean;
-    HolidayHome: boolean;
-    StoneHome: boolean;
-    NeoClassicalHouse: boolean;
-    TraditionalHouse: boolean;
-    ListedBuildings: boolean;
-    LuxuryHouse: boolean;
-    Penthouse: boolean;
+    EnergyPerformanceCertificates: boolean = false;
+    Mortgage: boolean = false;
+    HolidayHome: boolean = false;
+    StoneHome: boolean = false;
+    NeoClassicalHouse: boolean = false;
+    TraditionalHouse: boolean = false;
+    ListedBuildings: boolean = false;
+    LuxuryHouse: boolean = false;
+    Penthouse: boolean = false;
 
     //Parking
     Parkings: number;
-    ClosedParking: boolean;
-    HeatedParking: boolean;
+    ClosedParking: boolean = false;
+    HeatedParking: boolean = false;
 
     //Additional Rooms
     Basement: boolean;
@@ -95,17 +107,6 @@ export  class PropertyModel {
     DistanceFromAirport: number;
     NearMetro: boolean;
 
-    //Owner
-    OwnerId: number;
-    Owner: InvolvepdPartyModel;
-
-    //Responsible
-    ResponsibleId: number;
-    Responsible: InvolvepdPartyModel;
-
-    //Proposed
-    ProposedId: number;
-    Proposed: InvolvepdPartyModel;
 
 }
 
