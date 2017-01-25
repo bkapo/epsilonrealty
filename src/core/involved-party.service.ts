@@ -89,19 +89,21 @@ export class IPService {
     }
 
     saveDeamandOfInvolvedParty(ipid: number, dmid: number, dm: DemandModel): Observable<DemandModel> {
-        let url = this.REST_API_URL + '/' + ipid + '/Demand/' + dmid;
+        
         let body = JSON.stringify(dm);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
         // If we're updating an existing demand
         if (dm.DemandId) {
+            let url = this.REST_API_URL + '/' + ipid + '/Demand/' + dmid;
             return this.http.put(url, body, options)
                 .map(this.extractData)
                 .catch(this.handleError);
             // Otherwise, create a new article
         } else {
-            return this.http.post(this.REST_API_URL, body, options)
+            let url = this.REST_API_URL + '/' + ipid + '/Demand/';
+            return this.http.post(url, body, options)
                 .map(this.extractData)
                 .catch(this.handleError);
         }
