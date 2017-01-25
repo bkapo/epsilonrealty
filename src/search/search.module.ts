@@ -18,5 +18,6 @@ import { SearchBarComponent } from './searchbar.component/searchbar.component';
     exports: [
                 SearchBarComponent ],
     providers: []
+    
 })
 export class SearchModule { }
