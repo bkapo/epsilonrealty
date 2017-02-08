@@ -209,7 +209,7 @@ export class DemandComponent implements OnInit {
 
         console.log('you submitted value: ', value);
         this.ipService
-            .saveDeamandOfInvolvedParty(this.demandform.value.CustomerId, this.demandform.value.DemandId, this.demandform.value)
+            .saveDeamandOfInvolvedParty(this.demandform.value.CustomerId, this.demandform.value.DemandId, this.demandform.value).finally(() => loader.dismiss())
             .subscribe(
             updatedDM => this.demandUpdated(),
             error => this.setError(error)
