@@ -36,6 +36,7 @@ export class IPService {
 
     getInvolvedPartyByType(typeId: number): Observable<InvolvepdPartyModel[]> {
         let url = this.REST_API_URL + '/GetByType/' + typeId;
+        console.log(url);
         return this.http.get(url)
             .map(res => res.json())
             .catch(this.handleError);
@@ -76,6 +77,7 @@ export class IPService {
 
     getDemandsOfAgent(agentid: number): Observable<DemandModel[]> {
         let url = this.REST_API_URL + '/Agents/' + agentid + '/Demands/';
+        console.log(url);
         return this.http.get(url)
             .map(this.extractData)
             .catch(this.handleError);
@@ -83,6 +85,7 @@ export class IPService {
 
     getPropertiesOfAgent(agentid: number): Observable<RealEstatePropertyModel[]> {
         let url = this.REST_API_URL + '/Agents/' + agentid + '/RealEstateProperties/';
+        console.log(url);
         return this.http.get(url)
             .map(this.extractData)
             .catch(this.handleError);

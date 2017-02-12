@@ -30,7 +30,7 @@
     },
     "devDependencies": {
         "@ionic/app-scripts": "1.0.1",
-        "typescript": "^2.1.5"
+        "typescript": "2.0.9"
     },
     "description": "epsilonrealty: An Hybrid Project"
 }

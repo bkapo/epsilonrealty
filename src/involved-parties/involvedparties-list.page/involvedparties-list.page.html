@@ -8,8 +8,6 @@
 </ion-header>
 
 <ion-content>
-    <div class="spacer" *ngIf="isLoading" style="width: 300px; height: 30px;"></div>
-    <ion-spinner *ngIf="isLoading"></ion-spinner>
     <list-errors *ngIf="errorObject" [errorObject]="errorObject"></list-errors>
 
     <ion-list>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 
 import { InvolvepdPartyModel } from '../../app/models/involved-party.model';
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
@@ -13,15 +13,19 @@ import { IPService } from '../../core/involved-party.service'
 export class InvolvedpartiesListPage implements OnInit {
     people: Array<InvolvepdPartyModel>;
     errorObject: ErrorModel
-    isLoading: boolean = false;
 
-    constructor(public nav: NavController, public ipService: IPService) {
+    constructor(public nav: NavController, public loadingCtrl: LoadingController, public ipService: IPService) {
         this.nav = nav;
     }
 
     getAllAgents() {
-        this.isLoading = true;
-        this.ipService.getInvolvedPartyByType(1).finally(() => this.isLoading = false)
+        let loader = this.loadingCtrl.create({
+            content: 'Please wait...',
+           // dismissOnPageChange: true
+        });
+        loader.present();
+
+        this.ipService.getInvolvedPartyByType(1).finally(() => loader.dismiss())
             .subscribe(
             (inv: InvolvepdPartyModel[]) => this.people = inv,
             error => this.setError(error),
@@ -43,12 +47,12 @@ export class InvolvedpartiesListPage implements OnInit {
         }
     }
 
-    setError(err){
-        if (err === 'Not found'){
-            this.errorObject = new ErrorModel(ErrorType.NotFound, 'Δεν βρέθηκαν αποτελέσματα...','');
+    setError(err) {
+        if (err === 'Not found') {
+            this.errorObject = new ErrorModel(ErrorType.NotFound, 'Δεν βρέθηκαν αποτελέσματα...', '');
             console.log(this.errorObject);
         } else {
-            this.errorObject = new ErrorModel(ErrorType.Error, err,'');
+            this.errorObject = new ErrorModel(ErrorType.Error, err, '');
         }
     }
 
