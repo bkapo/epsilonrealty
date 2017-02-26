@@ -49,60 +49,92 @@
                 </ion-segment-button>-->
             </ion-segment>
 
-            <ion-item>
-                <ion-label>Κατηγορία</ion-label>
-                <ion-select #item formControlName="PropertyCategory">
-                    <ion-option *ngFor="let item of propCategories | keys" value="{{item.key}}">{{item.value}} </ion-option>
-                </ion-select>
-            </ion-item>
-            <ion-item>
-                <ion-label>Τύπος</ion-label>
-                <ion-select #item formControlName="PropertyType">
-                    <ion-option *ngFor="let item of propTypes | keys" value="{{item.key}}">{{item.value}} </ion-option>
-                </ion-select>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Κωδικός Site</ion-label>
-                <ion-input type="text" formControlName="SiteCode"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Τίτλος</ion-label>
-                <ion-input type="text" formControlName="Title"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Τιμή</ion-label>
-                <ion-input type="number" formControlName="Price"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Εμβαδόν (τ.μ.)</ion-label>
-                <ion-input type="number" formControlName="SqFeeterior"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Εμβαδόν (τ.μ.)-Οικόπεδο</ion-label>
-                <ion-input type="number" formControlName="SqfFeetLand"></ion-input>
-            </ion-item>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Κατηγορία</ion-label>
+                            <ion-select #item formControlName="PropertyCategory">
+                                <ion-option *ngFor="let item of propCategories | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Τύπος</ion-label>
+                            <ion-select #item formControlName="PropertyType">
+                                <ion-option *ngFor="let item of propTypes | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
 
+                <ion-row>
+                    <ion-col col-12 col-md-8>
+                        <ion-item>
+                            <ion-label floating>Τίτλος</ion-label>
+                            <ion-input type="text" formControlName="Title"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label floating>Κωδικός Site</ion-label>
+                            <ion-input type="text" formControlName="SiteCode"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
 
-            <ion-item>
-                <ion-label>Περιφέρεια</ion-label>
-                <ion-select #item (ionChange)="onSelectPeriferia($event)">
-                    <ion-option *ngFor="let item of periferies" value="{{item.periferiaid}}">{{item.name}} </ion-option>
-                </ion-select>
-            </ion-item>
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Τιμή</ion-label>
+                            <ion-input type="number" formControlName="Price"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Εμβαδόν (τ.μ.)</ion-label>
+                            <ion-input type="number" formControlName="SqFeeterior"></ion-input>
+                        </ion-item>
+                    </ion-col>
 
-            <ion-item>
-                <ion-label>Περ. Ενότητα</ion-label>
-                <ion-select #item (ionChange)="onSelectPeriferiakiEnotita($event)">
-                    <ion-option *ngFor="let item of periferiakesEnotites" value="{{item.periferiakienotiaid}}">{{item.name}} </ion-option>
-                </ion-select>
-            </ion-item>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Εμβαδόν (τ.μ.)-Οικόπεδο</ion-label>
+                            <ion-input type="number" formControlName="SqfFeetLand"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
 
-            <ion-item>
-                <ion-label>Δήμος</ion-label>
-                <ion-select #item>
-                    <ion-option *ngFor="let item of dimoi" value="{{item.dimosid}}">{{item.name}} </ion-option>
-                </ion-select>
-            </ion-item>
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Περιφέρεια</ion-label>
+                            <ion-select #item (ionChange)="onSelectPeriferia($event)">
+                                <ion-option *ngFor="let item of periferies" value="{{item.periferiaid}}">{{item.name}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Περ. Ενότητα</ion-label>
+                            <ion-select #item (ionChange)="onSelectPeriferiakiEnotita($event)">
+                                <ion-option *ngFor="let item of periferiakesEnotites" value="{{item.periferiakienotiaid}}">{{item.name}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Δήμος</ion-label>
+                            <ion-select #item>
+                                <ion-option *ngFor="let item of dimoi" value="{{item.dimosid}}">{{item.name}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+
 
         </ion-list>
 
@@ -113,8 +145,8 @@
 
             <ion-item>
                 <ion-grid>
-                    <ion-row wrap responsive-sm>
-                        <ion-col width-33 *ngFor="let file_uri of images">
+                    <ion-row>
+                        <ion-col col-12 col-md *ngFor="let file_uri of images">
                             <img [src]="file_uri">
                         </ion-col>
                     </ion-row>
