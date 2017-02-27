@@ -128,25 +128,19 @@
                 </ion-row>
 
             </ion-grid>
-
-
         </ion-list>
 
         <ion-list *ngSwitchCase="'Photo'">
             <ion-list-header>
                 Φωτογραφιες
             </ion-list-header>
-
-            <ion-item>
-                <ion-grid>
-                    <ion-row>
-                        <ion-col col-12 col-md-2 *ngFor="let file_uri of images">
-                            <img [src]="file_uri">
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
-            </ion-item>
-
+            <ion-grid>
+                <ion-row align-items-center>
+                    <ion-col col-12 col-md-4 align-self-center *ngFor="let file_uri of images">
+                        <img [src]="file_uri">
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </ion-list>
 
         <ion-list *ngSwitchCase="'AdditionalRooms'">
@@ -274,8 +268,6 @@
             <ion-list-header>
                 Περιβαλλων Χωρος
             </ion-list-header>
-
-
             <ion-grid>
                 <ion-row>
                     <ion-col col-12 col-sm>
@@ -354,8 +346,9 @@
                         </ion-item>
                     </ion-col>
                 </ion-row>
-
-                <ion-item-divider color="light">Parking</ion-item-divider>
+                <ion-list-header>
+                    Parking
+                </ion-list-header>
                 <ion-row>
                     <ion-col col-12 col-sm align-self-center>
                         <ion-item>
@@ -580,15 +573,17 @@
             </a>
         </ion-list>
     </div>
+
     <ion-grid>
         <ion-row>
             <ion-col col-12 col-md-4 offset-md-4>
+                <div class="spacer" style="width: 300px; height: 15px;"></div>
                 <button ion-button type="submit" [disabled]="!estateform.valid" class="button button-positive button-clear button-block">Καταχωρηση</button>
             </ion-col>
         </ion-row>
     </ion-grid>
 
-    <div class="spacer" style="width: 300px; height: 15px;"></div>
+
 </form>
 
 <list-errors *ngIf="errorObject" [errorObject]="errorObject"></list-errors>
