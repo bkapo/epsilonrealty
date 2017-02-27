@@ -12,10 +12,7 @@
                 Θερμανση - Ασφαλεια - Additional Rooms
             </ion-segment-button>
             <ion-segment-button value="SurroundingArea">
-                Περιβαλλων Χωρος
-            </ion-segment-button>
-            <ion-segment-button value="Parking">
-                Parking
+                Περιβαλλων Χωρος - Parking
             </ion-segment-button>
             <ion-segment-button value="Other">
                 Other
@@ -143,33 +140,13 @@
             <ion-item>
                 <ion-grid>
                     <ion-row>
-                        <ion-col col-12 col-md *ngFor="let file_uri of images">
+                        <ion-col col-12 col-md-2 *ngFor="let file_uri of images">
                             <img [src]="file_uri">
                         </ion-col>
                     </ion-row>
                 </ion-grid>
             </ion-item>
 
-        </ion-list>
-
-        <ion-list *ngSwitchCase="'Parking'">
-            <ion-list-header>
-                Parking
-            </ion-list-header>
-            <ion-item>
-                <ion-label floating>Θέσεις Parking</ion-label>
-                <ion-input type="number" formControlName="Parkings"></ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label>Closed Parking</ion-label>
-                <ion-toggle checked="true" formControlName="ClosedParking"></ion-toggle>
-            </ion-item>
-
-            <ion-item>
-                <ion-label>Heated Parking</ion-label>
-                <ion-toggle checked="true" formControlName="HeatedParking"></ion-toggle>
-            </ion-item>
         </ion-list>
 
         <ion-list *ngSwitchCase="'AdditionalRooms'">
@@ -297,50 +274,113 @@
             <ion-list-header>
                 Περιβαλλων Χωρος
             </ion-list-header>
-            <ion-item>
-                <ion-label>Γήπεδο</ion-label>
-                <ion-toggle checked="true" formControlName="SportField"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Γκαζόν</ion-label>
-                <ion-toggle checked="true" formControlName="Grass"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Δένδρα</ion-label>
-                <ion-toggle checked="true" formControlName="Trees"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Πισίνα (Εξωτ.)</ion-label>
-                <ion-toggle checked="true" formControlName="OutdoorPool"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Πισίνα (Εξωτ.) - Θερμενόμενη</ion-label>
-                <ion-toggle checked="true" formControlName="OutdoorPoolHeated"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Πισίνα (Εσωτ.)</ion-label>
-                <ion-toggle checked="true" formControlName="IndoorPool"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Πισίνα (Εσωτ.) - Θερμενόμενη</ion-label>
-                <ion-toggle checked="true" formControlName="IndoorPoolHeated"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Κήπος</ion-label>
-                <ion-toggle checked="true" formControlName="Garden"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>BBQ (Εξωτ.)</ion-label>
-                <ion-toggle checked="true" formControlName="OutdoorBBQ"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Ηλεκτρικές Θύρες Εισόδου</ion-label>
-                <ion-toggle checked="true" formControlName="ElectronicGates"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Αυτ/το Πότισμα</ion-label>
-                <ion-toggle checked="true" formControlName="AutomaticWatering"></ion-toggle>
-            </ion-item>
+
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Γήπεδο</ion-label>
+                            <ion-toggle checked="true" formControlName="SportField"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Γκαζόν</ion-label>
+                            <ion-toggle checked="true" formControlName="Grass"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Δένδρα</ion-label>
+                            <ion-toggle checked="true" formControlName="Trees"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Πισίνα (Εξωτ.)</ion-label>
+                            <ion-toggle checked="true" formControlName="OutdoorPool"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Πισίνα (Εξωτ.) - Θερμενόμενη</ion-label>
+                            <ion-toggle checked="true" formControlName="OutdoorPoolHeated"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Πισίνα (Εσωτ.)</ion-label>
+                            <ion-toggle checked="true" formControlName="IndoorPool"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Πισίνα (Εσωτ.) - Θερμενόμενη</ion-label>
+                            <ion-toggle checked="true" formControlName="IndoorPoolHeated"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Κήπος</ion-label>
+                            <ion-toggle checked="true" formControlName="Garden"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>BBQ (Εξωτ.)</ion-label>
+                            <ion-toggle checked="true" formControlName="OutdoorBBQ"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Ηλεκτρικές Θύρες Εισόδου</ion-label>
+                            <ion-toggle checked="true" formControlName="ElectronicGates"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Αυτ/το Πότισμα</ion-label>
+                            <ion-toggle checked="true" formControlName="AutomaticWatering"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-list-header>
+                    Parking
+                </ion-list-header>
+                <ion-row>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label floating>Θέσεις Parking</ion-label>
+                            <ion-input type="number" formControlName="Parkings"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Closed Parking</ion-label>
+                            <ion-toggle checked="true" formControlName="ClosedParking"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Heated Parking</ion-label>
+                            <ion-toggle checked="true" formControlName="HeatedParking"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+
         </ion-list>
 
         <ion-list *ngSwitchCase="'Map'">
