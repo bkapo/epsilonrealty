@@ -12,19 +12,29 @@
         <div class="spacer" style="width: 300px; height: 41px;"></div>
 
         <ion-list>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-12 col-md-4 offset-md-4>
+                        <ion-item>
+                            <ion-label floating>Username</ion-label>
+                            <ion-input type="text"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4 offset-md-4>
+                        <ion-item>
+                            <ion-label floating>Password</ion-label>
+                            <ion-input type="password"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
 
-            <ion-item>
-                <ion-label floating>Username</ion-label>
-                <ion-input type="text"></ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label floating>Password</ion-label>
-                <ion-input type="password"></ion-input>
-            </ion-item>
-
+                <ion-row>
+                    <ion-col col-12 col-md-4 offset-md-4>
+                        <div class="spacer" style="height: 40px;"></div>
+                        <button ion-button block (click)="openPage()">Login</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </ion-list>
-        <div class="spacer" style="height: 40px;"></div>
-        <button ion-button block (click)="openPage()">Login</button>
     </form>
 </ion-content>

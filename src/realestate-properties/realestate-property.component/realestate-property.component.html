@@ -355,11 +355,9 @@
                     </ion-col>
                 </ion-row>
 
-                <ion-list-header>
-                    Parking
-                </ion-list-header>
+                <ion-item-divider color="light">Parking</ion-item-divider>
                 <ion-row>
-                    <ion-col col-12 col-sm>
+                    <ion-col col-12 col-sm align-self-center>
                         <ion-item>
                             <ion-label floating>Θέσεις Parking</ion-label>
                             <ion-input type="number" formControlName="Parkings"></ion-input>
@@ -388,54 +386,90 @@
                 Key Points & Map
             </ion-list-header>
 
-            <ion-item>
-                <ion-label>Κοντά σε Μετρό</ion-label>
-                <ion-toggle checked="true" formControlName="NearMetro"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Προσανατολισμός</ion-label>
-                <ion-input type="text" formControlName="Orientation"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Απόσταση απο Χωριό</ion-label>
-                <ion-input type="number" formControlName="DistanceFromVillage"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Απόσταση απο Πόλη</ion-label>
-                <ion-input type="number" formControlName="DistanceFromCity"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Απόσταση απο Θάλλασα</ion-label>
-                <ion-input type="number" formControlName="DistanceFromSea"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Απόσταση απο Αεροδρόμιο</ion-label>
-                <ion-input type="number" formControlName="DistanceFromAirport"></ion-input>
-            </ion-item>
 
-            <ion-item>
-                <ion-label floating>Youtube URL</ion-label>
-                <ion-input type="text" formControlName="YoutubeURL"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Latitude</ion-label>
-                <ion-input type="text" formControlName="GeoLat"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Longitude</ion-label>
-                <ion-input type="text" formControlName="GeoLong"></ion-input>
-            </ion-item>
-            <ion-item>
-                <a ion-item (click)="openMap()">
-                    <ion-icon name="map"></ion-icon>
-                    Google Maps
-                </a>
-            </ion-item>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <a ion-item (click)="openMap()">
+                                <ion-icon name="map"></ion-icon>
+                                Google Maps
+                            </a>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label floating>Latitude</ion-label>
+                            <ion-input type="text" formControlName="GeoLat"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label floating>Longitude</ion-label>
+                            <ion-input type="text" formControlName="GeoLong"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
 
-            <ion-item>
-                <ion-label>Χάρτης στα web portals</ion-label>
-                <ion-toggle checked="true" formControlName="UploadMapToRealEstatePortals"></ion-toggle>
-            </ion-item>
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Προσανατολισμός</ion-label>
+                            <ion-input type="text" formControlName="Orientation"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Απόσταση απο Χωριό</ion-label>
+                            <ion-input type="number" formControlName="DistanceFromVillage"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Απόσταση απο Πόλη</ion-label>
+                            <ion-input type="number" formControlName="DistanceFromCity"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Απόσταση απο Θάλλασα</ion-label>
+                            <ion-input type="number" formControlName="DistanceFromSea"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Απόσταση απο Αεροδρόμιο</ion-label>
+                            <ion-input type="number" formControlName="DistanceFromAirport"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Youtube URL</ion-label>
+                            <ion-input type="text" formControlName="YoutubeURL"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Κοντά σε Μετρό</ion-label>
+                            <ion-toggle checked="true" formControlName="NearMetro"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Χάρτης στα web portals</ion-label>
+                            <ion-toggle checked="true" formControlName="UploadMapToRealEstatePortals"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+
         </ion-list>
 
         <ion-list *ngSwitchCase="'Other'">
@@ -443,54 +477,89 @@
                 Other
             </ion-list-header>
 
-            <ion-item>
-                <ion-label>Βεράντες</ion-label>
-                <ion-toggle checked="true" formControlName="Terraces"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Εσωτερική Σκάλα</ion-label>
-                <ion-toggle checked="true" formControlName="InternalStairs"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Γωνιακό</ion-label>
-                <ion-toggle checked="true" formControlName="Corner"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>BBQ (Εσωτ.)</ion-label>
-                <ion-toggle checked="true" formControlName="IndoorBBQ"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Ασανσέρ</ion-label>
-                <ion-toggle checked="true" formControlName="Elevator"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Δορυφορική</ion-label>
-                <ion-toggle checked="true" formControlName="SatteliteTV"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Διπλά τζάμια</ion-label>
-                <ion-toggle checked="true" formControlName="DoubleWindows"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Τριπλά τζάμια</ion-label>
-                <ion-toggle checked="true" formControlName="TripleWindows"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Internet</ion-label>
-                <ion-toggle checked="true" formControlName="Internet"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Κατοικίδια</ion-label>
-                <ion-toggle checked="true" formControlName="AnimalFriendly"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Για Φοιτητές</ion-label>
-                <ion-toggle checked="true" formControlName="StudentsHousing"></ion-toggle>
-            </ion-item>
-            <ion-item>
-                <ion-label>Χωρίς Κοινόχρηστα</ion-label>
-                <ion-toggle checked="true" formControlName="WithoutCharges"></ion-toggle>
-            </ion-item>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Βεράντες</ion-label>
+                            <ion-toggle checked="true" formControlName="Terraces"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Εσωτερική Σκάλα</ion-label>
+                            <ion-toggle checked="true" formControlName="InternalStairs"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Γωνιακό</ion-label>
+                            <ion-toggle checked="true" formControlName="Corner"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>BBQ (Εσωτ.)</ion-label>
+                            <ion-toggle checked="true" formControlName="IndoorBBQ"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Ασανσέρ</ion-label>
+                            <ion-toggle checked="true" formControlName="Elevator"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Δορυφορική</ion-label>
+                            <ion-toggle checked="true" formControlName="SatteliteTV"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Διπλά τζάμια</ion-label>
+                            <ion-toggle checked="true" formControlName="DoubleWindows"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Τριπλά τζάμια</ion-label>
+                            <ion-toggle checked="true" formControlName="TripleWindows"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Internet</ion-label>
+                            <ion-toggle checked="true" formControlName="Internet"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Κατοικίδια</ion-label>
+                            <ion-toggle checked="true" formControlName="AnimalFriendly"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Για Φοιτητές</ion-label>
+                            <ion-toggle checked="true" formControlName="StudentsHousing"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Χωρίς Κοινόχρηστα</ion-label>
+                            <ion-toggle checked="true" formControlName="WithoutCharges"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
         </ion-list>
 
         <ion-list *ngSwitchCase="'Managment'">
@@ -511,9 +580,15 @@
             </a>
         </ion-list>
     </div>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12 col-md-4 offset-md-4>
+                <button ion-button type="submit" [disabled]="!estateform.valid" class="button button-positive button-clear button-block">Καταχωρηση</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
     <div class="spacer" style="width: 300px; height: 15px;"></div>
-    <button ion-button type="submit" [disabled]="!estateform.valid" class="button button-positive button-clear button-block">Καταχωρηση</button>
 </form>
 
 <list-errors *ngIf="errorObject" [errorObject]="errorObject"></list-errors>
