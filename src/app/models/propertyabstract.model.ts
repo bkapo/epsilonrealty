@@ -27,7 +27,6 @@ export  class PropertyModel {
     SemiOutdoorSpaces: number;
     LegalSemiOutdoorSpaces: number;
     Levels: number;
-    FirePlaces: number;
     EnergyPerformanceCertificates: boolean = false;
     Mortgage: boolean = false;
     HolidayHome: boolean = false;
@@ -59,6 +58,10 @@ export  class PropertyModel {
     SolarHeating: boolean;
     FloorHeating: boolean;
     Boiler: boolean;
+    AutonomusHeating: boolean;
+    CentralHeating: boolean;
+    FirePlaces: boolean;
+    Gas:boolean;
 
     //Security
     SafetyDoor: boolean;
@@ -106,7 +109,6 @@ export  class PropertyModel {
     DistanceFromSea: number;
     DistanceFromAirport: number;
     NearMetro: boolean;
-
 
 }
 

@@ -109,7 +109,7 @@ export class RealEstatePropertyComponent implements OnInit {
       SemiOutdoorSpaces: [this.estateproperty.SemiOutdoorSpaces],
       LegalSemiOutdoorSpaces: [this.estateproperty.LegalSemiOutdoorSpaces],
       Levels: [this.estateproperty.Levels],
-      FirePlaces: [this.estateproperty.FirePlaces],
+      
       EnergyPerformanceCertificates: [this.estateproperty.EnergyPerformanceCertificates],
       Mortgage: [this.estateproperty.Mortgage],
       HolidayHome: [this.estateproperty.HolidayHome],
@@ -141,6 +141,10 @@ export class RealEstatePropertyComponent implements OnInit {
       SolarHeating: [this.estateproperty.SolarHeating],
       FloorHeating: [this.estateproperty.FloorHeating],
       Boiler: [this.estateproperty.Boiler],
+      FirePlaces: [this.estateproperty.FirePlaces],
+      AutonomusHeating: [this.estateproperty.AutonomusHeating],
+      CentralHeating: [this.estateproperty.CentralHeating],
+      Gas: [this.estateproperty.Gas],
 
       //Security
       SafetyDoor: [this.estateproperty.SafetyDoor],

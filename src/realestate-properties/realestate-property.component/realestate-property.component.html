@@ -144,11 +144,10 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'AdditionalRooms'">
-            <ion-list-header>
-                Θερμανση - Ασφαλεια - Additional Rooms
-            </ion-list-header>
-
             <ion-grid>
+                <ion-list-header>
+                    Επιπλεον Δωματια
+                </ion-list-header>
                 <ion-row>
                     <ion-col col-12 col-sm>
                         <ion-item>
@@ -206,6 +205,9 @@
                     </ion-col>
                 </ion-row>
 
+                <ion-list-header>
+                    Θερμανση
+                </ion-list-header>
                 <ion-row>
                     <ion-col col-12 col-sm>
                         <ion-item>
@@ -227,12 +229,45 @@
                     </ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-col col-12 col-sm>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Αυτονομη Θέρμανση</ion-label>
+                            <ion-toggle checked="true" formControlName="AutonomusHeating"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Κεντρική Θέρμανση</ion-label>
+                            <ion-toggle checked="true" formControlName="CentralHeating"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Φυσικό αέριο</ion-label>
+                            <ion-toggle checked="true" formControlName="Gas"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Τζακι</ion-label>
+                            <ion-toggle checked="true" formControlName="FirePlaces"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm-4>
                         <ion-item>
                             <ion-label>Boiler</ion-label>
                             <ion-toggle checked="true" formControlName="Boiler"></ion-toggle>
                         </ion-item>
                     </ion-col>
+                </ion-row>
+
+                <ion-list-header>
+                    Ασφαλεια
+                </ion-list-header>
+                <ion-row>
                     <ion-col col-12 col-sm>
                         <ion-item>
                             <ion-label>Πόρτα Ασφαλείας</ion-label>
@@ -245,6 +280,12 @@
                             <ion-toggle checked="true" formControlName="Alarm"></ion-toggle>
                         </ion-item>
                     </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Θυροτηλεόραση</ion-label>
+                            <ion-toggle checked="true" formControlName="VideoDoorPhone"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col col-12 col-sm-4>
@@ -253,13 +294,6 @@
                             <ion-toggle checked="true" formControlName="SafetyDepositBox"></ion-toggle>
                         </ion-item>
                     </ion-col>
-                    <ion-col col-12 col-sm-4>
-                        <ion-item>
-                            <ion-label>Θυροτηλεόραση</ion-label>
-                            <ion-toggle checked="true" formControlName="VideoDoorPhone"></ion-toggle>
-                        </ion-item>
-                    </ion-col>
-
                 </ion-row>
             </ion-grid>
         </ion-list>
