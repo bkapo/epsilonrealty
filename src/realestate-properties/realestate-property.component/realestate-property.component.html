@@ -8,7 +8,7 @@
             <ion-segment-button value="Photo">
                 Φωτογραφιες
             </ion-segment-button>
-            <ion-segment-button value="AdditionalRooms">
+            <ion-segment-button value="HeatingSecurity">
                 Θερμανση - Ασφαλεια - Additional Rooms
             </ion-segment-button>
             <ion-segment-button value="SurroundingArea">
@@ -31,17 +31,19 @@
             <ion-list-header>
                 Γενικα
             </ion-list-header>
-            <ion-segment formControlName="Purpose" color="dark">
-                <ion-segment-button *ngFor="let item of propPurpose | keys" value="{{item.key}}">{{item.value}}
 
-                </ion-segment-button>
-                <!--<ion-segment-button value="2">
-                   Πωληση/ Ενοικιαση
-                </ion-segment-button>
-                <ion-segment-button value="3">
-                    Πωληση / Ενοικιαση
-                </ion-segment-button>-->
-            </ion-segment>
+            <ion-grid>
+                <ion-list radio-group formControlName="Purpose">
+                    <ion-row>
+                        <ion-col col-12 col-md-4 *ngFor="let item of propPurpose | keys">
+                            <ion-item>
+                                <ion-label>{{item.value}}</ion-label>
+                                <ion-radio value="{{item.key}}"> </ion-radio>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </ion-list>
+            </ion-grid>
 
             <ion-grid>
                 <ion-row>
@@ -78,11 +80,20 @@
                     </ion-col>
                 </ion-row>
 
+                <ion-list-header>
+                    Τιμή
+                </ion-list-header>
                 <ion-row>
                     <ion-col col-12 col-md>
                         <ion-item>
-                            <ion-label floating>Τιμή</ion-label>
-                            <ion-input type="number" formControlName="Price"></ion-input>
+                            <ion-label floating>Τιμή Πώλησης</ion-label>
+                            <ion-input type="number" formControlName="PriceSale"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Τιμή Ενοικίασης</ion-label>
+                            <ion-input type="number" formControlName="PriceRental"></ion-input>
                         </ion-item>
                     </ion-col>
                     <ion-col col-12 col-md>
@@ -100,6 +111,9 @@
                     </ion-col>
                 </ion-row>
 
+                <ion-list-header>
+                    Τοποθεσία
+                </ion-list-header>
                 <ion-row>
                     <ion-col col-12 col-md>
                         <ion-item>
@@ -143,8 +157,64 @@
             </ion-grid>
         </ion-list>
 
-        <ion-list *ngSwitchCase="'AdditionalRooms'">
+        <ion-list *ngSwitchCase="'HeatingSecurity'">
             <ion-grid>
+                <ion-list-header>
+                    Θερμανση
+                </ion-list-header>
+                <ion-row>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Θέρμανση</ion-label>
+                            <ion-select #item formControlName="HeatingCategory">
+                                <ion-option *ngFor="let item of heatingCategory | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Μέσο Θέρμανσης</ion-label>
+                            <ion-select #item formControlName="HeatingType">
+                                <ion-option *ngFor="let item of HeatingType | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Ενδοδαπέδια</ion-label>
+                            <ion-toggle checked="true" formControlName="FloorHeating"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Κλιματισμός (A/C)</ion-label>
+                            <ion-toggle checked="true" formControlName="AC"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Ηλιακός</ion-label>
+                            <ion-toggle checked="true" formControlName="SolarHeating"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Boiler</ion-label>
+                            <ion-toggle checked="true" formControlName="Boiler"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Τζακι</ion-label>
+                            <ion-toggle checked="true" formControlName="FirePlaces"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
                 <ion-list-header>
                     Επιπλεον Δωματια
                 </ion-list-header>
@@ -201,65 +271,6 @@
                         <ion-item>
                             <ion-label>Σοφίτα</ion-label>
                             <ion-toggle checked="true" formControlName="Attic"></ion-toggle>
-                        </ion-item>
-                    </ion-col>
-                </ion-row>
-
-                <ion-list-header>
-                    Θερμανση
-                </ion-list-header>
-                <ion-row>
-                    <ion-col col-12 col-sm>
-                        <ion-item>
-                            <ion-label>Κλιματισμός (A/C)</ion-label>
-                            <ion-toggle checked="true" formControlName="AC"></ion-toggle>
-                        </ion-item>
-                    </ion-col>
-                    <ion-col col-12 col-sm>
-                        <ion-item>
-                            <ion-label>Ηλιακός</ion-label>
-                            <ion-toggle checked="true" formControlName="SolarHeating"></ion-toggle>
-                        </ion-item>
-                    </ion-col>
-                    <ion-col col-12 col-sm>
-                        <ion-item>
-                            <ion-label>Ενδοδαπέδια Θέρμανση</ion-label>
-                            <ion-toggle checked="true" formControlName="FloorHeating"></ion-toggle>
-                        </ion-item>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col col-12 col-sm-4>
-                        <ion-item>
-                            <ion-label>Αυτονομη Θέρμανση</ion-label>
-                            <ion-toggle checked="true" formControlName="AutonomusHeating"></ion-toggle>
-                        </ion-item>
-                    </ion-col>
-                    <ion-col col-12 col-sm-4>
-                        <ion-item>
-                            <ion-label>Κεντρική Θέρμανση</ion-label>
-                            <ion-toggle checked="true" formControlName="CentralHeating"></ion-toggle>
-                        </ion-item>
-                    </ion-col>
-
-                    <ion-col col-12 col-sm-4>
-                        <ion-item>
-                            <ion-label>Φυσικό αέριο</ion-label>
-                            <ion-toggle checked="true" formControlName="Gas"></ion-toggle>
-                        </ion-item>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col col-12 col-sm-4>
-                        <ion-item>
-                            <ion-label>Τζακι</ion-label>
-                            <ion-toggle checked="true" formControlName="FirePlaces"></ion-toggle>
-                        </ion-item>
-                    </ion-col>
-                    <ion-col col-12 col-sm-4>
-                        <ion-item>
-                            <ion-label>Boiler</ion-label>
-                            <ion-toggle checked="true" formControlName="Boiler"></ion-toggle>
                         </ion-item>
                     </ion-col>
                 </ion-row>

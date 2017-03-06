@@ -5,7 +5,8 @@ export class RealEstatePropertyModel extends PropertyModel {
     SiteCode: string;
     Title: string;
 
-    Price: number;
+    PriceSale: number;
+    PriceRental: number;
     SqFeetInterior: number;
     SqfFeetLand: number;
     Year: number;

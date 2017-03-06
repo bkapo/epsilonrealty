@@ -5,7 +5,7 @@ import { ModalController, ToastController, LoadingController, NavController } fr
 
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page'
 import { RealEstatePropertyModel } from '../../app/models/realestate-property.model'
-import { PropertyCategory, PropertyType, Purpose } from '../../app/models/propertyabstract.model'
+import { PropertyCategory, PropertyType, Purpose, HeatingCategory, HeatingType } from '../../app/models/propertyabstract.model'
 
 import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model'
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
@@ -31,6 +31,8 @@ export class RealEstatePropertyComponent implements OnInit {
   propCategories = PropertyCategory;
   propTypes = PropertyType;
   propPurpose = Purpose;
+  heatingCategory = HeatingCategory;
+  HeatingType = HeatingType;
   images: Array<string>;
   countries: Array<Country>;
   periferies: Array<Periferia>;
@@ -96,10 +98,12 @@ export class RealEstatePropertyComponent implements OnInit {
 
       SiteCode: [this.estateproperty.SiteCode],
       Title: [this.estateproperty.Title],
-      Price: [this.estateproperty.Price],
+      PriceRental: [this.estateproperty.PriceRental],
+      PriceSale: [this.estateproperty.PriceSale],
       SqFeeterior: [this.estateproperty.SqFeetInterior],
       SqfFeetLand: [this.estateproperty.SqfFeetLand],
       Year: [this.estateproperty.Year],
+      
       Renovated: [this.estateproperty.Renovated],
       NewConstruction: [this.estateproperty.NewConstruction],
       Rooms: [this.estateproperty.Rooms],
@@ -137,14 +141,13 @@ export class RealEstatePropertyComponent implements OnInit {
       Attic: [this.estateproperty.Attic],
 
       //Heating
+      HeatingCategory: [this.estateproperty.HeatingCategory, Validators.required],
+      HeatingType: [this.estateproperty.HeatingType],
       AC: [this.estateproperty.AC],
       SolarHeating: [this.estateproperty.SolarHeating],
       FloorHeating: [this.estateproperty.FloorHeating],
       Boiler: [this.estateproperty.Boiler],
       FirePlaces: [this.estateproperty.FirePlaces],
-      AutonomusHeating: [this.estateproperty.AutonomusHeating],
-      CentralHeating: [this.estateproperty.CentralHeating],
-      Gas: [this.estateproperty.Gas],
 
       //Security
       SafetyDoor: [this.estateproperty.SafetyDoor],

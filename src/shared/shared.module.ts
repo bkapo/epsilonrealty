@@ -8,6 +8,8 @@ import { KeysPipe } from './pipes/keys.pipe';
 import { PropertyCategoryPipe } from './pipes/property-category.pipe';
 import { PropertyTypePipe } from './pipes/property-type.pipe';
 import { PurposePipe } from './pipes/purpose.pipe';
+import { HeatingCategoryPipe } from './pipes/heating-category.pipe';
+import { HeatingTypePipe } from './pipes/heating-type.pipe';
 
 import { ListErrorsComponent } from './list-errors.component/list-errors.component'
 
@@ -21,6 +23,8 @@ import { ListErrorsComponent } from './list-errors.component/list-errors.compone
         IonicModule.forRoot(PropertyCategoryPipe),
         IonicModule.forRoot(PropertyTypePipe),
         IonicModule.forRoot(PurposePipe),
+        IonicModule.forRoot(HeatingCategoryPipe),
+        IonicModule.forRoot(HeatingTypePipe),
         IonicModule.forRoot(ListErrorsComponent)],
     declarations: [
         InvolvedPartyTypePipe,
@@ -28,6 +32,8 @@ import { ListErrorsComponent } from './list-errors.component/list-errors.compone
         PropertyCategoryPipe,
         PropertyTypePipe,
         PurposePipe,
+        HeatingTypePipe,
+        HeatingCategoryPipe,
         ListErrorsComponent],
     exports: [
         InvolvedPartyTypePipe, 
@@ -35,6 +41,8 @@ import { ListErrorsComponent } from './list-errors.component/list-errors.compone
         PropertyCategoryPipe,
         PropertyTypePipe, 
         PurposePipe,
+        HeatingTypePipe,
+        HeatingCategoryPipe,
         ListErrorsComponent,
         CommonModule, 
         FormsModule,

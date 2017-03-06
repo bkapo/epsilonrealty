@@ -14,6 +14,7 @@ export  class PropertyModel {
     ProposedId: number;
     Proposed: InvolvepdPartyModel;
     
+    //Category - Purpose
     PropertyCategory: PropertyCategory;
     PropertyType: PropertyType;
     Purpose: Purpose;
@@ -54,14 +55,13 @@ export  class PropertyModel {
     Attic: boolean;
 
     //Heating
+    HeatingCategory: HeatingCategory;
+    HeatingType: HeatingType;
     AC: boolean;
     SolarHeating: boolean;
     FloorHeating: boolean;
     Boiler: boolean;
-    AutonomusHeating: boolean;
-    CentralHeating: boolean;
     FirePlaces: boolean;
-    Gas:boolean;
 
     //Security
     SafetyDoor: boolean;
@@ -113,7 +113,7 @@ export  class PropertyModel {
 }
 
 export enum PropertyCategory {
-    'Katoikia' = 1, 'Epagelmatiko', 'Oikopedo', 'Loipa'
+    'Κατοικία' = 1, 'Επαγγελματικό', 'Γη', 'Λοιπά'
 }
 
 export enum PropertyType {
@@ -126,8 +126,16 @@ export enum PropertyType {
     'XorosStathmeysis', 'Loipa'
 }
 
+export enum HeatingCategory {
+    'Αυτόνομη' = 1, 'Κεντιρκή', 'Χωρίς'
+}
+
+export enum HeatingType {
+    'Πετρέλαιο' = 1, 'Φυσικό Αέριο', 'Υγραέριο', 'Ρεύμα', 'Σόμπα', 'Θερμοσυσσωρευτής', 'Pallet', 'Υπέρυθρες', 'Fan Coil', 'Ξύλα', 'Τηλεθέρμανση', 'Γεωθερμική'
+}
+
 export enum Purpose {
-    Rental = 1,
-    Sale = 2,
-    RentalOrSale = 3 
+    Ενοικίαση = 1,
+    Πώληση = 2,
+    "Ενοικίαση & Πώληση" = 3 
 }
