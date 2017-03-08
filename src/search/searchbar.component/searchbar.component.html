@@ -9,6 +9,16 @@
 
 <ion-content padding class="getting-started">
 
+    <ion-fab top right edge #fab>
+        <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+        <ion-fab-list>
+            <button ion-fab (click)="addProperty(fab)"><ion-icon name="home"></ion-icon></button>
+            <button ion-fab><ion-icon name="briefcase"></ion-icon></button>
+            <button ion-fab><ion-icon name="pin"></ion-icon></button>
+            <button ion-fab><ion-icon name="cube"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
+
     <ion-segment [(ngModel)]="searchType" color="primary">
         <ion-segment-button value="Customer">
             <ion-icon name="people"></ion-icon>
@@ -54,12 +64,6 @@
         <ion-buttons start>
             <button ion-button color="royal" (click)="addIP() ">
             <ion-icon name="person-add" ></ion-icon>
-        </button>
-        </ion-buttons>
-
-        <ion-buttons end>
-            <button ion-button color="royal" (click)="addProperty() ">
-            <ion-icon name="cube" ></ion-icon>
         </button>
         </ion-buttons>
 

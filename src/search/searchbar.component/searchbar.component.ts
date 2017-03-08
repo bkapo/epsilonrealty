@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, FabContainer } from 'ionic-angular';
 
 import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model';
 import { InvolvedPartyAddPage  } from '../../involved-parties/involved-party-add.page/involved-party-add.page'
@@ -99,7 +99,8 @@ export class SearchBarComponent {
     /**
      * Add RealEstatePropertyModel
      */
-    addProperty() {
+    addProperty(fab: FabContainer) {
+        fab.close();
         this.newProp = new RealEstatePropertyModel;
         this.nav.push(RealEstatePropertyAddPage, {
             paramEstate: this.newProp

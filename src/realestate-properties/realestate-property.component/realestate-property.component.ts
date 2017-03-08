@@ -103,7 +103,7 @@ export class RealEstatePropertyComponent implements OnInit {
       SqFeeterior: [this.estateproperty.SqFeetInterior],
       SqfFeetLand: [this.estateproperty.SqfFeetLand],
       Year: [this.estateproperty.Year],
-      
+
       Renovated: [this.estateproperty.Renovated],
       NewConstruction: [this.estateproperty.NewConstruction],
       Rooms: [this.estateproperty.Rooms],
