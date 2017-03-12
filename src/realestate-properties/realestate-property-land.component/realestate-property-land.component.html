@@ -1,0 +1,349 @@
+<form [formGroup]="estateform" (ngSubmit)="onSubmit(estateform)">
+
+    <div padding>
+        <ion-segment [(ngModel)]="estateSegment" [ngModelOptions]="{standalone: true}" color="primary">
+            <ion-segment-button value="Basic">
+                Γενικα
+            </ion-segment-button>
+            <ion-segment-button value="Photo">
+                Φωτογραφιες
+            </ion-segment-button>
+            <ion-segment-button value="Other">
+                Χαρακτηριστικά
+            </ion-segment-button>
+            <ion-segment-button value="Map">
+                Key Points & Map
+            </ion-segment-button>
+            <ion-segment-button value="Managment">
+                Διαχειριση
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div [ngSwitch]="estateSegment">
+        <ion-list *ngSwitchCase="'Basic'">
+            <ion-list-header>
+                Γενικα
+            </ion-list-header>
+
+            <ion-grid>
+                <ion-list radio-group formControlName="Purpose">
+                    <ion-row>
+                        <ion-col col-12 col-md-4 *ngFor="let item of propPurpose | keys">
+                            <ion-item>
+                                <ion-label>{{item.value}}</ion-label>
+                                <ion-radio value="{{item.key}}"> </ion-radio>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </ion-list>
+            </ion-grid>
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Κατηγορία</ion-label>
+                            <ion-select #item formControlName="PropertyCategory">
+                                <ion-option *ngFor="let item of propCategories | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Τύπος</ion-label>
+                            <ion-select #item formControlName="PropertyType">
+                                <ion-option *ngFor="let item of propTypes | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label floating>Κωδικός Site</ion-label>
+                            <ion-input type="text" formControlName="SiteCode"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md-8>
+                        <ion-item>
+                            <ion-label floating>Τίτλος</ion-label>
+                            <ion-input type="text" formControlName="Title"></ion-input>
+                        </ion-item>
+                    </ion-col>
+
+                </ion-row>
+
+                <ion-list-header>
+                    Τιμή
+                </ion-list-header>
+                <ion-row>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Είδος γης</ion-label>
+                            <ion-select #item formControlName="LandType">
+                                <ion-option *ngFor="let item of landType | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Τιμή Πώλησης</ion-label>
+                            <ion-input type="number" formControlName="PriceSale"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Τιμή Ενοικίασης</ion-label>
+                            <ion-input type="number" formControlName="PriceRental"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Εμβαδό (τ.μ.)</ion-label>
+                            <ion-input type="number" formControlName="SqfFeetLand"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-list-header>
+                    Τοποθεσία
+                </ion-list-header>
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Περιφέρεια</ion-label>
+                            <ion-select #item (ionChange)="onSelectPeriferia($event)">
+                                <ion-option *ngFor="let item of periferies" value="{{item.periferiaid}}">{{item.name}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Περ. Ενότητα</ion-label>
+                            <ion-select #item (ionChange)="onSelectPeriferiakiEnotita($event)">
+                                <ion-option *ngFor="let item of periferiakesEnotites" value="{{item.periferiakienotiaid}}">{{item.name}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Δήμος</ion-label>
+                            <ion-select #item>
+                                <ion-option *ngFor="let item of dimoi" value="{{item.dimosid}}">{{item.name}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Photo'">
+            <ion-list-header>
+                Φωτογραφιες
+            </ion-list-header>
+            <ion-grid>
+                <ion-row align-items-center>
+                    <ion-col col-12 col-md-4 align-self-center *ngFor="let file_uri of images">
+                        <img [src]="file_uri">
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Map'">
+            <ion-list-header>
+                Key Points & Map
+            </ion-list-header>
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <a ion-item (click)="openMap()">
+                                <ion-icon name="map"></ion-icon>
+                                Google Maps
+                            </a>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label floating>Latitude</ion-label>
+                            <ion-input type="text" formControlName="GeoLat"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label floating>Longitude</ion-label>
+                            <ion-input type="text" formControlName="GeoLong"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Προσανατολισμός</ion-label>
+                            <ion-input type="text" formControlName="Orientation"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Απόσταση απο Χωριό</ion-label>
+                            <ion-input type="number" formControlName="DistanceFromVillage"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Απόσταση απο Πόλη</ion-label>
+                            <ion-input type="number" formControlName="DistanceFromCity"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Απόσταση απο Θάλλασα</ion-label>
+                            <ion-input type="number" formControlName="DistanceFromSea"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Απόσταση απο Αεροδρόμιο</ion-label>
+                            <ion-input type="number" formControlName="DistanceFromAirport"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Youtube URL</ion-label>
+                            <ion-input type="text" formControlName="YoutubeURL"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Κοντά σε Μετρό</ion-label>
+                            <ion-toggle checked="true" formControlName="NearMetro"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Χάρτης στα web portals</ion-label>
+                            <ion-toggle checked="true" formControlName="UploadMapToRealEstatePortals"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Other'">
+            <ion-list-header>
+                Χαρακτηριστικά
+            </ion-list-header>
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Συντελεστής δόμησης </ion-label>
+                            <ion-input type="number" formControlName="BuiltSurfaceRatio"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Συντελεστής κάλυψης</ion-label>
+                            <ion-input type="number" formControlName="BuildingDensityFactor"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Μήκος πρόσοψης</ion-label>
+                            <ion-input type="number" formControlName="BuildingFacade"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Ζώνη</ion-label>
+                            <ion-select #item formControlName="LandZone">
+                                <ion-option *ngFor="let item of landZone | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Κλίση</ion-label>
+                            <ion-input type="number" formControlName="Inclination"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Εντός σχεδίου πόλεως</ion-label>
+                            <ion-toggle checked="true" formControlName="UrbanPlanningZone"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Κατάλληλο για αγροτική χρήση</ion-label>
+                            <ion-toggle checked="true" formControlName="RuralDevelopment"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Γωνιακό</ion-label>
+                            <ion-toggle checked="true" formControlName="Corner"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Managment'">
+            <ion-list-header>
+                Διαχειριση
+            </ion-list-header>
+            <a ion-item (click)="selectBroker()">
+                <ion-icon name="contact"></ion-icon>
+                Broker: {{responsibleFullName}}
+            </a>
+            <a ion-item (click)="selectOwner()">
+                <ion-icon name="key"></ion-icon>
+                Ιδιοκτήτης: {{ownerFullName}}
+            </a>
+            <a ion-item (click)="selectProposed()">
+                <ion-icon name="git-compare"></ion-icon>
+                Σύσταση από: {{propesedByFullName}}
+            </a>
+        </ion-list>
+    </div>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12 col-md-4 offset-md-4>
+                <div class="spacer" style="width: 300px; height: 15px;"></div>
+                <button ion-button type="submit" [disabled]="!estateform.valid" class="button button-positive button-clear button-block">Καταχωρηση</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+</form>
+
+<list-errors *ngIf="errorObject" [errorObject]="errorObject"></list-errors>
+
+<!--<pre>{{images | json}}</pre>-->

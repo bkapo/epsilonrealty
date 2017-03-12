@@ -10,6 +10,9 @@ import { PropertyTypePipe } from './pipes/property-type.pipe';
 import { PurposePipe } from './pipes/purpose.pipe';
 import { HeatingCategoryPipe } from './pipes/heating-category.pipe';
 import { HeatingTypePipe } from './pipes/heating-type.pipe';
+import { LandTypePipe } from './pipes/land-type.pipe';
+import { LandZonePipe } from './pipes/land-zone.pipe'
+import { OrientationPipe } from './pipes/orientation.pipe';
 
 import { ListErrorsComponent } from './list-errors.component/list-errors.component'
 
@@ -25,6 +28,9 @@ import { ListErrorsComponent } from './list-errors.component/list-errors.compone
         IonicModule.forRoot(PurposePipe),
         IonicModule.forRoot(HeatingCategoryPipe),
         IonicModule.forRoot(HeatingTypePipe),
+        IonicModule.forRoot(LandTypePipe),
+        IonicModule.forRoot(LandZonePipe),
+        IonicModule.forRoot(OrientationPipe),
         IonicModule.forRoot(ListErrorsComponent)],
     declarations: [
         InvolvedPartyTypePipe,
@@ -34,17 +40,23 @@ import { ListErrorsComponent } from './list-errors.component/list-errors.compone
         PurposePipe,
         HeatingTypePipe,
         HeatingCategoryPipe,
+        LandTypePipe,
+        LandZonePipe,
+        OrientationPipe,
         ListErrorsComponent],
     exports: [
-        InvolvedPartyTypePipe, 
-        KeysPipe, 
+        InvolvedPartyTypePipe,
+        KeysPipe,
         PropertyCategoryPipe,
-        PropertyTypePipe, 
+        PropertyTypePipe,
         PurposePipe,
         HeatingTypePipe,
         HeatingCategoryPipe,
+        LandTypePipe,
+        LandZonePipe,
+        OrientationPipe,
         ListErrorsComponent,
-        CommonModule, 
+        CommonModule,
         FormsModule,
         ReactiveFormsModule]
 })

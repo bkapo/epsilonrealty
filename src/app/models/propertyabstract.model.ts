@@ -14,11 +14,22 @@ export  class PropertyModel {
     ProposedId: number;
     Proposed: InvolvepdPartyModel;
     
-    //Category - Purpose
+    //Category - Type - Purpose
     PropertyCategory: PropertyCategory;
     PropertyType: PropertyType;
     Purpose: Purpose;
+    
+    //Land//
+    LandType: LandType;
+    BuiltSurfaceRatio: number; //συντελεστής δόμησης  
+    BuildingDensityFactor: number; //Συντελεστής κάλυψης
+    BuildingFacade: number; //Μήκος πρόσοψης
+    LandZone: LandZone; //Ζώνη
+    Inclination: number;
+    UrbanPlanningZone: boolean = false; //Εντός σχεδίου πόλεως
+    RuralDevelopment: boolean = false;  //Κατάλληλο για αγροτική χρήση
 
+    Orientation: Orientation;
     Renovated: boolean = false;
     NewConstruction: boolean = false;
     Rooms: number;
@@ -37,7 +48,11 @@ export  class PropertyModel {
     ListedBuildings: boolean = false;
     LuxuryHouse: boolean = false;
     Penthouse: boolean = false;
-
+    Antiparoxi: boolean = false;
+    Sight: boolean = false; //Θεα
+    FrontView: boolean = false; //Πρόσοψης
+    Investment: boolean = false; //Επενδυτικό
+    
     //Parking
     Parkings: number;
     ClosedParking: boolean = false;
@@ -103,7 +118,6 @@ export  class PropertyModel {
     Furnished: boolean;
 
     //Distances from key pos
-    Orientation: string;
     DistanceFromVillage: number;
     DistanceFromCity: number;
     DistanceFromSea: number;
@@ -130,6 +144,7 @@ export enum HeatingCategory {
     'Αυτόνομη' = 1, 'Κεντιρκή', 'Χωρίς'
 }
 
+
 export enum HeatingType {
     'Πετρέλαιο' = 1, 'Φυσικό Αέριο', 'Υγραέριο', 'Ρεύμα', 'Σόμπα', 'Θερμοσυσσωρευτής', 'Pallet', 'Υπέρυθρες', 'Fan Coil', 'Ξύλα', 'Τηλεθέρμανση', 'Γεωθερμική'
 }
@@ -139,3 +154,16 @@ export enum Purpose {
     Πώληση = 2,
     "Ενοικίαση & Πώληση" = 3 
 }
+
+export enum LandType {
+    'Οικόπεδο' = 1, 'Αγροτεμάχιο', 'Νησί', 'Λοιπά'
+}
+
+export enum LandZone {
+    'Οικιστική Ζώνη' = 1, 'Αγροτική', 'Εμπορική', 'Βιομηχανική', 'Ζώνη Ανάπλασης', 'Εκτός Σχεδίου'
+}
+
+export enum Orientation {
+    'Ανατολικός' = 1, 'Ανατολικοδυτικός', 'Ανατολικομεσημβρινός', 'Βόρειος', 'Βορειοανατολικός', 'Βορειοδυτικός'
+}
+

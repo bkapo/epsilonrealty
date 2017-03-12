@@ -5,7 +5,7 @@ import { ModalController, ToastController, LoadingController, NavController } fr
 
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page'
 import { RealEstatePropertyModel } from '../../app/models/realestate-property.model'
-import { PropertyCategory, PropertyType, Purpose, HeatingCategory, HeatingType } from '../../app/models/propertyabstract.model'
+import { PropertyCategory, PropertyType, Purpose, HeatingCategory, HeatingType, LandType, LandZone, Orientation } from '../../app/models/propertyabstract.model'
 
 import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model'
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
@@ -33,6 +33,9 @@ export class RealEstatePropertyComponent implements OnInit {
   propPurpose = Purpose;
   heatingCategory = HeatingCategory;
   HeatingType = HeatingType;
+  landType = LandType;
+  landZone = LandZone;
+  orientation = Orientation;
   images: Array<string>;
   countries: Array<Country>;
   periferies: Array<Periferia>;
@@ -96,6 +99,16 @@ export class RealEstatePropertyComponent implements OnInit {
       PropertyType: [this.estateproperty.PropertyType, Validators.required],
       Purpose: [this.estateproperty.Purpose, Validators.required],
 
+      //Land//
+      LandType: [this.estateproperty.LandType],
+      BuiltSurfaceRatio: [this.estateproperty.BuiltSurfaceRatio], //συντελεστής δόμησης  
+      BuildingDensityFactor: [this.estateproperty.BuildingDensityFactor], //Συντελεστής κάλυψης
+      BuildingFacade: [this.estateproperty.BuildingFacade], //Μήκος πρόσοψης
+      LandZone: [this.estateproperty.LandZone],
+      Inclination: [this.estateproperty.Inclination],
+      UrbanPlanningZone: [this.estateproperty.UrbanPlanningZone], //Εντός σχεδίου πόλεως
+      RuralDevelopment: [this.estateproperty.RuralDevelopment], //Κατάλληλο για αγροτική χρήση
+
       SiteCode: [this.estateproperty.SiteCode],
       Title: [this.estateproperty.Title],
       PriceRental: [this.estateproperty.PriceRental],
@@ -113,7 +126,7 @@ export class RealEstatePropertyComponent implements OnInit {
       SemiOutdoorSpaces: [this.estateproperty.SemiOutdoorSpaces],
       LegalSemiOutdoorSpaces: [this.estateproperty.LegalSemiOutdoorSpaces],
       Levels: [this.estateproperty.Levels],
-      
+
       EnergyPerformanceCertificates: [this.estateproperty.EnergyPerformanceCertificates],
       Mortgage: [this.estateproperty.Mortgage],
       HolidayHome: [this.estateproperty.HolidayHome],

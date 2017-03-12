@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, FabContainer } from 'ionic-angular';
 
 import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model';
-import { InvolvedPartyAddPage  } from '../../involved-parties/involved-party-add.page/involved-party-add.page'
+import { InvolvedPartyAddPage } from '../../involved-parties/involved-party-add.page/involved-party-add.page'
 import { RealEstatePropertyModel } from '../../app/models/realestate-property.model'
+import { PropertyCategory } from '../../app/models/propertyabstract.model'
 import { RealEstatePropertyAddPage } from '../../realestate-properties/realestate-property-add.page/realestate-property-add.page';
 import { DemandModel } from '../../app/models/demand.model'
 import { DemandAddComponent } from '../../demands/demand-add.component/demand-add.component';
@@ -27,7 +28,7 @@ export class SearchBarComponent {
     isLoading: boolean = false;
 
     constructor(public nav: NavController, public ipService: IPService, public repService: REPService) {
-        
+
     }
 
     /**
@@ -40,26 +41,26 @@ export class SearchBarComponent {
         this.errorObject = null;
 
         let q = ev.target.value;
-        
+
         // if the value is an empty string don't search 
         if (!q || q.trim() === '') {
             this.isLoading = false;
             return;
         }
-        
+
         let searchValue: string = InvolvedPartyType[InvolvedPartyType[this.searchType]];
         console.log(searchValue);
         if (searchValue === InvolvedPartyType[InvolvedPartyType.Agent]
-            || searchValue === InvolvedPartyType[InvolvedPartyType.Collaborator] 
+            || searchValue === InvolvedPartyType[InvolvedPartyType.Collaborator]
             || searchValue === InvolvedPartyType[InvolvedPartyType.Contact]
-            || searchValue === InvolvedPartyType[InvolvedPartyType.Customer] 
+            || searchValue === InvolvedPartyType[InvolvedPartyType.Customer]
             || searchValue === InvolvedPartyType[InvolvedPartyType.Owner]
         ) {
             this.ipService.searchInolvedPartyByLastName(q).finally(() => this.isLoading = false)
                 .debounceTime(600)
                 .distinctUntilChanged()
                 .subscribe(
-                (people : InvolvepdPartyModel[]) => this.involvedparties = people,
+                (people: InvolvepdPartyModel[]) => this.involvedparties = people,
                 error => this.setError(error)
                 );
         } else {
@@ -67,18 +68,18 @@ export class SearchBarComponent {
                 .debounceTime(600)
                 .distinctUntilChanged()
                 .subscribe(
-                    (lst: RealEstatePropertyModel[]) => this.properties = lst,
-                    error => this.setError(error)
+                (lst: RealEstatePropertyModel[]) => this.properties = lst,
+                error => this.setError(error)
                 );
         }
     }
 
-    setError(err){
-        if (err === 'Not found'){
-            this.errorObject = new ErrorModel(ErrorType.NotFound, 'Δεν βρέθηκαν αποτελέσματα...','');
+    setError(err) {
+        if (err === 'Not found') {
+            this.errorObject = new ErrorModel(ErrorType.NotFound, 'Δεν βρέθηκαν αποτελέσματα...', '');
             console.log(this.errorObject);
         } else {
-            this.errorObject = new ErrorModel(ErrorType.Error, err,'');
+            this.errorObject = new ErrorModel(ErrorType.Error, err, '');
         }
     }
 
@@ -102,6 +103,16 @@ export class SearchBarComponent {
     addProperty(fab: FabContainer) {
         fab.close();
         this.newProp = new RealEstatePropertyModel;
+        this.newProp.PropertyCategory = PropertyCategory.Κατοικία;
+        this.nav.push(RealEstatePropertyAddPage, {
+            paramEstate: this.newProp
+        });
+    }
+
+    addLand(fab: FabContainer) {
+        fab.close();
+        this.newProp = new RealEstatePropertyModel;
+        this.newProp.PropertyCategory = PropertyCategory.Γη;
         this.nav.push(RealEstatePropertyAddPage, {
             paramEstate: this.newProp
         });
