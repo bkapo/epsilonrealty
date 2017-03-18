@@ -3,7 +3,7 @@ import { NavParams, NavController, LoadingController } from 'ionic-angular';
 
 import { DemandModel } from '../../app/models/demand.model';
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
-import { PropertyCategory, PropertyType } from '../../app/models/propertyabstract.model'
+import { PropertyCategory } from '../../app/models/propertyabstract.model'
 import { IPService } from '../../core/involved-party.service'
 import { InvolvedPartyType } from '../../app/models/involved-party.model'
 
@@ -19,7 +19,7 @@ export class DemandListPage implements OnInit {
     demands: Array<DemandModel>;
     errorObject: ErrorModel
     propCategories = PropertyCategory;
-    propTypes = PropertyType;
+    //propTypes = PropertyType;
     notFound: string = '';
 
     constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, navParams: NavParams, public ipService: IPService) {

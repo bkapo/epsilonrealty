@@ -7,7 +7,7 @@ import { IPService } from '../../core/involved-party.service';
 import { DemandModel } from '../../app/models/demand.model';
 import { ErrorModel, ErrorType } from '../../app/models/error.model';
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page';
-import { PropertyCategory, PropertyType } from '../../app/models/propertyabstract.model';
+import { PropertyCategory, HousePropertyType, CommercialPropertyType, LandPropertyType, OtherPropertyType } from '../../app/models/propertyabstract.model';
 import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model';
 
 @Component({
@@ -28,7 +28,10 @@ export class DemandComponent implements OnInit {
     yearange: any = { lower: 2000, upper: 2017 };
     customerFullName: string = 'Επιλέξτε';
     propCategories = PropertyCategory;
-    propTypes = PropertyType;
+    housePropertyType = HousePropertyType;
+    otherPropertytype = OtherPropertyType;
+    landPropertyType = LandPropertyType;
+    commercialPropertyType = CommercialPropertyType;
 
 
     constructor(public fb: FormBuilder, public navCtrl: NavController, public modalCtrl: ModalController, public ipService: IPService,
@@ -62,8 +65,13 @@ export class DemandComponent implements OnInit {
             Responsible: [this.demand.Responsible, Validators.required],
 
             PropertyCategory: [this.demand.PropertyCategory, Validators.required],
-            PropertyType: [this.demand.PropertyType],
             Purpose: [this.demand.Purpose, Validators.required],
+
+            //Type
+            HousePropertyType: [this.demand.HousePropertyType],
+            CommercialPropertyType: [this.demand.CommercialPropertyType],
+            OtherPropertyType: [this.demand.OtherPropertyType],
+            LandType: [this.demand.LandPropertyType],
 
             PriceFrom: [this.demand.PriceFrom, Validators.required],
             PriceTo: [this.demand.PriceTo, Validators.required],

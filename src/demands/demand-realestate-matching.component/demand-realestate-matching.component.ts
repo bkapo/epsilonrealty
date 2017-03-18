@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
 
 import { RealEstatePropertyModel } from '../../app/models/realestate-property.model'
-import { PropertyCategory, PropertyType } from '../../app/models//propertyabstract.model'
+import { PropertyCategory } from '../../app/models//propertyabstract.model'
 
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
 import { DemandModel } from '../../app/models/demand.model';
@@ -19,7 +19,7 @@ export class DemandRealEstateMatching implements OnInit {
     errorObject: ErrorModel
     isLoading: boolean = false;
     propCategories = PropertyCategory;
-    propTypes = PropertyType;
+    //propTypes = PropertyType;
 
     constructor(public navCtrl: NavController, navParams: NavParams, public repService: REPService) {
         this.params = navParams;

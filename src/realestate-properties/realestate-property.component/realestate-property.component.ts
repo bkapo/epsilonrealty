@@ -5,7 +5,7 @@ import { ModalController, ToastController, LoadingController, NavController } fr
 
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page'
 import { RealEstatePropertyModel } from '../../app/models/realestate-property.model'
-import { PropertyCategory, PropertyType, Purpose, HeatingCategory, HeatingType, LandType, LandZone, Orientation } from '../../app/models/propertyabstract.model'
+import { PropertyCategory, HousePropertyType, OtherPropertyType, CommercialPropertyType, Purpose, HeatingCategory, HeatingType, LandPropertyType, LandZone, Orientation } from '../../app/models/propertyabstract.model'
 
 import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model'
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
@@ -29,11 +29,13 @@ export class RealEstatePropertyComponent implements OnInit {
   propesedByFullName: string = 'Επιλέξτε';
   errorObject: ErrorModel;
   propCategories = PropertyCategory;
-  propTypes = PropertyType;
+  housePropertyType = HousePropertyType;
+  otherPropertytype = OtherPropertyType;
+  landPropertyType = LandPropertyType;
+  commercialPropertyType = CommercialPropertyType;
   propPurpose = Purpose;
   heatingCategory = HeatingCategory;
   HeatingType = HeatingType;
-  landType = LandType;
   landZone = LandZone;
   orientation = Orientation;
   images: Array<string>;
@@ -96,18 +98,13 @@ export class RealEstatePropertyComponent implements OnInit {
       Proposed: [this.estateproperty.Proposed],
 
       PropertyCategory: [this.estateproperty.PropertyCategory, Validators.required],
-      PropertyType: [this.estateproperty.PropertyType, Validators.required],
       Purpose: [this.estateproperty.Purpose, Validators.required],
 
-      //Land//
-      LandType: [this.estateproperty.LandType],
-      BuiltSurfaceRatio: [this.estateproperty.BuiltSurfaceRatio], //συντελεστής δόμησης  
-      BuildingDensityFactor: [this.estateproperty.BuildingDensityFactor], //Συντελεστής κάλυψης
-      BuildingFacade: [this.estateproperty.BuildingFacade], //Μήκος πρόσοψης
-      LandZone: [this.estateproperty.LandZone],
-      Inclination: [this.estateproperty.Inclination],
-      UrbanPlanningZone: [this.estateproperty.UrbanPlanningZone], //Εντός σχεδίου πόλεως
-      RuralDevelopment: [this.estateproperty.RuralDevelopment], //Κατάλληλο για αγροτική χρήση
+      //Type
+      HousePropertyType: [this.estateproperty.HousePropertyType],
+      CommercialPropertyType: [this.estateproperty.CommercialPropertyType],
+      OtherPropertyType: [this.estateproperty.OtherPropertyType],
+      LandPropertyType: [this.estateproperty.LandPropertyType],
 
       SiteCode: [this.estateproperty.SiteCode],
       Title: [this.estateproperty.Title],
@@ -117,16 +114,23 @@ export class RealEstatePropertyComponent implements OnInit {
       SqfFeetLand: [this.estateproperty.SqfFeetLand],
       Year: [this.estateproperty.Year],
 
-      Renovated: [this.estateproperty.Renovated],
-      NewConstruction: [this.estateproperty.NewConstruction],
+      //Rooms
       Rooms: [this.estateproperty.Rooms],
       NoOfKitchen: [this.estateproperty.NoOfKitchen],
       FullBedrooms: [this.estateproperty.FullBedrooms],
       HalfBedrooms: [this.estateproperty.HalfBedrooms],
+      Bathrooms: [this.estateproperty.Bathrooms],
+      WC: [this.estateproperty.WC],
+
+      //Characteristics
+      Access: [this.estateproperty.Access],
+      Levels: [this.estateproperty.Levels],
+      Floor: [this.estateproperty.Floor],
+      Orientation: [this.estateproperty.Orientation],
+      Renovated: [this.estateproperty.Renovated],
+      NewConstruction: [this.estateproperty.NewConstruction],
       SemiOutdoorSpaces: [this.estateproperty.SemiOutdoorSpaces],
       LegalSemiOutdoorSpaces: [this.estateproperty.LegalSemiOutdoorSpaces],
-      Levels: [this.estateproperty.Levels],
-
       EnergyPerformanceCertificates: [this.estateproperty.EnergyPerformanceCertificates],
       Mortgage: [this.estateproperty.Mortgage],
       HolidayHome: [this.estateproperty.HolidayHome],
@@ -136,6 +140,22 @@ export class RealEstatePropertyComponent implements OnInit {
       ListedBuildings: [this.estateproperty.ListedBuildings],
       LuxuryHouse: [this.estateproperty.LuxuryHouse],
       Penthouse: [this.estateproperty.Penthouse],
+      Sight: [this.estateproperty.Sight],
+      FrontView: [this.estateproperty.FrontView],
+      Investment: [this.estateproperty.Investment],
+      Terraces: [this.estateproperty.Terraces],
+      InternalStairs: [this.estateproperty.InternalStairs],
+      Corner: [this.estateproperty.Corner],
+      IndoorBBQ: [this.estateproperty.IndoorBBQ],
+      Elevator: [this.estateproperty.Elevator],
+      SatteliteTV: [this.estateproperty.SatteliteTV],
+      DoubleWindows: [this.estateproperty.DoubleWindows],
+      TripleWindows: [this.estateproperty.TripleWindows],
+      Internet: [this.estateproperty.Internet],
+      AnimalFriendly: [this.estateproperty.AnimalFriendly],
+      StudentsHousing: [this.estateproperty.StudentsHousing],
+      WithoutCharges: [this.estateproperty.WithoutCharges],
+      Furnished: [this.estateproperty.Furnished],
 
       //Parking
       Parkings: [this.estateproperty.Parkings],
@@ -168,20 +188,6 @@ export class RealEstatePropertyComponent implements OnInit {
       SafetyDepositBox: [this.estateproperty.SafetyDepositBox],
       VideoDoorPhone: [this.estateproperty.VideoDoorPhone],
 
-      //Other
-      Terraces: [this.estateproperty.Terraces],
-      InternalStairs: [this.estateproperty.InternalStairs],
-      Corner: [this.estateproperty.Corner],
-      IndoorBBQ: [this.estateproperty.IndoorBBQ],
-      Elevator: [this.estateproperty.Elevator],
-      SatteliteTV: [this.estateproperty.SatteliteTV],
-      DoubleWindows: [this.estateproperty.DoubleWindows],
-      TripleWindows: [this.estateproperty.TripleWindows],
-      Internet: [this.estateproperty.Internet],
-      AnimalFriendly: [this.estateproperty.AnimalFriendly],
-      StudentsHousing: [this.estateproperty.StudentsHousing],
-      WithoutCharges: [this.estateproperty.WithoutCharges],
-
       //Surrounding Area
       SportField: [this.estateproperty.SportField],
       Grass: [this.estateproperty.Grass],
@@ -199,22 +205,29 @@ export class RealEstatePropertyComponent implements OnInit {
       RentStart: [this.estateproperty.RentStart],
       RentEnd: [this.estateproperty.RentEnd],
       RentDamageDeposit: [this.estateproperty.RentDamageDeposit],
-      Furnished: [this.estateproperty.Furnished],
 
       //Distances from key pos
-      Orientation: [this.estateproperty.Orientation],
       DistanceFromVillage: [this.estateproperty.DistanceFromVillage],
       DistanceFromCity: [this.estateproperty.DistanceFromCity],
       DistanceFromSea: [this.estateproperty.DistanceFromSea],
       DistanceFromAirport: [this.estateproperty.DistanceFromCity],
       NearMetro: [this.estateproperty.DistanceFromSea],
 
-      //Map
-      YoutubeURL: [this.estateproperty.YoutubeURL],
+      //Location - Map
       GeoLat: [this.estateproperty.GeoLat],
-      GeoLong: [this.estateproperty.GeoLong],
-      UploadMapToRealEstatePortals: [this.estateproperty.UploadMapToRealEstatePortals]
+      GeoLong: [this.estateproperty.GeoLong],      
+      LandZone: [this.estateproperty.LandZone],
+      YoutubeURL: [this.estateproperty.YoutubeURL],
+      UploadMapToRealEstatePortals: [this.estateproperty.UploadMapToRealEstatePortals],
 
+      //Land//
+      BuiltSurfaceRatio: [this.estateproperty.BuiltSurfaceRatio], //συντελεστής δόμησης  
+      BuildingDensityFactor: [this.estateproperty.BuildingDensityFactor], //Συντελεστής κάλυψης
+      BuildingFacade: [this.estateproperty.BuildingFacade], //Μήκος πρόσοψης
+      Inclination: [this.estateproperty.Inclination],
+      UrbanPlanningZone: [this.estateproperty.UrbanPlanningZone], //Εντός σχεδίου πόλεως
+      RuralDevelopment: [this.estateproperty.RuralDevelopment], //Κατάλληλο για αγροτική χρήση
+      Antiparoxi: [this.estateproperty.Antiparoxi],
     });
 
   }
@@ -348,9 +361,5 @@ export class RealEstatePropertyComponent implements OnInit {
       this.errorObject = new ErrorModel(ErrorType.Error, err, '');
     }
   }
-
-
-
-
 
 }

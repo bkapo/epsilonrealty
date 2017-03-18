@@ -2,10 +2,6 @@ import { InvolvepdPartyModel } from '../models/involved-party.model';
 
 export  class PropertyModel {
 
-    //Owner
-    OwnerId: number;
-    Owner: InvolvepdPartyModel;
-
     //Responsible
     ResponsibleId: number;
     Responsible: InvolvepdPartyModel;
@@ -14,31 +10,33 @@ export  class PropertyModel {
     ProposedId: number;
     Proposed: InvolvepdPartyModel;
     
-    //Category - Type - Purpose
+    //Category - Purpose
     PropertyCategory: PropertyCategory;
-    PropertyType: PropertyType;
     Purpose: Purpose;
-    
-    //Land//
-    LandType: LandType;
-    BuiltSurfaceRatio: number; //συντελεστής δόμησης  
-    BuildingDensityFactor: number; //Συντελεστής κάλυψης
-    BuildingFacade: number; //Μήκος πρόσοψης
-    LandZone: LandZone; //Ζώνη
-    Inclination: number;
-    UrbanPlanningZone: boolean = false; //Εντός σχεδίου πόλεως
-    RuralDevelopment: boolean = false;  //Κατάλληλο για αγροτική χρήση
 
-    Orientation: Orientation;
-    Renovated: boolean = false;
-    NewConstruction: boolean = false;
+    //Type
+    HousePropertyType: HousePropertyType;
+    CommercialPropertyType: CommercialPropertyType;
+    LandPropertyType: LandPropertyType;
+    OtherPropertyType: OtherPropertyType;
+
+    //Rooms
     Rooms: number;
+    Bathrooms: number;
+    WC: number;
     NoOfKitchen: number;
     FullBedrooms: number;
     HalfBedrooms: number;
+
+    //Characteristics
+    Access:Access;
+    Levels: number;
+    Floor: number;
+    Orientation: Orientation;
+    Renovated: boolean = false;
+    NewConstruction: boolean = false;
     SemiOutdoorSpaces: number;
     LegalSemiOutdoorSpaces: number;
-    Levels: number;
     EnergyPerformanceCertificates: boolean = false;
     Mortgage: boolean = false;
     HolidayHome: boolean = false;
@@ -48,11 +46,23 @@ export  class PropertyModel {
     ListedBuildings: boolean = false;
     LuxuryHouse: boolean = false;
     Penthouse: boolean = false;
-    Antiparoxi: boolean = false;
     Sight: boolean = false; //Θεα
     FrontView: boolean = false; //Πρόσοψης
     Investment: boolean = false; //Επενδυτικό
-    
+    Terraces: boolean;
+    InternalStairs: boolean;
+    Corner: boolean;
+    IndoorBBQ: boolean;
+    Elevator: boolean;
+    SatteliteTV: boolean;
+    DoubleWindows: boolean;
+    TripleWindows: boolean;
+    Internet: boolean;
+    AnimalFriendly: boolean;
+    StudentsHousing: boolean;
+    WithoutCharges: boolean;
+    Furnished: boolean;
+
     //Parking
     Parkings: number;
     ClosedParking: boolean = false;
@@ -84,20 +94,6 @@ export  class PropertyModel {
     SafetyDepositBox: boolean;
     VideoDoorPhone: boolean;
 
-    //Other
-    Terraces: boolean;
-    InternalStairs: boolean;
-    Corner: boolean;
-    IndoorBBQ: boolean;
-    Elevator: boolean;
-    SatteliteTV: boolean;
-    DoubleWindows: boolean;
-    TripleWindows: boolean;
-    Internet: boolean;
-    AnimalFriendly: boolean;
-    StudentsHousing: boolean;
-    WithoutCharges: boolean;
-
     //Surrounding Area
     SportField: boolean;
     Grass: boolean;
@@ -115,8 +111,7 @@ export  class PropertyModel {
     RentStart: Date;
     RentEnd: Date;
     RentDamageDeposit: boolean;
-    Furnished: boolean;
-
+    
     //Distances from key pos
     DistanceFromVillage: number;
     DistanceFromCity: number;
@@ -124,21 +119,40 @@ export  class PropertyModel {
     DistanceFromAirport: number;
     NearMetro: boolean;
 
+    //Location
+    LandZone: LandZone; //Ζώνη
+
+    //Land//
+    BuiltSurfaceRatio: number; //συντελεστής δόμησης  
+    BuildingDensityFactor: number; //Συντελεστής κάλυψης
+    BuildingFacade: number; //Μήκος πρόσοψης
+    Inclination: number;
+    UrbanPlanningZone: boolean = false; //Εντός σχεδίου πόλεως
+    RuralDevelopment: boolean = false;  //Κατάλληλο για αγροτική χρήση
+    Antiparoxi: boolean = false;
+
 }
 
 export enum PropertyCategory {
     'Κατοικία' = 1, 'Επαγγελματικό', 'Γη', 'Λοιπά'
 }
 
-export enum PropertyType {
-    'Diamerisma' = 1, 'Villa', 'Gkarsoniera', 'Orofodiaerisma', 'DiamerismaDublex', 'Mezoneta',
-    'Monokatoikia', 'Retire', 'Sigkrotima', 'Studio', 'Liomeno', 'Katastima', 'Ktirio', 'Aithousa',
-    'ApothikeytikosXoros', 'BiomixanikosXoros', 'BiotexnikosXoros', 'Grafeio', 'Apothiki',
-    'DiafimistikosXoros', 'EkthesiakosXoros', 'EpaggelmatikosXoros', 'KtirioParkings', 'Oikia',
-    'OikopedoEpaggelmatiko', 'OrofodiaerismaEpaggelmatiko', 'Ektasi', 'Oikopedo', 'Agrotemaxio',
-    'BiomixanikoOikopedo', 'Kthma', 'EpenditikoAkinito', 'Epixirisi', 'Nisi', 'Ksenodoxio', 'Polikatikia',
-    'XorosStathmeysis', 'Loipa'
+export enum CommercialPropertyType {
+    'Γραφείο' = 1, 'Κατάστημα', 'Αποθήκη', 'Βιομηχανικός χώρος', 'Βιοτεχνικός χώρος', 'Ξενοδοχείο', 'Κτήριο επαγγελματικών χώρων', 'Αίθουσα', 'Εκθεσιακός χώρος', 'Λοιπά'
 }
+
+export enum HousePropertyType {
+    'Διαμέρισμα' = 1, 'Studio', 'Μεζονέτα', 'Μονοκατοικία', 'Villa', 'Loft', 'Bungalow', 'Κτίριο', 'Συγκρότημα διαμερισμάτων', 'Φάρμα', 'Πλωτό', 'Λοιπά'
+}
+
+export enum LandPropertyType {
+    'Οικόπεδο' = 1, 'Αγροτεμάχιο', 'Νησί', 'Λοιπά'
+}
+
+export enum OtherPropertyType {
+    'Parking' = 1, 'Επιχείρηση', 'Προκατασκευασμένο', 'Λυόμενο', 'Αέρας', 'Λοιπά'
+}
+
 
 export enum HeatingCategory {
     'Αυτόνομη' = 1, 'Κεντιρκή', 'Χωρίς'
@@ -155,10 +169,6 @@ export enum Purpose {
     "Ενοικίαση & Πώληση" = 3 
 }
 
-export enum LandType {
-    'Οικόπεδο' = 1, 'Αγροτεμάχιο', 'Νησί', 'Λοιπά'
-}
-
 export enum LandZone {
     'Οικιστική Ζώνη' = 1, 'Αγροτική', 'Εμπορική', 'Βιομηχανική', 'Ζώνη Ανάπλασης', 'Εκτός Σχεδίου'
 }
@@ -166,4 +176,14 @@ export enum LandZone {
 export enum Orientation {
     'Ανατολικός' = 1, 'Ανατολικοδυτικός', 'Ανατολικομεσημβρινός', 'Βόρειος', 'Βορειοανατολικός', 'Βορειοδυτικός'
 }
+
+export enum EnergyPerformance {
+    'Α+' = 1, 'Α', 'Β+', 'Β', 'Γ', 'Δ', 'Ε','Ζ','Η'
+}
+
+export enum Access {
+    'Άσφαλτο' = 1, 'Πεζοδρόμιο', 'Πλακόστρωτο', 'Χωματόδρομο', 'Χωρίς Πρόσβαση', 'Θάλασσα', 'Αλλού'
+}
+
+
 
