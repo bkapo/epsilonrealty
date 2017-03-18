@@ -13,11 +13,10 @@ export class  RealEstatePropertyAddPage {
     estatepropertyobj: RealEstatePropertyModel;
     propertyCategory = PropertyCategory;
 
-    
     constructor(public nav: NavController, navParams: NavParams) {
         this.nav = nav;
         this.params = navParams;
         this.estatepropertyobj = this.params.get('paramEstate');
-        this.propertyCategory  = this.estatepropertyobj .PropertyCategory;
+        this.propertyCategory  = this.estatepropertyobj.PropertyCategory;
     }
 }

@@ -3,11 +3,15 @@
         <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
     </button>
-        <ion-title>Διόρθωση Ακινήτου</ion-title>
+        <ion-title *ngIf="propertyCategory == 1">Κατοικία</ion-title>
+        <ion-title *ngIf="propertyCategory == 2">Επαγγελματική Στέγη</ion-title>
+        <ion-title *ngIf="propertyCategory == 3">Γη</ion-title>
+        <ion-title *ngIf="propertyCategory == 4">Λοιπά Ακίνητα</ion-title>
     </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-    <realestate-property [estateproperty]="estatepropertyobj"></realestate-property>
+    <realestate-property *ngIf="propertyCategory == 1" [estateproperty]="estatepropertyobj"></realestate-property>
+    <realestate-property-land *ngIf="propertyCategory == 3" [estateproperty]="estatepropertyobj"></realestate-property-land>
 </ion-content>
