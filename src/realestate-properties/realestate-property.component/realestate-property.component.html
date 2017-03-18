@@ -28,10 +28,6 @@
 
     <div [ngSwitch]="estateSegment">
         <ion-list *ngSwitchCase="'Basic'">
-            <ion-list-header>
-                Γενικα
-            </ion-list-header>
-
             <ion-grid>
                 <ion-list radio-group formControlName="Purpose">
                     <ion-row>
@@ -51,7 +47,7 @@
                         <ion-item>
                             <ion-label>Κατηγορία</ion-label>
                             <ion-select #item formControlName="PropertyCategory">
-                                <ion-option *ngFor="let item of propCategories | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                                <ion-option disabled *ngFor="let item of propCategories | keys" value="{{item.key}}">{{item.value}} </ion-option>
                             </ion-select>
                         </ion-item>
                     </ion-col>
@@ -63,22 +59,22 @@
                             </ion-select>
                         </ion-item>
                     </ion-col>
+
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md-8>
+                        <ion-item>
+                            <ion-label floating>Τίτλος</ion-label>
+                            <ion-input type="text" formControlName="Title"></ion-input>
+                        </ion-item>
+                    </ion-col>
                     <ion-col col-12 col-md-4>
                         <ion-item>
                             <ion-label floating>Κωδικός Site</ion-label>
                             <ion-input type="text" formControlName="SiteCode"></ion-input>
                         </ion-item>
                     </ion-col>
-                </ion-row>
-
-                <ion-row>
-                    <ion-col col-12 col-md-12>
-                        <ion-item>
-                            <ion-label floating>Τίτλος</ion-label>
-                            <ion-input type="text" formControlName="Title"></ion-input>
-                        </ion-item>
-                    </ion-col>
-
                 </ion-row>
 
                 <ion-list-header>
