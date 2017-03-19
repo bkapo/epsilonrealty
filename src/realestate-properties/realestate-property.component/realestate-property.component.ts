@@ -7,7 +7,7 @@ import { InvolvedPartySelectComponent } from '../../involved-parties/involved-pa
 import { RealEstatePropertyModel } from '../../app/models/realestate-property.model'
 import { PropertyCategory, HousePropertyType, OtherPropertyType, CommercialPropertyType, 
   Purpose, HeatingCategory, HeatingType, LandPropertyType, 
-  LandZone, Orientation, Access } from '../../app/models/propertyabstract.model'
+  LandZone, Orientation, Access, EnergyPerformance } from '../../app/models/propertyabstract.model'
 
 import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model'
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
@@ -41,6 +41,7 @@ export class RealEstatePropertyComponent implements OnInit {
   landZone = LandZone;
   orientation = Orientation;
   access = Access;
+  energyPerformance = EnergyPerformance;
   images: Array<string>;
   countries: Array<Country>;
   periferies: Array<Periferia>;

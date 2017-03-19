@@ -5,11 +5,14 @@
             <ion-segment-button value="Basic">
                 Γενικα
             </ion-segment-button>
+            <ion-segment-button value="Rooms">
+                Δωματια
+            </ion-segment-button>
             <ion-segment-button value="Photo">
                 Φωτογραφιες
             </ion-segment-button>
             <ion-segment-button value="HeatingSecurity">
-                Θερμανση - Ασφαλεια - Additional Rooms
+                Θερμανση - Ασφαλεια
             </ion-segment-button>
             <ion-segment-button value="SurroundingArea">
                 Περιβαλλων Χωρος - Parking
@@ -57,6 +60,13 @@
                             <ion-select #item formControlName="HousePropertyType">
                                 <ion-option *ngFor="let item of housePropertyType | keys" value="{{item.key}}">{{item.value}} </ion-option>
                             </ion-select>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Έτος κατασκευής</ion-label>
+                            <ion-datetime displayFormat="YYYY" formControlName="Year"></ion-datetime>
                         </ion-item>
                     </ion-col>
 
@@ -141,10 +151,122 @@
             </ion-grid>
         </ion-list>
 
+        <ion-list *ngSwitchCase="'Rooms'">
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label floating>Χώροι</ion-label>
+                            <ion-input type="number" formControlName="Rooms"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label floating>Master Υπνοδωμάτια </ion-label>
+                            <ion-input type="number" formControlName="FullBedrooms"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label floating>Υπνοδωμάτια</ion-label>
+                            <ion-input type="number" formControlName="HalfBedrooms"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label floating>Master Μπάνια</ion-label>
+                            <ion-input type="number" formControlName="Bathrooms"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label floating>WC</ion-label>
+                            <ion-input type="number" formControlName="WC"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label floating>Κουζίνες</ion-label>
+                            <ion-input type="number" formControlName="NoOfKitchen"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+
+                <ion-list-header>
+                    Επιπλεον Δωματια
+                </ion-list-header>
+                <ion-row>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Yπόγειο</ion-label>
+                            <ion-toggle checked="true" formControlName="Basement"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Fitness Room</ion-label>
+                            <ion-toggle checked="true" formControlName="FitnessRoom"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Home Theatre</ion-label>
+                            <ion-toggle checked="true" formControlName="HomeTheatre"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Βιβλιοθήκη</ion-label>
+                            <ion-toggle checked="true" formControlName="Library"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Spa</ion-label>
+                            <ion-toggle checked="true" formControlName="Spa"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <ion-item>
+                            <ion-label>Guest Suite</ion-label>
+                            <ion-toggle checked="true" formControlName="GuestSuite"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Γραφείο</ion-label>
+                            <ion-toggle checked="true" formControlName="HomeOffice"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Σοφίτα</ion-label>
+                            <ion-toggle checked="true" formControlName="Attic"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-sm-4>
+                        <ion-item>
+                            <ion-label>Κελάρι</ion-label>
+                            <ion-toggle checked="true" formControlName="WineCellar"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+
+            </ion-grid>
+
+        </ion-list>
+
         <ion-list *ngSwitchCase="'Photo'">
-            <ion-list-header>
-                Φωτογραφιες
-            </ion-list-header>
             <ion-grid>
                 <ion-row align-items-center>
                     <ion-col col-12 col-md-4 align-self-center *ngFor="let file_uri of images">
@@ -417,11 +539,6 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'Map'">
-            <ion-list-header>
-                Key Points & Map
-            </ion-list-header>
-
-
             <ion-grid>
                 <ion-row>
                     <ion-col col-12 col-md-4>
@@ -449,8 +566,8 @@
                 <ion-row>
                     <ion-col col-12 col-md>
                         <ion-item>
-                            <ion-label floating>Προσανατολισμός</ion-label>
-                            <ion-input type="text" formControlName="Orientation"></ion-input>
+                            <ion-label floating>Απόσταση απο Αεροδρόμιο</ion-label>
+                            <ion-input type="number" formControlName="DistanceFromAirport"></ion-input>
                         </ion-item>
                     </ion-col>
                     <ion-col col-12 col-md>
@@ -468,19 +585,14 @@
                 </ion-row>
 
                 <ion-row>
-                    <ion-col col-12 col-md>
+                    <ion-col col-12 col-md-4>
                         <ion-item>
                             <ion-label floating>Απόσταση απο Θάλλασα</ion-label>
                             <ion-input type="number" formControlName="DistanceFromSea"></ion-input>
                         </ion-item>
                     </ion-col>
-                    <ion-col col-12 col-md>
-                        <ion-item>
-                            <ion-label floating>Απόσταση απο Αεροδρόμιο</ion-label>
-                            <ion-input type="number" formControlName="DistanceFromAirport"></ion-input>
-                        </ion-item>
-                    </ion-col>
-                    <ion-col col-12 col-md>
+
+                    <ion-col col-12 col-md-4>
                         <ion-item>
                             <ion-label floating>Youtube URL</ion-label>
                             <ion-input type="text" formControlName="YoutubeURL"></ion-input>
@@ -489,6 +601,14 @@
                 </ion-row>
 
                 <ion-row>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Προσανατολισμός</ion-label>
+                            <ion-select #item formControlName="Orientation">
+                                <ion-option *ngFor="let item of orientation | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
                     <ion-col col-12 col-md-4>
                         <ion-item>
                             <ion-label>Κοντά σε Μετρό</ion-label>
@@ -508,9 +628,6 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'Other'">
-            <ion-list-header>
-                Other
-            </ion-list-header>
 
             <ion-grid>
                 <ion-row>
@@ -593,14 +710,123 @@
                         </ion-item>
                     </ion-col>
                 </ion-row>
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Πολυτελές</ion-label>
+                            <ion-toggle checked="false" formControlName="LuxuryHouse"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Εξοχικό</ion-label>
+                            <ion-toggle checked="false" formControlName="HolidayHome"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Νεοκλασικό</ion-label>
+                            <ion-toggle checked="false" formControlName="NeoClassicalHouse"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Νεόδμητο</ion-label>
+                            <ion-toggle checked="false" formControlName="NewConstruction"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Πέτρινο</ion-label>
+                            <ion-toggle checked="false" formControlName="StoneHome"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Παραδοσιακό</ion-label>
+                            <ion-toggle checked="false" formControlName="TraditionalHouse"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Διατηρητέο</ion-label>
+                            <ion-toggle checked="false" formControlName="ListedBuildings"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Ρετιρέ</ion-label>
+                            <ion-toggle checked="false" formControlName="Penthouse"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Ανακαινισμένο</ion-label>
+                            <ion-toggle checked="false" formControlName="Renovated"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Όροφος</ion-label>
+                            <ion-input type="number" formControlName="Floor"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label floating>Επίπεδα</ion-label>
+                            <ion-input type="number" formControlName="Levels"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Επιπλωμένο</ion-label>
+                            <ion-toggle checked="false" formControlName="Furnished"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Ζώνη</ion-label>
+                            <ion-select #item formControlName="LandZone">
+                                <ion-option *ngFor="let item of landZone | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Πρόσβαση</ion-label>
+                            <ion-select #item formControlName="Access">
+                                <ion-option *ngFor="let item of access | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Ενεργειακή κλάση</ion-label>
+                            <ion-select #item formControlName="EnergyPerformanceCertificates">
+                                <ion-option *ngFor="let item of energyPerformance | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
             </ion-grid>
 
         </ion-list>
 
         <ion-list *ngSwitchCase="'Managment'">
-            <ion-list-header>
-                Διαχειριση
-            </ion-list-header>
             <a ion-item (click)="selectBroker()">
                 <ion-icon name="contact"></ion-icon>
                 Broker: {{responsibleFullName}}
