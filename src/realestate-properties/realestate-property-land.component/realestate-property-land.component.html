@@ -130,9 +130,6 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'Photo'">
-            <ion-list-header>
-                Φωτογραφιες
-            </ion-list-header>
             <ion-grid>
                 <ion-row align-items-center>
                     <ion-col col-12 col-md-4 align-self-center *ngFor="let file_uri of images">
@@ -143,10 +140,6 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'Map'">
-            <ion-list-header>
-                Key Points & Map
-            </ion-list-header>
-
             <ion-grid>
                 <ion-row>
                     <ion-col col-12 col-md-4>
@@ -174,8 +167,8 @@
                 <ion-row>
                     <ion-col col-12 col-md>
                         <ion-item>
-                            <ion-label floating>Προσανατολισμός</ion-label>
-                            <ion-input type="text" formControlName="Orientation"></ion-input>
+                            <ion-label floating>Απόσταση απο Αεροδρόμιο</ion-label>
+                            <ion-input type="number" formControlName="DistanceFromAirport"></ion-input>
                         </ion-item>
                     </ion-col>
                     <ion-col col-12 col-md>
@@ -193,19 +186,14 @@
                 </ion-row>
 
                 <ion-row>
-                    <ion-col col-12 col-md>
+                    <ion-col col-12 col-md-4>
                         <ion-item>
                             <ion-label floating>Απόσταση απο Θάλλασα</ion-label>
                             <ion-input type="number" formControlName="DistanceFromSea"></ion-input>
                         </ion-item>
                     </ion-col>
-                    <ion-col col-12 col-md>
-                        <ion-item>
-                            <ion-label floating>Απόσταση απο Αεροδρόμιο</ion-label>
-                            <ion-input type="number" formControlName="DistanceFromAirport"></ion-input>
-                        </ion-item>
-                    </ion-col>
-                    <ion-col col-12 col-md>
+
+                    <ion-col col-12 col-md-4>
                         <ion-item>
                             <ion-label floating>Youtube URL</ion-label>
                             <ion-input type="text" formControlName="YoutubeURL"></ion-input>
@@ -214,6 +202,14 @@
                 </ion-row>
 
                 <ion-row>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Προσανατολισμός</ion-label>
+                            <ion-select #item formControlName="Orientation">
+                                <ion-option *ngFor="let item of orientation | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
                     <ion-col col-12 col-md-4>
                         <ion-item>
                             <ion-label>Κοντά σε Μετρό</ion-label>
@@ -233,10 +229,6 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'Other'">
-            <ion-list-header>
-                Χαρακτηριστικά
-            </ion-list-header>
-
             <ion-grid>
                 <ion-row>
                     <ion-col col-12 col-md>
@@ -270,6 +262,15 @@
                     </ion-col>
                     <ion-col col-12 col-md-4>
                         <ion-item>
+                            <ion-label>Πρόσβαση</ion-label>
+                            <ion-select #item formControlName="Access">
+                                <ion-option *ngFor="let item of access | keys" value="{{item.key}}">{{item.value}} </ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
                             <ion-label>Κλίση</ion-label>
                             <ion-input type="number" formControlName="Inclination"></ion-input>
                         </ion-item>
@@ -280,19 +281,55 @@
                     <ion-col col-12 col-md>
                         <ion-item>
                             <ion-label>Εντός σχεδίου πόλεως</ion-label>
-                            <ion-toggle checked="true" formControlName="UrbanPlanningZone"></ion-toggle>
+                            <ion-toggle checked="false" formControlName="UrbanPlanningZone"></ion-toggle>
                         </ion-item>
                     </ion-col>
                     <ion-col col-12 col-md>
                         <ion-item>
                             <ion-label>Κατάλληλο για αγροτική χρήση</ion-label>
-                            <ion-toggle checked="true" formControlName="RuralDevelopment"></ion-toggle>
+                            <ion-toggle checked="false" formControlName="RuralDevelopment"></ion-toggle>
                         </ion-item>
                     </ion-col>
                     <ion-col col-12 col-md>
                         <ion-item>
                             <ion-label>Γωνιακό</ion-label>
-                            <ion-toggle checked="true" formControlName="Corner"></ion-toggle>
+                            <ion-toggle checked="false" formControlName="Corner"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Δάνειο</ion-label>
+                            <ion-toggle checked="false" formControlName="Mortgage"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Επενδυτικό</ion-label>
+                            <ion-toggle checked="false" formControlName="Investment"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md>
+                        <ion-item>
+                            <ion-label>Αντιπαροχή</ion-label>
+                            <ion-toggle checked="false" formControlName="Antiparoxi"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Θέα</ion-label>
+                            <ion-toggle checked="false" formControlName="Sight"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-4>
+                        <ion-item>
+                            <ion-label>Πρόσοψης</ion-label>
+                            <ion-toggle checked="false" formControlName="FrontView"></ion-toggle>
                         </ion-item>
                     </ion-col>
                 </ion-row>
@@ -302,9 +339,6 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'Managment'">
-            <ion-list-header>
-                Διαχειριση
-            </ion-list-header>
             <a ion-item (click)="selectBroker()">
                 <ion-icon name="contact"></ion-icon>
                 Broker: {{responsibleFullName}}

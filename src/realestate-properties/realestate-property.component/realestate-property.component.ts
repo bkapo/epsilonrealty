@@ -5,7 +5,9 @@ import { ModalController, ToastController, LoadingController, NavController } fr
 
 import { InvolvedPartySelectComponent } from '../../involved-parties/involved-party-select.page/involved-party-select.page'
 import { RealEstatePropertyModel } from '../../app/models/realestate-property.model'
-import { PropertyCategory, HousePropertyType, OtherPropertyType, CommercialPropertyType, Purpose, HeatingCategory, HeatingType, LandPropertyType, LandZone, Orientation } from '../../app/models/propertyabstract.model'
+import { PropertyCategory, HousePropertyType, OtherPropertyType, CommercialPropertyType, 
+  Purpose, HeatingCategory, HeatingType, LandPropertyType, 
+  LandZone, Orientation, Access } from '../../app/models/propertyabstract.model'
 
 import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model'
 import { ErrorModel, ErrorType } from '../../app/models/error.model'
@@ -38,6 +40,7 @@ export class RealEstatePropertyComponent implements OnInit {
   HeatingType = HeatingType;
   landZone = LandZone;
   orientation = Orientation;
+  access = Access;
   images: Array<string>;
   countries: Array<Country>;
   periferies: Array<Periferia>;
@@ -76,6 +79,7 @@ export class RealEstatePropertyComponent implements OnInit {
     this.responsibleFullName = this.estateproperty.ResponsibleId ? (this.estateproperty.Responsible.FirstName + ' ' + this.estateproperty.Responsible.LastName) : 'Επιλέξτε';
     this.ownerFullName = this.estateproperty.Owner ? (this.estateproperty.Owner.FirstName + ' ' + this.estateproperty.Owner.LastName) : 'Επιλέξτε';
     this.propesedByFullName = this.estateproperty.Proposed ? (this.estateproperty.Proposed.FirstName + ' ' + this.estateproperty.Proposed.LastName) : 'Επιλέξτε';
+
 
     this.buildForm();
 
