@@ -109,6 +109,15 @@ export class SearchBarComponent {
         });
     }
 
+    addCommercial(fab: FabContainer) {
+        fab.close();
+        this.newProp = new RealEstatePropertyModel;
+        this.newProp.PropertyCategory = PropertyCategory.Επαγγελματικό;
+        this.nav.push(RealEstatePropertyAddPage, {
+            paramEstate: this.newProp
+        });
+    }
+
     addLand(fab: FabContainer) {
         fab.close();
         this.newProp = new RealEstatePropertyModel;
