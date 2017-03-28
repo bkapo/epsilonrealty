@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -18,6 +19,7 @@ import { SearchModule } from '../search/search.module'
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     DemandModule,
     InvolvedPartyModule,
     RealEstatePropertyModule,
