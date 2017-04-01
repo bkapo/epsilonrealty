@@ -27,7 +27,7 @@
         "angular2-google-maps": "0.17.0"
     },
     "devDependencies": {
-        "@ionic/app-scripts": "1.2.2",
+        "@ionic/app-scripts": "1.2.5",
         "typescript": "~2.2.1"
     },
     "description": "epsilonrealty: An Hybrid Project"
