@@ -17,7 +17,7 @@ export interface PageObj {
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class RealtyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = LoginPage;

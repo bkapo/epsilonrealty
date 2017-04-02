@@ -20,6 +20,23 @@ import { EnergyPerformancePipe } from './pipes/energy-performance.pipe';
 
 import { ListErrorsComponent } from './list-errors.component/list-errors.component'
 
+const REALTY_PIPES = [
+    InvolvedPartyTypePipe,
+    KeysPipe,
+    PropertyCategoryPipe,
+    HousePropertyTypePipe,
+    CommercialPropertyTypePipe,
+    LandTypePipe,
+    OtherPropertyTypePipe,
+    PurposePipe,
+    HeatingTypePipe,
+    HeatingCategoryPipe,
+    LandZonePipe,
+    OrientationPipe,
+    AccessPipe,
+    EnergyPerformancePipe
+];
+
 @NgModule({
     imports: [
         CommonModule,
@@ -27,36 +44,10 @@ import { ListErrorsComponent } from './list-errors.component/list-errors.compone
         ReactiveFormsModule,
         IonicModule],
     declarations: [
-        InvolvedPartyTypePipe,
-        KeysPipe,
-        PropertyCategoryPipe,
-        HousePropertyTypePipe,
-        CommercialPropertyTypePipe,
-        LandTypePipe,
-        OtherPropertyTypePipe,
-        PurposePipe,
-        HeatingTypePipe,
-        HeatingCategoryPipe,
-        LandZonePipe,
-        OrientationPipe,
-        AccessPipe,
-        EnergyPerformancePipe,
+        REALTY_PIPES,
         ListErrorsComponent],
     exports: [
-        InvolvedPartyTypePipe,
-        KeysPipe,
-        PropertyCategoryPipe,
-        HousePropertyTypePipe,
-        CommercialPropertyTypePipe,
-        LandTypePipe,
-        OtherPropertyTypePipe,
-        PurposePipe,
-        HeatingTypePipe,
-        HeatingCategoryPipe,
-        LandZonePipe,
-        OrientationPipe,
-        AccessPipe,
-        EnergyPerformancePipe,
+        REALTY_PIPES,
         ListErrorsComponent,
         CommonModule,
         FormsModule,

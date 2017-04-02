@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { IonicApp, IonicModule } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { RealtyApp } from './app.component';
 
 /* Feature Modules */
 import { CoreModule } from '../core/core.module';
@@ -15,7 +15,7 @@ import { SearchModule } from '../search/search.module'
 
 @NgModule({
   declarations: [
-    MyApp
+    RealtyApp
   ],
   imports: [
     BrowserModule,
@@ -25,12 +25,14 @@ import { SearchModule } from '../search/search.module'
     RealEstatePropertyModule,
     CoreModule,
     SearchModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(RealtyApp, {
+      //preloadModules: true
+    }),
   ],
 
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    RealtyApp
   ]
 })
 export class AppModule { }
