@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, MenuController } from 'ionic-angular';
 
-import { LoginPage } from '../core/login.page/login.page';
-import { SearchBarComponent } from '../search/searchbar.component/searchbar.component'
+import { SearchComponent } from '../search/searchbar.component/searchbar.component'
 import { InvolvedpartiesListPage } from '../involved-parties/involvedparties-list.page/involvedparties-list.page'
 
 export interface PageObj {
@@ -20,9 +19,9 @@ export interface PageObj {
 export class RealtyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = 'login-page';
   appPages: PageObj[] = [
-    { title: 'Search', component: SearchBarComponent, icon: 'search' },
+    { title: 'Search', component: SearchComponent, icon: 'search' },
     { title: 'Μεσίτες', component: InvolvedpartiesListPage, index: 1, icon: 'people' }
   ];
 

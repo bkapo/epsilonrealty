@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, FabContainer } from 'ionic-angular';
+import { NavController, FabContainer, IonicPage } from 'ionic-angular';
 
 import { InvolvepdPartyModel, InvolvedPartyType } from '../../app/models/involved-party.model';
 import { InvolvedPartyAddPage } from '../../involved-parties/involved-party-add.page/involved-party-add.page'
@@ -13,11 +13,15 @@ import { ErrorModel, ErrorType } from '../../app/models/error.model'
 import { IPService } from '../../core/involved-party.service'
 import { REPService } from '../../core/realestate-property.service'
 
-
+@IonicPage({
+    name: 'search-page',
+    segment: 'search',
+    priority: 'high'
+})
 @Component({
     templateUrl: 'searchbar.component.html',
 })
-export class SearchBarComponent {
+export class SearchComponent {
     involvedparties: Array<InvolvepdPartyModel>;
     properties: Array<RealEstatePropertyModel>;
     newIP: InvolvepdPartyModel;

@@ -10,7 +10,7 @@ import { CoreModule } from '../core/core.module';
 import { DemandModule } from '../demands/demand.module'
 import { InvolvedPartyModule } from '../involved-parties/involved-party.module'
 import { RealEstatePropertyModule } from '../realestate-properties/realestate-property.module'
-import { SearchModule } from '../search/search.module'
+import { SearchModule } from '../search/searchbar.component/searchbar.component.module'
 
 
 @NgModule({
