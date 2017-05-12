@@ -131,6 +131,15 @@ export class SearchComponent {
         });
     }
 
+    addOther(fab: FabContainer) {
+        fab.close();
+        this.newProp = new RealEstatePropertyModel;
+        this.newProp.PropertyCategory = PropertyCategory.Λοιπά;
+        this.nav.push(RealEstatePropertyAddPage, {
+            paramEstate: this.newProp
+        });
+    }
+
     addDemand() {
         this.newDm = new DemandModel;
         this.nav.push(DemandAddComponent, {
