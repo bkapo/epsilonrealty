@@ -22,12 +22,11 @@
         </ion-card-content>
     </ion-card>
 
-    <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="17">
-        <sebm-google-map-marker #marker [latitude]="lat" [longitude]="lng" [markerDraggable]="draggable" [openInfoWindow]="true" (dragEnd)="markerDragEnd(marker, $event)">
-
-            <sebm-google-map-info-window>
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="17">
+        <agm-marker #marker [latitude]="lat" [longitude]="lng" [markerDraggable]="draggable" [openInfoWindow]="true" (dragEnd)="markerDragEnd(marker, $event)">
+            <agm-info-window>
                 <strong>{{label}}</strong>
-            </sebm-google-map-info-window>
-        </sebm-google-map-marker>
-    </sebm-google-map>
+            </agm-info-window>
+        </agm-marker>
+    </agm-map>
 </ion-content>

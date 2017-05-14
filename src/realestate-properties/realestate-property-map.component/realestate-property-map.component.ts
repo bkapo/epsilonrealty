@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
-import { MouseEvent } from 'angular2-google-maps/core'
+import { MouseEvent } from '@agm/core'
 
 
 @Component({

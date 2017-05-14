@@ -3,7 +3,7 @@ import { IonicModule } from 'ionic-angular';
 
 import { SharedModule } from '../shared/shared.module';
 import { InvolvedPartyModule } from '../involved-parties/involved-party.module'
-import { AgmCoreModule } from 'angular2-google-maps/core';
+import { AgmCoreModule } from '@agm/core';
 
 import { RealestatePropertyCardComponent } from './realestate-property-card.component/realestate-property-card.component';
 import { RealEstatePropertyComponent } from './realestate-property.component/realestate-property.component';
