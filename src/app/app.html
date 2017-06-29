@@ -1,4 +1,4 @@
-<ion-menu id="leftMenu" [content]="content" persistent="true">
+<ion-menu id="leftMenu" [content]="content" side="left" persistent="true">
     <ion-header>
         <ion-toolbar color="green">
 
@@ -19,7 +19,6 @@
         </ion-toolbar>
     </ion-header>
 
-
     <ion-content>
 
         <ion-list>
@@ -34,6 +33,28 @@
 
     </ion-content>
 
+</ion-menu>
+
+<ion-menu id="searchMenu" [content]="content" side="right">
+    <ion-header>
+        <ion-toolbar color="green">
+
+            <ion-buttons start>
+                <button ion-button>
+                <ion-icon name="log-out"></ion-icon>
+            </button>
+            </ion-buttons>
+
+            <ion-title>Quick Search</ion-title>
+
+            <ion-buttons end>
+                <button ion-button>
+                <ion-icon name="settings"></ion-icon>
+            </button>
+            </ion-buttons>
+
+        </ion-toolbar>
+    </ion-header>
 </ion-menu>
 
 <ion-nav id="nav" #content [root]="rootPage" swipe-back-enabled="false"></ion-nav>
