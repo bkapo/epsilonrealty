@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, MenuController } from 'ionic-angular';
+import { Nav, MenuController } from 'ionic-angular';
 
 import { SearchComponent } from '../search/searchbar.component/searchbar.component'
 import { InvolvedpartiesListPage } from '../involved-parties/involvedparties-list.page/involvedparties-list.page'
@@ -26,19 +26,10 @@ export class RealtyApp {
   ];
 
   constructor(
-    public platform: Platform,
     public menu: MenuController
   ) {
-    this.initializeApp();
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      //StatusBar.styleDefault();
-    });
-  }
 
   openPage(page: PageObj) {
     // close the menu when clicking a link from the menu
