@@ -20,6 +20,7 @@ export class RealtyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = 'login-page';
+
   appPages: PageObj[] = [
     { title: 'Search', component: SearchComponent, icon: 'search' },
     { title: 'Μεσίτες', component: InvolvedpartiesListPage, index: 1, icon: 'people' }
